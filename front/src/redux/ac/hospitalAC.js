@@ -11,26 +11,19 @@ export const deleteHospital = () => ({
 });
 
 export const checkHospital = () => async (dispatch) => {
-  const response = await fetch("/api/auth/check", {
-    credentials: "include",
-  });
+  const response = await axios.get("/hospital/check");
+
   if (response.status === 200) {
-    const checkedUser = await response.json();
+    const checkedUser = response.data;
     dispatch(setHospital(checkedUser));
   }
 };
 
 export const regHospital = (payload, navigate) => async (dispatch) => {
-  const response = await fetch("/api/auth/register", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(payload),
-  });
+  const response = await axios.post("/hospital/reg", payload);
+
   if (response.status === 200) {
-    const user = await response.json();
+    const user = response.data;
     dispatch(setHospital(user));
     navigate("/");
   } else {
@@ -39,16 +32,10 @@ export const regHospital = (payload, navigate) => async (dispatch) => {
 };
 
 export const hospitalIn = (payload, navigate) => async (dispatch) => {
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(payload),
-  });
+  const response = await axios.post("/hospital/login", payload);
+
   if (response.status === 200) {
-    const user = await response.json();
+    const user = response.status;
     dispatch(setHospital(user));
     navigate("/");
   } else {
@@ -57,9 +44,7 @@ export const hospitalIn = (payload, navigate) => async (dispatch) => {
 };
 
 export const hospitalOut = () => async (dispatch) => {
-  const response = await fetch("/api/auth/logout", {
-    credentials: "include",
-  });
+  const response = await axios.get("/hospital/logout", {});
   if (response.status === 200) {
     dispatch(deleteHospital());
   }

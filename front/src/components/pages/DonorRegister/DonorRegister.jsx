@@ -105,15 +105,19 @@ const DonorRegister = () => {
         <label htmlFor="exampleInputEmail1" className="form-label">
           Blood Type
         </label>
-        <select name="bloodtype" onChange={handleInputChange}>
-          <option value="A">A-</option>
-          <option value="B">B-</option>
-          <option value="AB">AB-</option>
-          <option value="O">O-</option>
-          <option value="A">A+</option>
-          <option value="B">B+</option>
-          <option value="AB">AB+</option>
-          <option value="O">O+</option>
+        <select
+          name="bloodType"
+          onChange={handleInputChange}
+          value={values.bloodType}
+        >
+          <option value="A-">A- </option>
+          <option value="B-">B- </option>
+          <option value="AB-">AB- </option>
+          <option value="O-">O- </option>
+          <option value="A+">A+ </option>
+          <option value="B+">B+ </option>
+          <option value="AB+">AB+ </option>
+          <option value="O+">O+ </option>
         </select>
       </div>
 

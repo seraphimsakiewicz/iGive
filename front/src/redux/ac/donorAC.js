@@ -11,27 +11,19 @@ export const deleteDonor = () => ({
 });
 
 export const checkDonor = () => async (dispatch) => {
-  const response = await fetch("/api/auth/check", {
-    credentials: "include",
-  });
+  const response = await axios.get("/donor/check");
+
   if (response.status === 200) {
-    const checkedUser = await response.json();
+    const checkedUser = response.data;
     dispatch(setDonor(checkedUser));
   }
 };
 
 export const regDonor = (payload, navigate) => async (dispatch) => {
-  const response = await fetch("/api/auth/register", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(payload),
-  });
+  const response = await axios.post("/donor/reg", payload);
+
   if (response.status === 200) {
-    const user = await response.json();
-    console.log(user);
+    const user = response.data;
     dispatch(setDonor(user));
     navigate("/");
   } else {
@@ -40,16 +32,10 @@ export const regDonor = (payload, navigate) => async (dispatch) => {
 };
 
 export const donorIn = (payload, navigate) => async (dispatch) => {
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(payload),
-  });
+  const response = await axios.post("/donor/login",  payload );
+
   if (response.status === 200) {
-    const user = await response.json();
+    const user = response.status;
     dispatch(setDonor(user));
     navigate("/");
   } else {
@@ -58,9 +44,7 @@ export const donorIn = (payload, navigate) => async (dispatch) => {
 };
 
 export const donorOut = () => async (dispatch) => {
-  const response = await fetch("/api/auth/logout", {
-    credentials: "include",
-  });
+  const response = await axios.get("/donor/logout", {});
   if (response.status === 200) {
     dispatch(deleteDonor());
   }

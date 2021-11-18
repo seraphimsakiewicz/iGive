@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { regDonor } from "../../../redux/ac/donorAC";
+import { regHospital } from "../../../redux/ac/hospitalAC";
 
 const HospitalRegister = () => {
   const initialValues = {
@@ -24,20 +24,16 @@ const HospitalRegister = () => {
   const [values, setValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
-    const { name, value, defaultChecked } = e.target;
+    const { name, value } = e.target;
 
-    if (name === "rhesusFactor") {
-      setValues({ ...values, rhesusFactor: !defaultChecked });
-    } else {
-      setValues({ ...values, [name]: value });
-    }
+    setValues({ ...values, [name]: value });
   };
 
   function submitRegister(e) {
     e.preventDefault();
-    dispatch(regDonor(values, navigate));
+    dispatch(regHospital(values, navigate));
 
-    setValues(initialValues);
+    // setValues(initialValues);
   }
 
   return (
@@ -90,6 +86,18 @@ const HospitalRegister = () => {
           name="email"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Site:
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          value={values.site}
+          onChange={handleInputChange}
+          name="site"
         />
       </div>
       <div className="mb-3">
