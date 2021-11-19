@@ -1,5 +1,5 @@
-import './general.css';
-import Nav from './components/Nav/Nav';
+import "./general.css";
+import Nav from "./components/Nav/Nav";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -8,8 +8,6 @@ import Main from "./components/Main/Main";
 import Hospital from "./components/Hospital/Hospital";
 import CreateEvent from "./components/CreateEvent/CreateEvent";
 import Login from "./components/pages/Login/Login";
-import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
-import UserRegister from "./components/pages/UserRegister/UserRegister";
 import { UserRoute } from "./components/UserRoute";
 import { HospitalRoute } from "./components/HospitalRoute";
 import { useDispatch } from "react-redux";
@@ -17,6 +15,11 @@ import { checkUser } from "./redux/ac/userAC";
 import { useEffect } from "react";
 import { checkHospital } from "./redux/ac/hospitalAC";
 import Logout from "./components/LogOut";
+import UserRegister from "./components/pages/UserRegister/UserRegister";
+import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
+import Login from "./components/pages/Login/Login";
+import PrivateUser from "./components/PrivateUser/PrivateUser";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,15 +33,14 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/userReg" element={<UserRegister />} />
-        <Route path="/hospitalReg" element={<HospitalRegister />} />
+        <Route path="/login/:role" element={<Login />} />
+        <Route path="/user/signup" element={<UserRegister />} />
+        <Route path="/hospital/signup" element={<HospitalRegister />} />
         <Route path="/hospital" element={<Hospital />} />
         <Route path="/hospital/event" element={<CreateEvent />} />\
         <Route path="/user" element={<User />} />
-
         <Route path="/logout/:role" element={<Logout />} />
-        
+        <Route path="/private/:role" element={<PrivateUser />} />
         <Route
           path="/user/:role"
           element={
@@ -56,6 +58,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }
