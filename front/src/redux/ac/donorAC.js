@@ -1,5 +1,5 @@
-import { SET_DONOR, DELETE_DONOR } from "../types/userTypes";
-import axios from "axios";
+import { SET_DONOR, DELETE_DONOR } from '../types/userTypes';
+import axios from 'axios';
 
 export const setDonor = (user) => ({
   type: SET_DONOR,
@@ -11,7 +11,7 @@ export const deleteDonor = () => ({
 });
 
 export const checkDonor = () => async (dispatch) => {
-  const response = await axios.get("/donor/check");
+  const response = await axios.get('/donor/check');
 
   if (response.status === 200) {
     const checkedUser = response.data;
@@ -20,31 +20,31 @@ export const checkDonor = () => async (dispatch) => {
 };
 
 export const regDonor = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/donor/reg", payload);
+  const response = await axios.post('/donor/reg', payload);
 
   if (response.status === 200) {
     const user = response.data;
     dispatch(setDonor(user));
-    navigate("/");
+    navigate('/');
   } else {
-    navigate("/register");
+    navigate('/register');
   }
 };
 
 export const donorIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/donor/login",  payload );
+  const response = await axios.post('/donor/login', payload);
 
   if (response.status === 200) {
     const user = response.status;
     dispatch(setDonor(user));
-    navigate("/");
+    navigate('/');
   } else {
-    navigate("/login");
+    navigate('/login');
   }
 };
 
 export const donorOut = () => async (dispatch) => {
-  const response = await axios.get("/donor/logout", {});
+  const response = await axios.get('/donor/logout', {});
   if (response.status === 200) {
     dispatch(deleteDonor());
   }

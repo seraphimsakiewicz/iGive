@@ -1,4 +1,4 @@
-import { ADD_EVENT_HOSPITAL } from "../types/eventTypes";
+import { ADD_EVENT_HOSPITAL } from '../types/eventTypes';
 
 export const addNewEvent = (type, amout, date, time) => ({
   type: ADD_EVENT_HOSPITAL,
@@ -6,9 +6,9 @@ export const addNewEvent = (type, amout, date, time) => ({
     type,
     amout,
     date,
-    time
-  }
-})
+    time,
+  },
+});
 
 // export const addNewEventFromServer = (type, amout, date, time) => async (dispatch) => {
 //   const response = await fetch('http://localhost:3001/hospital', {

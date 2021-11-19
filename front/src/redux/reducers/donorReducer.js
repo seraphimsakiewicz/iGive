@@ -1,4 +1,4 @@
-import { SET_DONOR, DELETE_DONOR} from "../types/userTypes";
+import { SET_DONOR, DELETE_DONOR } from '../types/userTypes';
 
 const donorReducer = (state = null, action) => {
   switch (action.type) {
