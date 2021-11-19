@@ -1,5 +1,5 @@
 const initState = {
-  hospitals: [],
+  listHospital: [],
   events: [],
   donor: null,
   hospital: null,

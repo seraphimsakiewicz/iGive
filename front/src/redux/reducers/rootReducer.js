@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
-
-import eventsReducer from './eventsReducer';
-import hospitalsReducer from './hospitalsReducer';
-import donorReducer from './donorReducer';
+import { combineReducers } from "redux";
+import donorReducer from "./donorReducer";
+import eventsReducer from "./eventsReducer";
+import hospitalReducer from "./hospitalReducer";
+import listHospitalReducer from "./listHospitalReducer";
 
 const rootReducer = combineReducers({
-  hospitals: hospitalsReducer,
+  listHospital: listHospitalReducer,
   events: eventsReducer,
   donor: donorReducer,
 });
