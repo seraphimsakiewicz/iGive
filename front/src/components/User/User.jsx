@@ -4,7 +4,7 @@ import "./bootstrap.min.css";
 
 export default function User() {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <ol className="breadcrumb mb-3">
         <li className="breadcrumb-item">
           <a href="#">Главная</a>
@@ -40,40 +40,48 @@ export default function User() {
         ></div>
       </div>
 
-      <h4>Требуется донор с Вашей группой</h4>
-      <ul className="list-group mb-3">
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          <a href="#">ГКБ № 52 (г. Москва)</a>
-          <span className="badge bg-primary rounded-pill">5</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          <a href="#">ГКБ № 67 (г. Москва)</a>
-          <span className="badge bg-primary rounded-pill">2</span>
-        </li>
-        <li className="list-group-item d-flex justify-content-between align-items-center">
-          <a href="#">ГКБ № 5 (г. Красногорск)</a>
-          <span className="badge bg-primary rounded-pill">1</span>
-        </li>
-      </ul>
-
-      <div className="card border-primary mb-3" styleName="max-width: 20rem;">
-        <div className="card-header">Header</div>
-        <div className="card-body">
-          <h4 className="card-title">Primary card title</h4>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+      <div className="row">
+        <div className="col-9">
+          <div
+            className="card border-primary mb-3"
+            styleName="max-width: 20rem;"
+          >
+            <div className="card-header">Header</div>
+            <div className="card-body">
+              <h4 className="card-title">Primary card title</h4>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div
-        className="toast show"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div className="toast-header">
+        <div className="col-3">
+          <h4>Требуется донор</h4>
+          <ul className="list-group mb-3">
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <a href="#">ГКБ № 52 (г. Москва)</a>
+              <span className="badge bg-primary rounded-pill">5</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <a href="#">ГКБ № 67 (г. Москва)</a>
+              <span className="badge bg-primary rounded-pill">2</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <a href="#">ГКБ № 5 (г. Красногорск)</a>
+              <span className="badge bg-primary rounded-pill">1</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* <div
+          className="toast show"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div className="toast-header">
           <strong className="me-auto">Дежурный врач</strong>
           <small>1 минута назад</small>
           <button
@@ -90,6 +98,8 @@ export default function User() {
           всегда нужна, и ваш вклад очень важен для тех, кому она нужна. Тот
           факт, что вы спасли кому-то жизнь, может стать вдохновляющим.
         </div>
+      </div>
+        </div> */}
       </div>
     </div>
   );
