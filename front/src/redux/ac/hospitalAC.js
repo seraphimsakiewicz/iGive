@@ -1,17 +1,4 @@
 
-import { ALL_HOSPITAL } from "../types/hospitalTypes";
-
-export const allHospital = (array) => ({
-  type: ALL_HOSPITAL,
-  payload: array
-})
-
-export const allHospitalFromServer = () => async (dispatch) => {
-  const response = await fetch('http://localhost:3001/hospital');
-  const dataFromServer = await response.json();
-  dispatch(allHospital(dataFromServer));
-}
-
 import { SET_HOSPITAL, DELETE_HOSPITAL } from "../types/userTypes";
 import axios from "axios";
 
