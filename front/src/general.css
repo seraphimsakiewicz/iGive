@@ -1,8 +1,10 @@
-.center {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+*{
+  box-sizing: border-box;
 }
-
+.container {
+  width: 1740px;
+  margin: 0 auto;
+}
+a{
+  text-decoration: none;
+}

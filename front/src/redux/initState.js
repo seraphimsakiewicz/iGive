@@ -1,5 +1,6 @@
 const initState = {
-  //
+  hospitals: [],
+  events: []
 };
 
 const getInitState = () => {

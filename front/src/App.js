@@ -1,21 +1,23 @@
 import "./general.css";
-import Nav from "./components/Nav";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from "./components/Main";
+import Nav from "./components/Nav/Nav";
+import { Routes, Route } from "react-router-dom";
+import Main from "./components/Main/Main";
+import Hospital from "./components/Hospital/Hospital";
+import CreateEvent from "./components/CreateEvent/CreateEvent";
+
 
 function App() {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return (
-    <div className="center">
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+    <>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/hospital" element={<Hospital />} />
+        <Route path="/hospital/event" element={<CreateEvent />} />
+      </Routes>
+    </>
+  )
 }
 
 export default App;
