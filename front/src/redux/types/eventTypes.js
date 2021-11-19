@@ -1,0 +1,1 @@
+export const ADD_EVENT_HOSPITAL = 'ADD_EVENT_HOSPITAL';

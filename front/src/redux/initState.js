@@ -1,4 +1,7 @@
 const initState = {
+
+  hospitals: [],
+  events: []
   donor: null,
   hospital: null,
 };

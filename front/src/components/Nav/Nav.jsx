@@ -1,57 +1,25 @@
 import { Link } from "react-router-dom";
 
+import styles from './style.module.css';
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Main
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/donorReg"
-              >
-                Donor Register
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/hospitalReg"
-              >
-                Hospital Register
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/users">
-                Users
-              </Link>
-            </li>
-          </ul>
+    <header className={styles.header}>
+      <div className="container">
+        <div className={styles.headerWrapper}>
+          <Link className={styles.logo} to="/">
+            iGive
+          </Link>
+          <nav className={styles.nav}>
+            <Link className={styles.navLink} aria-current="page" to="/login">
+              Login
+            </Link>
+            <Link className={styles.navLink} aria-current="page" to="/register">
+              Register
+            </Link>
+          </nav>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
