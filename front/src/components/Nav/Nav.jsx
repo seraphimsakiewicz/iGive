@@ -43,6 +43,11 @@ const Nav = () => {
                 Hospital Register
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/users">
+                Users
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
