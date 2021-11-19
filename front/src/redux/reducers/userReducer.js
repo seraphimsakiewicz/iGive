@@ -6,6 +6,7 @@ const userReducer = (state = null, action) => {
       return action.payload;
 
     case DELETE_USER:
+
       return null;
 
     default:
@@ -14,3 +15,4 @@ const userReducer = (state = null, action) => {
 };
 
 export default userReducer;
+
