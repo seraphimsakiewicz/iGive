@@ -1,12 +1,11 @@
 import { combineReducers } from "redux";
-
-import eventsReducer from "./eventsReducer";
-import listHospitalReducer from "./listHospitalReducer";
 import donorReducer from "./donorReducer";
+import eventsReducer from "./eventsReducer";
 import hospitalReducer from "./hospitalReducer";
+import listHospitalReducer from "./listHospitalReducer";
 
 const rootReducer = combineReducers({
-  hospitals: listHospitalReducer,
+  listHospital: listHospitalReducer,
   events: eventsReducer,
   donor: donorReducer,
   hospital: hospitalReducer,

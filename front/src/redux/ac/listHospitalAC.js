@@ -1,5 +1,5 @@
 
-import { ALL_HOSPITAL } from "../types/hospitalTypes";
+import { ALL_HOSPITAL } from "../types/listHospitalTypes";
 
 export const allHospital = (array) => ({
   type: ALL_HOSPITAL,

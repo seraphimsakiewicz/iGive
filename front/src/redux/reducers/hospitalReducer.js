@@ -1,3 +1,5 @@
+
+
 import { SET_HOSPITAL, DELETE_HOSPITAL } from "../types/userTypes";
 
 const hospitalReducer = (state = null, action) => {
