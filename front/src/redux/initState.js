@@ -1,5 +1,6 @@
 const initState = {
-  //
+  donor: null,
+  hospital: null,
 };
 
 const getInitState = () => {
