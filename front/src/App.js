@@ -17,15 +17,14 @@ import { checkHospital } from "./redux/ac/hospitalAC";
 import Logout from "./components/LogOut";
 import UserRegister from "./components/pages/UserRegister/UserRegister";
 import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
-import Login from "./components/pages/Login/Login";
 import PrivateUser from "./components/PrivateUser/PrivateUser";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(checkUser());
-    dispatch(checkHospital());
+    // dispatch(checkUser());
+    // dispatch(checkHospital());
   }, []);
 
   return (

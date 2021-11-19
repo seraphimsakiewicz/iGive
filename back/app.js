@@ -41,8 +41,8 @@ app.use(session(sessionsConf));
 
 app.use('signup/', signupRouter);
 app.use('login/', loginRouter);
-app.use('user')
-app.use('hospital')
+// app.use('user')
+// app.use('hospital')
 
 app.listen(PORT, () => {
   console.log(`Server has launched on port ${PORT}`);

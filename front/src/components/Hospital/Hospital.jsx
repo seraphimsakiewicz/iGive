@@ -32,13 +32,7 @@ function Hospital() {
         )}
         <div className={styles.eventLink}>
           <Link to={'/hospital/event'}>
-<<<<<<< HEAD
-            <button type='button' class='btn btn-primary'>
-              Создать event
-            </button>
-=======
             <button type="button" className="btn btn-primary">Создать event</button>
->>>>>>> 1b2f57149a197e1d57e70988e548283602611583
           </Link>
         </div>
       </div>
