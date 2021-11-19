@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { regHospital } from "../../../redux/ac/hospitalAC";
+import { Link } from 'react-router-dom'
 
 const HospitalRegister = () => {
   const initialValues = {
@@ -32,12 +33,10 @@ const HospitalRegister = () => {
   function submitRegister(e) {
     e.preventDefault();
     dispatch(regHospital(values, navigate));
-
-    // setValues(initialValues);
   }
 
   return (
-    <form onSubmit={submitRegister}>
+    <form className="container" onSubmit={submitRegister}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Hospital Name
@@ -177,10 +176,10 @@ const HospitalRegister = () => {
           name="pass"
         />
       </div>
+      <Link to={'/hospital'}>
+        <button type="submit" className="btn btn-primary">Register</button>
+      </Link>
 
-      <button type="submit" className="btn btn-primary">
-        Register
-      </button>
     </form>
   );
 };

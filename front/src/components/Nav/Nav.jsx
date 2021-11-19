@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import styles from './style.module.css';
 const Nav = () => {
+  const {role} = useParams();
+  console.log('!!!!', role);
   return (
     <header className={styles.header}>
       <div className="container">
@@ -9,14 +11,10 @@ const Nav = () => {
           <Link className={styles.logo} to="/">
             iGive
           </Link>
-          <nav className={styles.nav}>
-            <Link className={styles.navLink} aria-current="page" to="/login">
-              Login
-            </Link>
-            <Link className={styles.navLink} aria-current="page" to="/register">
-              Register
-            </Link>
-          </nav>
+          <Link className={styles.logo} to={`/private/${role}`}>
+            Личный кабинет
+          </Link>
+
         </div>
       </div>
     </header>

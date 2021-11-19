@@ -1,6 +1,6 @@
 import { SET_DONOR, DELETE_DONOR} from "../types/userTypes";
 
-const donorReducer = (state = null, action) => {
+const userReducer = (state = null, action) => {
   switch (action.type) {
     case SET_DONOR:
       return action.payload;
@@ -13,4 +13,4 @@ const donorReducer = (state = null, action) => {
   }
 };
 
-export default donorReducer;
+export default userReducer;

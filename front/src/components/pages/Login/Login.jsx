@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 // import { signIn } from "../../redux/ac/userAC";
+import { Link, useParams } from 'react-router-dom'
+import styles from './styleLogin.module.css';
 
 const Login = () => {
   const initialValues = {
@@ -10,6 +12,8 @@ const Login = () => {
   };
 
   const [values, setValues] = useState(initialValues);
+  const {role} = useParams();
+  console.log(role);
 
   let navigate = useNavigate();
 
@@ -29,7 +33,8 @@ const Login = () => {
 
   return (
     <>
-      <form onSubmit={submitLogin}>
+      <form className={styles.loginContainer} onSubmit={submitLogin}>
+        <h1 className={styles.loginTitle}>Sign In</h1>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email
@@ -58,9 +63,19 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <div className={styles.footerSignIn}>
+          <Link to={`/${role}/signup`}>
+            <p className="footerSignInText">
+              Create account
+            </p>
+          </Link>
+
+          <Link to={`/${role}`}>
+            <button type="submit" className="btn btn-primary">
+              Next
+            </button>
+          </Link>
+        </div>
       </form>
     </>
   );

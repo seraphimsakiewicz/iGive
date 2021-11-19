@@ -9,14 +9,14 @@ function Main() {
         <div className={styles.mainWrapper}>
           <p className={styles.mainTitle}>Welcome to iGive!!!</p>
           <div className={styles.mainButtons}>
-            <Link aria-current="page" to={`/user/signup`}>
+            <Link aria-current="page" to={`/login/user`}>
               <div className={styles.userBlock}>
                 <p className={styles.userTitle}>
                   Стать донором
                 </p>
               </div>
             </Link>
-            <Link aria-current="page" to={`/hospital/signup`}>
+            <Link aria-current="page" to={`/login/hospital`}>
               <div className={styles.hospitalBlock}>
                 <p className={styles.hospitalTitle}>
                   Я больница

@@ -8,24 +8,28 @@ import User from "./components/User/User";
 import Main from "./components/Main/Main";
 import Hospital from "./components/Hospital/Hospital";
 import CreateEvent from "./components/CreateEvent/CreateEvent";
-import Login from "./components/pages/Login/Login";
 import DonorRegister from "./components/pages/DonorRegister/DonorRegister";
 import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
+import Login from "./components/pages/Login/Login";
+import PrivateUser from "./components/PrivateUser/PrivateUser";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 
   return (
     <>
-      <Nav/>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/donorReg" element={<DonorRegister />} />
-          <Route path="/hospitalReg" element={<HospitalRegister />} />
-          <Route path="/hospital" element={<Hospital />} />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login/:role" element={<Login />} />
+        <Route path="/user/signup" element={<DonorRegister />} />
+        <Route path="/hospital/signup" element={<HospitalRegister />} />
+        <Route path="/hospital" element={<Hospital />} />
+        <Route path="/private/:role" element={<PrivateUser />} />
         <Route path="/hospital/event" element={<CreateEvent />} />
-           <Route path="/users" element={<User />} />
-        </Routes>
+        <Route path="/user" element={<User />} />
+      </Routes>
+      <Footer />
     </>
   )
 }
