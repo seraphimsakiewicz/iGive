@@ -1,5 +1,5 @@
-import "./general.css";
-import Nav from "./components/Nav/Nav";
+import './general.css';
+import Nav from './components/Nav/Nav';
 
 import { Routes, Route } from "react-router-dom";
 

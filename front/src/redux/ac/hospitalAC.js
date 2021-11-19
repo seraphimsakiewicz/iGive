@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { DELETE_HOSPITAL, SET_HOSPITAL } from "../types/hospitalTypes";
 
@@ -12,7 +11,7 @@ export const deleteHospital = () => ({
 });
 
 export const checkHospital = () => async (dispatch) => {
-  const response = await axios.get("/hospital/check");
+  const response = await axios.get('/hospital/check');
 
   if (response.status === 200) {
     const checkedUser = response.data;
@@ -21,33 +20,32 @@ export const checkHospital = () => async (dispatch) => {
 };
 
 export const regHospital = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/hospital/reg", payload);
+  const response = await axios.post('/hospital/reg', payload);
 
   if (response.status === 200) {
     const user = response.data;
     dispatch(setHospital(user));
-    navigate("/");
+    navigate('/');
   } else {
-    navigate("/register");
+    navigate('/register');
   }
 };
 
 export const hospitalIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/hospital/login", payload);
+  const response = await axios.post('/hospital/login', payload);
 
   if (response.status === 200) {
     const user = response.status;
     dispatch(setHospital(user));
-    navigate("/");
+    navigate('/');
   } else {
-    navigate("/login");
+    navigate('/login');
   }
 };
 
 export const hospitalOut = () => async (dispatch) => {
-  const response = await axios.get("/hospital/logout", {});
+  const response = await axios.get('/hospital/logout', {});
   if (response.status === 200) {
     dispatch(deleteHospital());
   }
 };
-
