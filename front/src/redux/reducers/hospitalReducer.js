@@ -1,6 +1,4 @@
-
-
-import { SET_HOSPITAL, DELETE_HOSPITAL } from "../types/userTypes";
+import { DELETE_HOSPITAL, SET_HOSPITAL } from "../types/hospitalTypes";
 
 const hospitalReducer = (state = null, action) => {
   switch (action.type) {
@@ -14,6 +12,5 @@ const hospitalReducer = (state = null, action) => {
       return state;
   }
 };
-
 
 export default hospitalReducer;

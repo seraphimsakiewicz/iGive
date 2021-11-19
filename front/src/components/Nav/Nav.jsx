@@ -16,6 +16,12 @@ const Nav = () => {
             <Link className={styles.navLink} aria-current="page" to="/register">
               Register
             </Link>
+            <Link className={styles.navLink} aria-current="page" to="/hospitalReg">
+              HospitalReg
+            </Link>
+            <Link className={styles.navLink} aria-current="page" to="/userReg">
+              UserReg
+            </Link>
           </nav>
         </div>
       </div>
