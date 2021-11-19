@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { regDonor } from "../../../redux/ac/donorAC";
+import { regUser } from "../../../redux/ac/userAC";
 
-const DonorRegister = () => {
+const UserRegister = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -31,7 +31,7 @@ const DonorRegister = () => {
 
   function submitRegister(e) {
     e.preventDefault();
-    dispatch(regDonor(values, navigate));
+    dispatch(regUser(values, navigate));
 
     setValues(initialValues);
   }
@@ -192,4 +192,4 @@ const DonorRegister = () => {
   );
 };
 
-export default DonorRegister;
+export default UserRegister;

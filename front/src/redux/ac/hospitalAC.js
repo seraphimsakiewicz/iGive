@@ -1,6 +1,6 @@
 
-import { SET_HOSPITAL, DELETE_HOSPITAL } from "../types/userTypes";
 import axios from "axios";
+import { DELETE_HOSPITAL, SET_HOSPITAL } from "../types/hospitalTypes";
 
 export const setHospital = (user) => ({
   type: SET_HOSPITAL,
