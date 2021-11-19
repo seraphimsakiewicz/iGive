@@ -1,16 +1,4 @@
 
-import { ALL_HOSPITAL } from "../types/hospitalTypes";
-
-
-const hospitalReducer = (state = [], action) => {
-  const { type, payload } = action;
-  switch (type) {
-    case ALL_HOSPITAL:
-      return payload;
-    default:
-      return state;
-  }
-}
 
 import { SET_HOSPITAL, DELETE_HOSPITAL } from "../types/userTypes";
 
