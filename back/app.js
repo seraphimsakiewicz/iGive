@@ -1,10 +1,17 @@
-const express = require("express");
-const cors = require("cors");
-const session = require("express-session");
-const app = express();
-const morgan = require("morgan");
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+// require('dotenv').config({ path: `.${process.env.NODE_ENV}.env` });
+require('dotenv').config();
 
-//Start Server
-app.listen(5000, () => {
-  console.log("Server Has Started");
+const app = express();
+const PORT = process.env.PORT || 3005;
+
+app.use(cors({ credentials: true, origin: true }));
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.listen(PORT, () => {
+  console.log(`Server has launched on port ${PORT}`);
 });
