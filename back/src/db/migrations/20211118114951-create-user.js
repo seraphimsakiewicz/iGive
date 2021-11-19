@@ -52,6 +52,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       totalDonation: {
+        defaultValue: 0,
         type: Sequelize.INTEGER,
       },
       bloodTypeId: {

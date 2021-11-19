@@ -31,6 +31,7 @@ async function signUpUser(req, res) {
       name: newUser.name,
       lastName: newUser.lastName,
       email: newUser.email,
+      city: newUser.city,
       bloodTypeId: newUser.bloodTypeId,
     };
     res.sendStatus(200);

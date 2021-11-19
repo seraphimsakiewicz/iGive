@@ -12,6 +12,7 @@ async function loginUser(req, res) {
         name: currUser.name,
         lastName: currUser.lastName,
         email: currUser.email,
+        city: currUser.city,
         bloodTypeId: currUser.bloodTypeId,
       };
       res.sendStatus(200);
@@ -41,6 +42,7 @@ async function loginHospital(req, res) {
     res.sendStatus(500);
   }
 }
+
 
 module.exports = {
   loginUser,
