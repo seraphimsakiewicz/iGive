@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import styles from './style.module.css';
 const Nav = () => {
   return (
     <header className={styles.header}>
-      <div className="container">
+      <div className='container'>
         <div className={styles.headerWrapper}>
-          <Link className={styles.logo} to="/">
+          <Link className={styles.logo} to='/'>
             iGive
           </Link>
           <nav className={styles.nav}>
-            <Link className={styles.navLink} aria-current="page" to="/login">
+            <Link className={styles.navLink} aria-current='page' to='/login'>
               Login
             </Link>
-            <Link className={styles.navLink} aria-current="page" to="/register">
+            <Link className={styles.navLink} aria-current='page' to='/register'>
               Register
+            </Link>
+            <Link className={styles.navLink} aria-current="page" to="/hospitalReg">
+              HospitalReg
+            </Link>
+            <Link className={styles.navLink} aria-current="page" to="/userReg">
+              UserReg
             </Link>
           </nav>
         </div>

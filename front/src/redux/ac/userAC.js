@@ -1,51 +1,54 @@
-import { SET_DONOR, DELETE_DONOR } from "../types/userTypes";
+
+import { SET_USER, DELETE_USER } from "../types/userTypes";
 import axios from "axios";
 
-export const setDonor = (user) => ({
-  type: SET_DONOR,
+export const setUser = (user) => ({
+  type: SET_USER,
   payload: user,
 });
 
-export const deleteDonor = () => ({
-  type: DELETE_DONOR,
+export const deleteUser = () => ({
+  type: DELETE_USER,
 });
 
-export const checkDonor = () => async (dispatch) => {
-  const response = await axios.get("/donor/check");
+export const checkUser = () => async (dispatch) => {
+  const response = await axios.get("/user/check");
 
   if (response.status === 200) {
     const checkedUser = response.data;
-    dispatch(setDonor(checkedUser));
+    dispatch(setUser(checkedUser));
   }
 };
 
-export const regDonor = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/donor/reg", payload);
+export const regUser = (payload, navigate) => async (dispatch) => {
+  const response = await axios.post("/user/reg", payload);
 
   if (response.status === 200) {
     const user = response.data;
-    dispatch(setDonor(user));
+    dispatch(setUser(user));
     navigate("/");
   } else {
     navigate("/register");
   }
 };
 
-export const donorIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/donor/login",  payload );
+
+export const userIn = (payload, navigate) => async (dispatch) => {
+  const response = await axios.post("/user/login",  payload );
 
   if (response.status === 200) {
     const user = response.status;
-    dispatch(setDonor(user));
+    dispatch(setUser(user));
     navigate("/");
   } else {
     navigate("/login");
   }
 };
 
-export const donorOut = () => async (dispatch) => {
-  const response = await axios.get("/donor/logout", {});
+
+export const userOut = () => async (dispatch) => {
+  const response = await axios.get("/user/logout", {});
   if (response.status === 200) {
-    dispatch(deleteDonor());
+    dispatch(deleteUser());
   }
 };

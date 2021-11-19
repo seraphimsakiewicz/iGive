@@ -1,11 +1,12 @@
-import { SET_DONOR, DELETE_DONOR} from "../types/userTypes";
+import { SET_USER, DELETE_USER } from "../types/userTypes";
 
-const donorReducer = (state = null, action) => {
+const userReducer = (state = null, action) => {
   switch (action.type) {
-    case SET_DONOR:
+    case SET_USER:
       return action.payload;
 
-    case DELETE_DONOR:
+    case DELETE_USER:
+
       return null;
 
     default:
@@ -13,4 +14,5 @@ const donorReducer = (state = null, action) => {
   }
 };
 
-export default donorReducer;
+export default userReducer;
+
