@@ -13,7 +13,6 @@ const Login = () => {
 
   const [values, setValues] = useState(initialValues);
   const {role} = useParams();
-  console.log(role);
 
   let navigate = useNavigate();
 

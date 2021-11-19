@@ -10,14 +10,14 @@ export const deleteUser = () => ({
   type: DELETE_USER,
 });
 
-export const checkUser = () => async (dispatch) => {
-  const response = await axios.get("/user/check");
+// export const checkUser = () => async (dispatch) => {
+//   const response = await axios.get("/user/check");
 
-  if (response.status === 200) {
-    const checkedUser = response.data;
-    dispatch(setUser(checkedUser));
-  }
-};
+//   if (response.status === 200) {
+//     const checkedUser = response.data;
+//     dispatch(setUser(checkedUser));
+//   }
+// };
 
 export const regUser = (payload, navigate) => async (dispatch) => {
   const response = await axios.post("/user/reg", payload);
