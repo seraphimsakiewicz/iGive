@@ -2,7 +2,6 @@ import {
   SET_CONFIRMED,
   SUBMIT_CONFIRMED,
   UPDATE_CF_COUNT,
-  UPDATE_CF_STATUS,
 } from "../types/confirmedTypes";
 
 import confirmed from "../data";
@@ -12,8 +11,7 @@ export const getConfirmed = () => async (dispatch) => {
 
   // if (response.status === 200) {
   //   const confirmedList = response.data;
-  confirmed.forEach((person) => {});
-  // dispatch(setConfirmed(confirmed));
+  dispatch(setConfirmed(confirmed));
   // }
 };
 
@@ -22,7 +20,7 @@ export const setConfirmed = (confirmedList) => ({
   payload: confirmedList,
 });
 
-export const submitConfirm = (id, liters) => ({
+export const editConfirmCount = (id, liters) => ({
   type: UPDATE_CF_COUNT,
   payload: { id, liters },
 });

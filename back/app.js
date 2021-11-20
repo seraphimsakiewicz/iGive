@@ -1,23 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const session = require('express-session');
-const bcrypt = require('bcryptjs');
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const session = require("express-session");
+const bcrypt = require("bcryptjs");
 // require('dotenv').config({ path: .${ process.env.NODE_ENV }.env });
-require('dotenv').config();
+require("dotenv").config();
 
 //redis
-const redis = require('redis');
-const RedisStore = require('connect-redis')(session);
+const redis = require("redis");
+const RedisStore = require("connect-redis")(session);
 const redisClient = redis.createClient();
 
-const signupRouter = require('./src/routes/signup.router');
-const loginRouter = require('./src/routes/login.router');
+const signupRouter = require("./src/routes/signup.router");
+const loginRouter = require("./src/routes/login.router");
 
 //session config
 const sessionsConf = {
-  store: new RedisStore({ host: 'localhost', port: 6379, client: redisClient }),
-  key: 'sid', // ключ куки (название куки)
+  store: new RedisStore({ host: "localhost", port: 6379, client: redisClient }),
+  key: "sid", // ключ куки (название куки)
   secret: process.env.SECRET, // для шифрования id сессии
   resave: true, // сессия будет сохраняться заново только при изменениях
   saveUninitialized: false, // сохранение (или не сохранение) не инициализированной сессии
@@ -29,18 +29,18 @@ const PORT = process.env.PORT || 3005;
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // <-- location of the react app we're connecting to
+    origin: "http://localhost:3000", // <-- location of the react app we're connecting to
     credentials: true,
   })
 );
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //session middleware
 app.use(session(sessionsConf));
 
-app.use('signup/', signupRouter);
-app.use('login/', loginRouter);
+app.use("signup/", signupRouter);
+app.use("login/", loginRouter);
 // app.use('user')
 // app.use('hospital')
 

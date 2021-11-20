@@ -1,21 +1,18 @@
-import {
-  editConfirmCount,
-} from "../../../redux/ac/confirmedAC";
+import { editConfirmCount } from "../../../redux/ac/confirmedAC";
 
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
 export default function ConfirmedPerson({ confirmed }) {
-  const [liters, setLiters] = useState("");
+  const [liters, setLiters] = useState("0");
 
   const dispatch = useDispatch();
 
-
-
-  const handleOnInput = () => {
-    dispatch(editConfirmCount());
+  const handleOnChange = (e) => {
+    setLiters(e.target.value);
+    const mL = parseInt(liters);
+    dispatch(editConfirmCount(confirmed.id, mL));
   };
-
   return (
     <li class="list-group-item">
       {confirmed.name}
@@ -25,7 +22,8 @@ export default function ConfirmedPerson({ confirmed }) {
         step="10"
         max="1000"
         placeholder="quantity in mL"
-        onChange={handleOnInput}
+        value={liters}
+        onChange={handleOnChange}
       />
     </li>
   );
