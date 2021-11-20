@@ -1,8 +1,10 @@
-.main{
+/* .main{
   margin-top: 80px;
-}
+} */
 .mainWrapper{
-  height: 100vh;
+  /* height: 100vh; */
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,21 +19,21 @@
   position: relative;
   width: 200px;
   height: 256px;
-  background: linear-gradient(to bottom right, blue 50%, transparent 0);
+  background: linear-gradient(to bottom right, #63d8e2 50%, transparent 0);
   border-radius: 20px 20px 0 20px;		
 }
 .hospitalBlock{
   position: relative;
   width: 200px;
   height: 256px;
-  background: linear-gradient(to top left, blue 50%, transparent 0);
+  background: linear-gradient(to top left, #63d8e2 50%, transparent 0);
   border-radius: 0 20px 20px 20px;	
 }
 .mainTitle{
   margin: 0;
   margin-bottom: 20px;
-  font-size: 44px;
-  color: blue;
+  font-size: 54px;
+  color: #63d8e2;
 }
 .userTitle{
   margin: 0;

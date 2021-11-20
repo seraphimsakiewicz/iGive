@@ -1,54 +1,54 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styles from './styleFooter.module.css';
+import { Link } from 'react-router-dom'
+
 function Footer() {
   return (
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerWrapper}>
-
-          <div className={styles.information}>
-            <h3 className={styles.footerTitle}>Информация</h3>
+          <div className="footer-one">
+            <Link to={'/'}>
+              <p className={styles.footerLogo} > iGive</p>
+            </Link>
             <ul className={styles.footerList}>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  Политика конфиденциальности
-                </Link>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Download Now</p>
               </li>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  Правила обработки данных
-                </Link>
-              </li>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  Доровор-оферта
-                </Link>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>License</p>
               </li>
             </ul>
-          </div>
-          <div className={styles.contacts}>
-            <h3 className={styles.footerTitle}>Контакты</h3>
             <ul className={styles.footerList}>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  freelance-book@ya.ru
-                </Link>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>About</p>
               </li>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  vk.me/aislam23
-                </Link>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Features</p>
               </li>
-              <li className={styles.listItem}>
-                <Link className={styles.footerLink} to={'/hospital/event'}>
-                  t.me/aislam23
-                </Link>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Pricing</p>
+              </li>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Careers</p>
+              </li>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Help</p>
+              </li>
+              <li className="footer-list__item">
+                <p className={styles.footerListLink}>Privacy Policy</p>
               </li>
             </ul>
+            <p className={styles.authorRight}>
+              © 2021 iGive UI Kit. All rights reserved
+            </p>
           </div>
-          <div className={styles.policy}>
-          <h3 className={styles.footerTitle}>Политика конфиденциальности</h3>
+          <div className={styles.footerTwo}>
+            <span className={styles.footerSpan}>
+              Get the App
+            </span>
+            <img className={styles.footerIcon}  src="http://localhost:3000/google-play.svg" alt="icon: App Store" />
+            <img className={styles.footerIcon} src="http://localhost:3000/app-store.svg" alt="icon: Google-play" />
           </div>
         </div>
       </div>

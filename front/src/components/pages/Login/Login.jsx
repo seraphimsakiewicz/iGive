@@ -64,13 +64,13 @@ const Login = () => {
 
         <div className={styles.footerSignIn}>
           <Link to={`/${role}/signup`}>
-            <p className="footerSignInText">
+            <p className={styles.footerSignInText}>
               Create account
             </p>
           </Link>
 
           <Link to={`/${role}`}>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-reg">
               Next
             </button>
           </Link>
