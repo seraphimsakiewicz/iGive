@@ -7,6 +7,8 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        restartIdentity: true,
+        truncate: true,
       },
       bloodTypeId: {
         allowNull: false,
@@ -18,6 +20,10 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
+      bloodQuantity: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       eventDate: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -25,6 +31,7 @@ module.exports = {
       active: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
+        defaultValue: true,
       },
       priority: {
         allowNull: false,

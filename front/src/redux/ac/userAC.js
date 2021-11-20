@@ -1,3 +1,4 @@
+
 import { SET_USER, DELETE_USER } from "../types/userTypes";
 import axios from "axios";
 
@@ -31,6 +32,7 @@ export const regUser = (payload, navigate) => async (dispatch) => {
   }
 };
 
+
 export const userIn = (payload, navigate) => async (dispatch) => {
   const response = await axios.post("/user/login",  payload );
 
@@ -42,6 +44,7 @@ export const userIn = (payload, navigate) => async (dispatch) => {
     navigate("/login");
   }
 };
+
 
 export const userOut = () => async (dispatch) => {
   const response = await axios.get("/user/logout", {});

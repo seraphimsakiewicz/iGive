@@ -11,8 +11,12 @@ const redis = require("redis");
 const RedisStore = require("connect-redis")(session);
 const redisClient = redis.createClient();
 
-const signupRouter = require("./src/routes/signup.router");
-const loginRouter = require("./src/routes/login.router");
+
+const signupRouter = require('./src/routes/signup.router');
+const loginRouter = require('./src/routes/login.router');
+const userRouter = require('./src/routes/user.router');
+const hospitalRouter = require('./src/routes/hospital.router');
+
 
 //session config
 const sessionsConf = {
@@ -39,10 +43,14 @@ app.use(express.json());
 //session middleware
 app.use(session(sessionsConf));
 
-app.use("signup/", signupRouter);
-app.use("login/", loginRouter);
-// app.use('user')
-// app.use('hospital')
+
+
+app.use('/signup', signupRouter);
+app.use('/login', loginRouter);
+app.use('/user', userRouter);
+app.use('/hospital', hospitalRouter);
+
+
 
 app.listen(PORT, () => {
   console.log(`Server has launched on port ${PORT}`);
