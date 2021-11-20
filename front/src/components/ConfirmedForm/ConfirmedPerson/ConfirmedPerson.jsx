@@ -1,18 +1,16 @@
 import {
   editConfirmCount,
-  editConfirmStatus,
 } from "../../../redux/ac/confirmedAC";
 
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function ConfirmedPerson({ confirmed }) {
+  const [liters, setLiters] = useState("");
 
-  
   const dispatch = useDispatch();
 
-  const handleOnCheck = () => {
-    dispatch(editConfirmStatus(confirmed.id));
-  };
+
 
   const handleOnInput = () => {
     dispatch(editConfirmCount());
@@ -21,10 +19,12 @@ export default function ConfirmedPerson({ confirmed }) {
   return (
     <li class="list-group-item">
       {confirmed.name}
-      <input type="checkbox" onChange={handleOnCheck} />
       <input
-        type="text"
-        placeholder="quantity in liters"
+        type="number"
+        min="0"
+        step="10"
+        max="1000"
+        placeholder="quantity in mL"
         onChange={handleOnInput}
       />
     </li>

@@ -11,20 +11,26 @@ export default function ConfirmedForm() {
   }, []);
 
   const confirmed = useSelector((state) => state.confirmed);
-  console.log(confirmed);
 
-  const handleSumbit = (e) => {
+  const handleEnd = (e) => {
     e.preventDefault();
   };
+
+  const handleCollect=(e)=>{
+    e.preventDefault()
+  }
 
   return (
     <form>
       <h3>Confirm Donors:</h3>
-      <ul class="list-group">
-        {confirmed.map((confirmed) => (
-          <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
-        ))}
-      </ul>
+      <form>
+        <ul class="list-group">
+          {confirmed.map((confirmed) => (
+            <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
+          ))}
+          <button type="submit">Collect</button>
+        </ul>
+      </form>
       <button type="submit">End Collection</button>
     </form>
   );

@@ -2,17 +2,17 @@ export const confirmed = [
   {
     name: "Billy",
     id: 1,
-    status: false,
+    status:false
   },
   {
     name: "Joe",
     id: 2,
-    status: false,
+    status: false
   },
   {
     name: "Bob",
     id: 3,
-    status: false,
+    status: false
   },
 ];
 

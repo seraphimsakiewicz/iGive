@@ -12,7 +12,8 @@ export const getConfirmed = () => async (dispatch) => {
 
   // if (response.status === 200) {
   //   const confirmedList = response.data;
-  dispatch(setConfirmed(confirmed));
+  confirmed.forEach((person) => {});
+  // dispatch(setConfirmed(confirmed));
   // }
 };
 
@@ -21,17 +22,7 @@ export const setConfirmed = (confirmedList) => ({
   payload: confirmedList,
 });
 
-export const editConfirmStatus = (id) => ({
-  type: UPDATE_CF_STATUS,
-  payload: id,
-});
-
-// export const editConfirmCount = (id, liters) => ({
-//   type: UPDATE_CF_COUNT_SAGA,
-//   payload: { id, liters },
-// });
-
-export const editConfirmCount = (id, liters) => ({
+export const submitConfirm = (id, liters) => ({
   type: UPDATE_CF_COUNT,
   payload: { id, liters },
 });
