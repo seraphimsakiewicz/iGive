@@ -3,10 +3,11 @@ const initState = {
   events: [],
   user: null,
   hospital: null,
+  confirmed: [],
 };
 
 const getInitState = () => {
-  const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+  const stateFromLS = JSON.parse(window.localStorage.getItem("redux"));
   return stateFromLS ? stateFromLS : initState;
 };
 
