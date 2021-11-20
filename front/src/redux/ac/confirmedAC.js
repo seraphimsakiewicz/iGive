@@ -5,12 +5,14 @@ import {
   UPDATE_CF_STATUS,
 } from "../types/confirmedTypes";
 
+import confirmed from "../data";
+
 export const getConfirmed = () => async (dispatch) => {
   // const response = await axios.get("/confirmed/");
 
   // if (response.status === 200) {
   //   const confirmedList = response.data;
-  dispatch(setConfirmed(confirmedList));
+  dispatch(setConfirmed(confirmed));
   // }
 };
 
@@ -23,6 +25,11 @@ export const editConfirmStatus = (id) => ({
   type: UPDATE_CF_STATUS,
   payload: id,
 });
+
+// export const editConfirmCount = (id, liters) => ({
+//   type: UPDATE_CF_COUNT_SAGA,
+//   payload: { id, liters },
+// });
 
 export const editConfirmCount = (id, liters) => ({
   type: UPDATE_CF_COUNT,

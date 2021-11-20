@@ -1,10 +1,31 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getConfirmed } from "../../redux/ac/confirmedAC";
+import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
+
 export default function ConfirmedForm() {
-  useEffect(() => {});
+  const dispatch = useDispatch();
 
-  const handleOnChange = () => {};
+  useEffect(() => {
+    dispatch(getConfirmed());
+  }, []);
 
-  const handleSumbit = () => {};
+  const confirmed = useSelector((state) => state.confirmed);
+  console.log(confirmed);
 
-  return <></>;
+  const handleSumbit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <form>
+      <h3>Confirm Donors:</h3>
+      <ul class="list-group">
+        {confirmed.map((confirmed) => (
+          <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
+        ))}
+      </ul>
+      <button type="submit">End Collection</button>
+    </form>
+  );
 }
