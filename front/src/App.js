@@ -1,11 +1,6 @@
 import "./general.css";
-// import { useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
-
-// import { useDispatch } from "react-redux";
-// import { checkUser } from "./redux/ac/userAC";
-// import { checkHospital } from "./redux/ac/hospitalAC";
 
 import Nav from "./components/Nav/Nav";
 import User from "./components/User/User";
@@ -22,14 +17,11 @@ import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegist
 import PrivateUser from "./components/PrivateUser/PrivateUser";
 import Footer from "./components/Footer/Footer";
 import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
+// import PrivateHospital from "./components/PrivateHospital/PrivateHospital";
+import DetailUser from "./components/DetailUser/DetailUser";
+import UserEvent from "./components/UserEvent/UserEvent";
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   // dispatch(checkUser());
-  //   // dispatch(checkHospital());
-  // }, []);
-
   return (
     <>
       <Nav />
@@ -43,7 +35,8 @@ function App() {
         <Route path="/user" element={<User />} />
         <Route path="/logout/:role" element={<Logout />} />
         <Route path="/private/:role" element={<PrivateUser />} />
-        
+        <Route path="/user/:id" element={<DetailUser />} />
+        <Route path="/user/event" element={<UserEvent />} />
         <Route path="/confirmedForm" element={<ConfirmedForm />} />
         <Route
           path="/user/:role"

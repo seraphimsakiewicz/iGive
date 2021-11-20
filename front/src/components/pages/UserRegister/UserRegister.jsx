@@ -38,7 +38,7 @@ const UserRegister = () => {
   }
 
   return (
-    <form className="container" onSubmit={submitRegister}>
+    <form className="reg-container" onSubmit={submitRegister}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           First Name
@@ -185,8 +185,8 @@ const UserRegister = () => {
           name="pass"
         />
       </div>
-      <Link to={'/user'}>
-        <button type="submit" className="btn btn-primary">Register</button>
+      <Link className="reg-link__btn" to={'/user'}>
+        <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
       </Link>
     </form>
   );
