@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { regUser } from "../../../redux/ac/userAC";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const UserRegister = () => {
   const initialValues = {
@@ -186,7 +186,9 @@ const UserRegister = () => {
         />
       </div>
       <Link className="reg-link__btn" to={'/user'}>
-        <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
+      <button type="submit" className="btn btn-reg">
+        Зарегистрироваться
+      </button>
       </Link>
     </form>
   );

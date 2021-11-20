@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 // import { signIn } from "../../redux/ac/userAC";
-import { Link, useParams } from 'react-router-dom'
-import styles from './styleLogin.module.css';
+import { Link, useParams } from "react-router-dom";
+import styles from "./styleLogin.module.css";
 
 const Login = () => {
   const initialValues = {
@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   const [values, setValues] = useState(initialValues);
-  const {role} = useParams();
+  const { role } = useParams();
 
   let navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const Login = () => {
             aria-describedby="emailHelp"
             value={values.email}
             onChange={handleInputChange}
-            name="userName"
+            name="email"
           />
         </div>
         <div className="mb-3">
@@ -64,9 +64,7 @@ const Login = () => {
 
         <div className={styles.footerSignIn}>
           <Link to={`/${role}/signup`}>
-            <p className={styles.footerSignInText}>
-              Create account
-            </p>
+            <p className={styles.footerSignInText}>Create account</p>
           </Link>
 
           <Link to={`/${role}`}>
