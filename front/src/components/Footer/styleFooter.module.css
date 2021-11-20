@@ -1,0 +1,40 @@
+.footer{
+  background-color: blue;
+  padding: 60px 0 93px 0;
+}
+.footerWrapper{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.footerTitle{
+  padding: 0;
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.footerList{
+  padding: 0px;
+}
+.information {
+  font-size: 18px;
+  font-weight: 700;
+  /* margin-left: 158px;
+  margin-right: 158px; */
+}
+.contacts {
+  font-size: 18px;
+  font-weight: 700;
+}
+.listItem{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  list-style-type: none;
+  margin-bottom: 16px;
+} 
+.footerLink {
+  color: white;
+  text-decoration: none;
+}

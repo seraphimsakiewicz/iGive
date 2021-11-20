@@ -1,6 +1,4 @@
-
 import { ALL_HOSPITAL } from "../types/listHospitalTypes";
-
 
 const listHospitalReducer = (state = [], action) => {
   const { type, payload } = action;
@@ -10,6 +8,6 @@ const listHospitalReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default listHospitalReducer;

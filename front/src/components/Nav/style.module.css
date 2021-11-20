@@ -14,18 +14,6 @@
   font-weight: 900;
   font-size: 24px;
 }
-.nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.navLink{
-  color: white;
-  font-weight: 400;
-  text-decoration: none;
-  margin-left: 11px;
-  margin-right: 11px;
-}
 .logo{
   color: white;
 }

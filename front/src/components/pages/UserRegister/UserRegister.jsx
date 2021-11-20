@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { regDonor } from "../../../redux/ac/donorAC";
+import { regUser } from "../../../redux/ac/userAC";
+import { Link } from 'react-router-dom'
 
-const DonorRegister = () => {
+const UserRegister = () => {
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -31,13 +32,13 @@ const DonorRegister = () => {
 
   function submitRegister(e) {
     e.preventDefault();
-    dispatch(regDonor(values, navigate));
+    dispatch(regUser(values, navigate));
 
     setValues(initialValues);
   }
 
   return (
-    <form onSubmit={submitRegister}>
+    <form className="container" onSubmit={submitRegister}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           First Name
@@ -184,12 +185,11 @@ const DonorRegister = () => {
           name="pass"
         />
       </div>
-
-      <button type="submit" className="btn btn-primary">
-        Register
-      </button>
+      <Link to={'/user'}>
+        <button type="submit" className="btn btn-primary">Register</button>
+      </Link>
     </form>
   );
 };
 
-export default DonorRegister;
+export default UserRegister;

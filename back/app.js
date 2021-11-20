@@ -41,10 +41,12 @@ app.use(express.json());
 //session middleware
 app.use(session(sessionsConf));
 
+
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use('/hospital', hospitalRouter);
+
 
 app.listen(PORT, () => {
   console.log(`Server has launched on port ${PORT}`);
