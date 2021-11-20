@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { User, Hospital } = require('../db/models');
+const { User, Hospital, BloodStorage } = require('../db/models');
 
 async function signUpUser(req, res) {
   try {
@@ -31,6 +31,7 @@ async function signUpUser(req, res) {
       name: newUser.name,
       lastName: newUser.lastName,
       email: newUser.email,
+      city: newUser.city,
       bloodTypeId: newUser.bloodTypeId,
     };
     res.sendStatus(200);
@@ -68,6 +69,16 @@ async function signUpHospital(req, res) {
       inn: newHospital.inn,
       headOfDep: newHospital.headOfDep,
     };
+    await BloodStorage.bulCreate([
+      { bloodTypeId: 1, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 2, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 3, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 4, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 5, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 6, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 7, hospitalId: req.session.hospital.id },
+      { bloodTypeId: 8, hospitalId: req.session.hospital.id },
+    ]);
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(500);

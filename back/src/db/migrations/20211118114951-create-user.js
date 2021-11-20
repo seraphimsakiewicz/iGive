@@ -7,6 +7,8 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        restartIdentity: true,
+        truncate: true,
       },
       name: {
         allowNull: false,
@@ -52,6 +54,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       totalDonation: {
+        defaultValue: 0,
         type: Sequelize.INTEGER,
       },
       bloodTypeId: {
