@@ -5,6 +5,7 @@ const initState = {
   user: null,
   hospital: null,
   confirmed: [],
+  bloodTypes: []
 };
 
 const getInitState = () => {

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-// import { signIn } from "../../redux/ac/userAC";
 import { Link, useParams } from "react-router-dom";
+import { hospitalIn } from "../../../redux/ac/hospitalAC";
+import { userIn } from "../../../redux/ac/userAC";
 import styles from "./styleLogin.module.css";
 
 const Login = () => {
   const initialValues = {
     email: "",
-    pass: "",
+    password: "",
   };
 
   const [values, setValues] = useState(initialValues);
@@ -25,8 +26,11 @@ const Login = () => {
 
   async function submitLogin(e) {
     e.preventDefault();
-    // dispatch(signIn(values, navigate));
-
+    if (role === "user") {
+      dispatch(userIn(values, navigate));
+    } else {
+      dispatch(hospitalIn(values, navigate));
+    }
     setValues(initialValues);
   }
 
@@ -56,9 +60,9 @@ const Login = () => {
             type="password"
             className="form-control"
             id="exampleInputPassword1"
-            value={values.pass}
+            value={values.password}
             onChange={handleInputChange}
-            name="pass"
+            name="password"
           />
         </div>
 
@@ -67,11 +71,11 @@ const Login = () => {
             <p className={styles.footerSignInText}>Create account</p>
           </Link>
 
-          <Link to={`/${role}`}>
-            <button type="submit" className="btn btn-reg">
-              Next
-            </button>
-          </Link>
+          {/* <Link to={`/${role}`}> */}
+          <button type="submit" className="btn btn-reg">
+            Login
+          </button>
+          {/* </Link> */}
         </div>
       </form>
     </>

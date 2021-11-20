@@ -13,6 +13,9 @@ const Nav = () => {
           <Link className={styles.logo} to={`/private/${role}`}>
             Личный кабинет
           </Link>
+          <Link className={styles.logo} to={`/logout/${role}`}>
+            Log out
+          </Link>
           <Link className={styles.logo} to={`/confirmedForm`}>
             Confirmed Form
           </Link>

@@ -15,8 +15,6 @@ function DetailUser() {
     <div className={styles.event}>
       <div className="container">
         <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
-
-
         {
           events?.length === 0 ? null :
             <>
