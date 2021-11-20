@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addNewEvent } from '../../redux/ac/eventAC';
+import { addNewEventFromServer } from '../../redux/ac/eventAC';
 
 function CreateEvent() {
   const [inputBloodType, setInputBloodType] = useState('');
   const [inputAmountBlood, setInputAmountBlood] = useState('');
   const [inputDate, setInputDate] = useState('');
-  const [inputTime, setInputTime] = useState('');
+  // const [inputTime, setInputTime] = useState('');
+  const [inputPriority, setInputPriority] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      addNewEvent(inputBloodType, inputAmountBlood, inputDate, inputTime)
+      addNewEventFromServer(inputBloodType, inputAmountBlood, inputDate, inputPriority)
     );
     setInputBloodType('');
     setInputAmountBlood('');
     setInputDate('');
-    setInputTime('');
+    // setInputTime('');
     navigate('/hospital');
   };
   return (
@@ -56,7 +57,7 @@ function CreateEvent() {
           id='exampleInputEmail1'
           aria-describedby='emailHelp'
         />
-        <input
+        {/* <input
           type='time'
           value={inputTime}
           onChange={(e) => setInputTime(e.target.value)}
@@ -64,7 +65,28 @@ function CreateEvent() {
           className='form-control my-2'
           id='exampleInputEmail1'
           aria-describedby='emailHelp'
-        />
+        /> */}
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Blood Type
+        </label>
+        <select
+          name="bloodTypeId"
+          onChange={(e) => setInputPriority(e.target.value)}
+          value={inputPriority}
+        >
+          <option value={`${1}`}>Низкий</option>
+          <option value={`${2}`}>Средний</option>
+          <option value={`${3}`}>Высокий</option>
+        </select>
+        {/* <input
+          type='time'
+          value={inputPriority}
+          onChange={(e) => setinputPriority(e.target.value)}
+          placeholder='Время сбора'
+          className='form-control my-2'
+          id='exampleInputEmail1'
+          aria-describedby='emailHelp'
+        /> */}
       </div>
       <button type='submit' className='btn btn-primary mt-1'>
         Добавить

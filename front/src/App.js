@@ -32,7 +32,7 @@ function App() {
         <Route path="/hospital/signup" element={<HospitalRegister />} />
         <Route path="/hospital" element={<Hospital />} />
         <Route path="/hospital/event" element={<CreateEvent />} />\
-        <Route path="/user" element={<User />} />
+        <Route path="/user" element={<DetailUser />} />
         <Route path="/logout/:role" element={<Logout />} />
         <Route path="/private/:role" element={<PrivateUser />} />
         <Route path="/user/:id" element={<DetailUser />} />

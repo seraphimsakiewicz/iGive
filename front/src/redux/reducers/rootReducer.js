@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import bloodTypesReducer from "./bloodTypesReducer";
 import confirmedReducer from "./confirmedReducer";
 import eventReducer from "./eventReducer";
 import hospitalReducer from "./hospitalReducer";
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   event: eventReducer,
   user: userReducer,
   hospital: hospitalReducer,
-  confirmed:confirmedReducer
+  confirmed:confirmedReducer,
+  bloodTypes: bloodTypesReducer,
 });
 
 export default rootReducer;

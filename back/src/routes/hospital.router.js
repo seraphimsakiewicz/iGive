@@ -11,7 +11,7 @@ const {
 const { showDetailEvent } = require('../controllers/user.controller');
 const { checkingHospitalSession } = require('../middleware/checkSession');
 
-hospitalRouter.route('/').get(checkingHospitalSession, getSessionHospital);
+hospitalRouter.route('/').get(getSessionHospital);
 hospitalRouter.route('/profile').get(getSessionHospital).post(addHospitalData);
 hospitalRouter.route('/events').get(showHospitalAllEvents);
 hospitalRouter.route('/events/new').post(addNewEvent);

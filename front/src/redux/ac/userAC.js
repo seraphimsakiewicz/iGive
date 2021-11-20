@@ -20,24 +20,28 @@ export const deleteUser = () => ({
 //   }
 // };
 
-export const regUser = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/user/reg", payload);
+export const regUser = (payload) => async (dispatch) => {
+  console.log('@@@@@', payload);
+  const response = await axios.post("/signup/user", payload);
 
   if (response.status === 200) {
     const user = response.data;
     dispatch(setUser(user));
-    navigate("/");
-  } else {
-    navigate("/register");
   }
+  //   navigate("/");
+  // } else {
+  //   navigate("/register");
+  // }
 };
 
 
 export const userIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/user/login",  payload );
+  console.log('!!!!!!!!!', payload, navigate);
+  const response = await axios.post("/login/user",  payload );
 
-  if (response.status === 200) {
-    const user = response.status;
+  if (response) {
+    const user = await response.data;
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>', user);
     dispatch(setUser(user));
     navigate("/");
   } else {

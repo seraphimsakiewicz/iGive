@@ -20,7 +20,8 @@ export const checkHospital = () => async (dispatch) => {
 };
 
 export const regHospital = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post('/hospital/reg', payload);
+  console.log('#####', payload);
+  const response = await axios.post('/signup/hospital', payload);
 
   if (response.status === 200) {
     const user = response.data;
@@ -32,11 +33,13 @@ export const regHospital = (payload, navigate) => async (dispatch) => {
 };
 
 export const hospitalIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post('/hospital/login', payload);
+  console.log(1233, payload);
+  const response = await axios.post('/login/hospital', payload);
 
-  if (response.status === 200) {
-    const user = response.status;
-    dispatch(setHospital(user));
+  if (response) {
+    const hospital = await response.data;
+    console.log('####', hospital);
+    dispatch(setHospital(hospital));
     navigate('/');
   } else {
     navigate('/login');
