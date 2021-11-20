@@ -36,7 +36,7 @@ const HospitalRegister = () => {
   }
 
   return (
-    <form className="container" onSubmit={submitRegister}>
+    <form className="reg-container" onSubmit={submitRegister}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Hospital Name
@@ -176,8 +176,8 @@ const HospitalRegister = () => {
           name="pass"
         />
       </div>
-      <Link to={'/hospital'}>
-        <button type="submit" className="btn btn-primary">Register</button>
+      <Link className="reg-link__btn" to={'/hospital'}>
+        <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
       </Link>
 
     </form>

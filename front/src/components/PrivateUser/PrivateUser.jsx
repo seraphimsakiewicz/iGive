@@ -6,26 +6,57 @@ function PrivateUser() {
     {
       name: 'Ivan',
       surname: 'Petrov',
-      photo: 'https://media.istockphoto.com/photos/latin-young-man-in-a-studio-picture-id494711330?k=20&m=494711330&s=170667a&w=0&h=iLB5EDOtdWpKnNAvU1rGpQ6TMOkLEAQZt4rblMsSQms=',
+      photo: 'https://img.freepik.com/free-photo/young-handsome-man-with-beard-over-isolated-keeping-the-arms-crossed-in-frontal-position_1368-132662.jpg?size=626&ext=jpg',
       tel: 89348761234,
       lastDonation: '12.09.2021',
+      totalDonation: '100 литров',
     }
   ];
 
   return (
-    <div className="container">
-      {
-        people?.map(el => (
-          <div className={styles.privateWrapper}>
-            <img className={styles.privateImg} src={el.photo} alt="" />
-            <div className={styles.privateText}>
-              <h2>{el.name} {el.surname}</h2>
-              <h5>Номер телефона: <br /> {el.tel}</h5>
-              <h5>Дата последней сдачи крови: <br /> {el.lastDonation}</h5>
-            </div>
-          </div>
-        ))
-      }
+    <div className={styles.mainPrivateUser}>
+      <div className="container">
+        {
+          people?.map(el => (
+            <>
+              <div className={styles.privateWrapper}>
+                <div className={styles.userCard}>
+                  <img className={styles.privateImg} src={el.photo} alt="" />
+                  <button className={styles.privateImgBtn}>Сменить фото</button>
+                </div>
+                <div className={styles.userTextWrapper}>
+                  <h3 className={styles.userTextTitle}>Общая информация</h3>
+                  <div className={styles.userTextBlockList}>
+                    <p className={styles.userTextBlockItem}>
+                      ФИО:
+                    </p>
+                    <p>{el.name} {el.surname}</p>
+                  </div>
+                  <div className={styles.userTextBlockList}>
+                    <p className={styles.userTextBlockItem}>
+                      Телефон:
+                    </p>
+                    <p>{el.tel}</p>
+                  </div>
+                  <div className={styles.userTextBlockList}>
+                    <p className={styles.userTextBlockItem}>
+                      Дата последней сдачи крови:
+                    </p>
+                    <p>{el.lastDonation}</p>
+                  </div>
+                  <div className={styles.userTextBlockList}>
+                    <p className={styles.userTextBlockItem}>
+                      Сколько всего сдано крови:
+                    </p>
+                    {el.totalDonation}
+                  </div>
+
+                </div>
+              </div>
+            </>
+          ))
+        }
+      </div>
     </div>
   )
 }
