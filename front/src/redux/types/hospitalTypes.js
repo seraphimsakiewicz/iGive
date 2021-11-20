@@ -1,0 +1,2 @@
+export const SET_HOSPITAL = "SET_HOSPITAL";
+export const DELETE_HOSPITAL = "DELETE_HOSPITAL";

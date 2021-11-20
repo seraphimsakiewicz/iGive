@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Event.init(
     {
       bloodTypeId: DataTypes.INTEGER,
+      bloodQuantity: DataTypes.INTEGER,
       eventDate: DataTypes.STRING,
       active: DataTypes.BOOLEAN,
       priority: DataTypes.INTEGER,

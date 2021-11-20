@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { regHospital } from "../../../redux/ac/hospitalAC";
+// import { Link } from 'react-router-dom'
 
 const HospitalRegister = () => {
   const initialValues = {
-    hospitalName: "",
-    firstName: "",
-    lastName: "",
-    INN: "",
-    site: "",
+    // hospitalName: "",
+    // firstName: "",
+    // lastName: "",
+    inn: "",
+    // site: "",
     city: "",
     building: "",
     street: "",
-    telephone: "",
+    phoneNumber: "",
     email: "",
-    pass: "",
+    password: "",
+    headOfDep: "",
   };
 
   let navigate = useNavigate();
@@ -32,14 +34,12 @@ const HospitalRegister = () => {
   function submitRegister(e) {
     e.preventDefault();
     dispatch(regHospital(values, navigate));
-
-    // setValues(initialValues);
   }
 
   return (
-    <form onSubmit={submitRegister}>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
+    <form className="reg-container" onSubmit={submitRegister}>
+      {/* <div className="mb-3"> */}
+        {/* <label htmlFor="exampleInputEmail1" className="form-label">
           Hospital Name
         </label>
         <input
@@ -49,8 +49,8 @@ const HospitalRegister = () => {
           onChange={handleInputChange}
           name="hospitalName"
         />
-      </div>
-      <div className="mb-3">
+      </div> */}
+      {/* <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           First Name
         </label>
@@ -73,7 +73,7 @@ const HospitalRegister = () => {
           onChange={handleInputChange}
           name="lastName"
         />
-      </div>
+      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email Address
@@ -88,7 +88,7 @@ const HospitalRegister = () => {
           aria-describedby="emailHelp"
         />
       </div>
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Site:
         </label>
@@ -99,7 +99,7 @@ const HospitalRegister = () => {
           onChange={handleInputChange}
           name="site"
         />
-      </div>
+      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Telephone:
@@ -107,10 +107,10 @@ const HospitalRegister = () => {
         <input
           type="text"
           className="form-control"
-          value={values.telephone}
+          value={values.phoneNumber}
           onChange={handleInputChange}
           pattern="[0-9]+"
-          name="telephone"
+          name="phoneNumber"
         />
       </div>
 
@@ -121,10 +121,10 @@ const HospitalRegister = () => {
         <input
           type="text"
           className="form-control"
-          value={values.INN}
+          value={values.inn}
           onChange={handleInputChange}
           pattern="[0-9]+"
-          name="INN"
+          name="inn"
         />
       </div>
       <div className="mb-3">
@@ -172,15 +172,28 @@ const HospitalRegister = () => {
           type="password"
           className="form-control"
           id="exampleInputPassword1"
-          value={values.pass}
+          value={values.password}
           onChange={handleInputChange}
-          name="pass"
+          name="password"
         />
       </div>
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
+        headOfDep
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="exampleInputPassword1"
+          value={values.headOfDep}
+          onChange={handleInputChange}
+          name="headOfDep"
+        />
+      </div>
+      {/* <Link className="reg-link__btn" to={'/hospital'}> */}
+        <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
+      {/* </Link> */}
 
-      <button type="submit" className="btn btn-primary">
-        Register
-      </button>
     </form>
   );
 };
