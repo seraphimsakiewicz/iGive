@@ -53,10 +53,24 @@ async function showDetailEvent(req, res) {
   }
 }
 
+async function getUserAllArchiveEvents(req, res) {
+  try {
+    const { id } = req.params;
+    const userAllArchiveEvents = await Event.findAll({
+      where: { active: false },
+      include: { model: User, where: { id } },
+    });
+    res.json(userAllArchiveEvents);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionUser,
   addUserData,
   logoutUser,
   showUserAllEvents,
   showDetailEvent,
+  getUserAllArchiveEvents,
 };

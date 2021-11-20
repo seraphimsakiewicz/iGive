@@ -7,10 +7,13 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        restartIdentity: true,
+        truncate: true,
       },
       bloodTotalQuantity: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       bloodTypeId: {
         allowNull: false,
