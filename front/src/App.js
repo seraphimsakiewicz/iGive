@@ -25,7 +25,7 @@ import PrivateHospital from "./components/PrivateHospital/PrivateHospital";
 function App() {
 
   
-
+console.log('asfd')
 
   return (
     <>
