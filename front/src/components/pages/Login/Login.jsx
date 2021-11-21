@@ -14,6 +14,7 @@ const Login = () => {
 
   const [values, setValues] = useState(initialValues);
   const { role } = useParams();
+  console.log(role, '????????');
 
   let navigate = useNavigate();
 
@@ -23,11 +24,12 @@ const Login = () => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
-
+  
   async function submitLogin(e) {
     e.preventDefault();
     if (role === "user") {
       dispatch(userIn(values, navigate));
+
     } else {
       dispatch(hospitalIn(values, navigate));
     }
@@ -71,11 +73,9 @@ const Login = () => {
             <p className={styles.footerSignInText}>Create account</p>
           </Link>
 
-          {/* <Link to={`/${role}`}> */}
           <button type="submit" className="btn btn-reg">
             Login
           </button>
-          {/* </Link> */}
         </div>
       </form>
     </>

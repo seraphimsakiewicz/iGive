@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "./style.module.css";
 const Nav = () => {
-  const { role } = useParams();
-  const user = useSelector((state) => state?.user);
-  const hospital = useSelector((state) => state?.hospital);
+  const { user } = useSelector((state) => state);
+  const { hospital } = useSelector((state) => state);
 
   return (
     <header className={styles.header}>
@@ -14,25 +13,36 @@ const Nav = () => {
           <Link className={styles.logo} to="/">
             iGive
           </Link>
-          {user && (
-            <Link className={styles.logo} to={`/private/user`}>
-              Личный кабинет
-            </Link>
-          )}
-          {hospital && (
-            <Link className={styles.logo} to={`/private/hospital`}>
-              Личный кабинет
-            </Link>
-          )}
-          {/* <Link className={styles.logo} to={`/private/${role}`}>
-            Личный кабинет
-          </Link> */}
-          <Link className={styles.logo} to={`/logout/${role}`}>
-            Log out
-          </Link>
-          <Link className={styles.logo} to={`/confirmedForm`}>
-            Confirmed Form
-          </Link>
+          {
+            user ?
+            <>
+            Здравстуйте, {user.name}
+              <Link className={styles.logo} to={`/private/${user.role}`}>
+                Личный кабинет
+              </Link>
+
+              <Link className={styles.logo} to={`/logout/${user.role}`}>
+                Log out
+              </Link>
+            </>
+              :
+              ''
+          }
+          {
+            hospital ?
+            <>
+            Здравстуйте, {hospital.headOfDep}
+              <Link className={styles.logo} to={`/private/${hospital.role}`}>
+                Личный кабинет
+              </Link>
+
+              <Link className={styles.logo} to={`/logout/${hospital.role}`}>
+                Log out
+              </Link>
+            </>
+              :
+              ''
+          }
         </div>
       </div>
     </header>

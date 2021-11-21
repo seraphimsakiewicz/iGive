@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { regHospital } from "../../../redux/ac/hospitalAC";
-// import { Link } from 'react-router-dom'
 
 const HospitalRegister = () => {
   const initialValues = {
-    // hospitalName: "",
-    // firstName: "",
-    // lastName: "",
     inn: "",
-    // site: "",
     city: "",
     building: "",
     street: "",
@@ -38,42 +33,6 @@ const HospitalRegister = () => {
 
   return (
     <form className="reg-container" onSubmit={submitRegister}>
-      {/* <div className="mb-3"> */}
-        {/* <label htmlFor="exampleInputEmail1" className="form-label">
-          Hospital Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.hospitalName}
-          onChange={handleInputChange}
-          name="hospitalName"
-        />
-      </div> */}
-      {/* <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          First Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.firstName}
-          onChange={handleInputChange}
-          name="firstName"
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Last Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.lastName}
-          onChange={handleInputChange}
-          name="lastName"
-        />
-      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email Address
@@ -88,18 +47,6 @@ const HospitalRegister = () => {
           aria-describedby="emailHelp"
         />
       </div>
-      {/* <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Site:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.site}
-          onChange={handleInputChange}
-          name="site"
-        />
-      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Telephone:
@@ -190,9 +137,7 @@ const HospitalRegister = () => {
           name="headOfDep"
         />
       </div>
-      {/* <Link className="reg-link__btn" to={'/hospital'}> */}
         <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
-      {/* </Link> */}
 
     </form>
   );

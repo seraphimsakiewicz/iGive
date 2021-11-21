@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { User, Hospital } = require('../db/models');
 
 async function loginUser(req, res) {
+  console.log(req.body);
   try {
     const { email, password } = req.body;
     const currUser = await User.findOne({ where: { email } });
@@ -14,10 +15,10 @@ async function loginUser(req, res) {
         email: currUser.email,
         city: currUser.city,
         bloodTypeId: currUser.bloodTypeId,
+        role: 'user',
       };
       res.json(req.session.user);
     } else {
-
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
@@ -37,6 +38,7 @@ async function loginHospital(req, res) {
         email: currHospital.email,
         inn: currHospital.inn,
         headOfDep: currHospital.headOfDep,
+        role: 'hospital',
       };
       res.json(req.session.hospital);
     } else {

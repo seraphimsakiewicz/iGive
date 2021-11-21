@@ -1,4 +1,4 @@
-import { ALL_BLOOD_TYPES } from "../../redux1/types/bloodTypesTypes";
+import { ALL_BLOOD_TYPES } from "../types/bloodTypesTypes";
 
 
 

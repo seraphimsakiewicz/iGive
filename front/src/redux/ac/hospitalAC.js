@@ -6,6 +6,16 @@ export const setHospital = (user) => ({
   payload: user,
 });
 
+
+export const oneHospitalFromServer = () => async (dispatch) => {
+  console.log(1);
+  const response = await fetch('/hospital');
+  const dataFromServer = await response.json();
+  console.log(dataFromServer);
+  dispatch(setHospital(dataFromServer));
+}
+
+
 export const deleteHospital = () => ({
   type: DELETE_HOSPITAL,
 });
@@ -20,29 +30,26 @@ export const checkHospital = () => async (dispatch) => {
 };
 
 export const regHospital = (payload, navigate) => async (dispatch) => {
-  console.log('#####', payload);
   const response = await axios.post('/signup/hospital', payload);
 
   if (response.status === 200) {
     const user = response.data;
     dispatch(setHospital(user));
-    navigate('/');
+    navigate('/hospital');
   } else {
-    navigate('/register');
+    navigate('/hospital/signup');
   }
 };
 
 export const hospitalIn = (payload, navigate) => async (dispatch) => {
-  console.log(1233, payload);
   const response = await axios.post('/login/hospital', payload);
 
   if (response) {
     const hospital = await response.data;
-    console.log('####', hospital);
     dispatch(setHospital(hospital));
-    navigate('/');
+    navigate('/hospital');
   } else {
-    navigate('/login');
+    navigate('/login/hospital');
   }
 };
 

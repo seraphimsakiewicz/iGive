@@ -43,7 +43,6 @@ async function showHospitalAllEvents(req, res) {
 }
 
 async function addNewEvent(req, res) {
-  console.log('??????', req.body);
   try {
     const { id } = req.session.hospital;
     const { bloodTypeId, bloodQuantity, eventDate, priority } = req.body;
