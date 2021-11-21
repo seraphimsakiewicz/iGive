@@ -22,6 +22,10 @@ import DetailUser from "./components/DetailUser/DetailUser";
 import UserEvent from "./components/UserEvent/UserEvent";
 
 function App() {
+
+  
+
+
   return (
     <>
       <Nav />

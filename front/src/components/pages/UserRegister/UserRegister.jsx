@@ -8,7 +8,7 @@ const UserRegister = () => {
     name: "",
     lastName: "",
     // bday: "",
-    bloodTypeId: "",
+    bloodTypeId: "-1",
     oms: "",
     city: "",
     building: "",
@@ -20,7 +20,6 @@ const UserRegister = () => {
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
-
 
   const [values, setValues] = useState(initialValues);
 
@@ -113,7 +112,11 @@ const UserRegister = () => {
           onChange={handleInputChange}
           value={values.bloodTypeId}
         >
-          <option selected="selected" value="1">A- </option>
+          {/*  */}
+          <option value="-1" selected>
+            Please choose
+          </option>
+          <option value="1">A-</option>
           <option value="2">B- </option>
           <option value="3">AB- </option>
           <option value="4">O- </option>
@@ -188,7 +191,9 @@ const UserRegister = () => {
         />
       </div>
       {/* <Link className="reg-link__btn" to={'/user'}> */}
-        <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
+      <button type="submit" className="btn btn-reg">
+        Зарегистрироваться
+      </button>
       {/* </Link> */}
     </form>
   );
