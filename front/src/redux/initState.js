@@ -1,7 +1,6 @@
 const initState = {
   listHospital: [],
-  events: [],
-  event: null,
+  event: [],
   user: null,
   hospital: null,
   confirmed: [],

@@ -14,10 +14,10 @@ async function loginUser(req, res) {
         email: currUser.email,
         city: currUser.city,
         bloodTypeId: currUser.bloodTypeId,
+        role: 'user',
       };
       res.json(req.session.user);
     } else {
-
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
@@ -26,7 +26,6 @@ async function loginUser(req, res) {
 }
 
 async function loginHospital(req, res) {
-  console.log(req.body);
   try {
     const { email, password } = req.body;
     const currHospital = await Hospital.findOne({ where: { email } });
@@ -37,13 +36,13 @@ async function loginHospital(req, res) {
         email: currHospital.email,
         inn: currHospital.inn,
         headOfDep: currHospital.headOfDep,
+        role: 'hospital',
       };
       res.json(req.session.hospital);
     } else {
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }

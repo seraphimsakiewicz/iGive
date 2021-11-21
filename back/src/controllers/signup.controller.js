@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const { User, Hospital, BloodStorage } = require('../db/models');
 
 async function signUpUser(req, res) {
-  console.log('!!!!!', req.body);
   try {
     const {
       name,
@@ -38,16 +37,15 @@ async function signUpUser(req, res) {
       email: newUser.email,
       city: newUser.city,
       bloodTypeId: newUser.bloodTypeId,
+      role: 'user',
     };
     res.json(req.session.user);
   } catch (err) {
-    console.log(err);
     res.sendStatus(500);
   }
 }
 
 async function signUpHospital(req, res) {
-  console.log(423423423);
   try {
     const {
       email,
@@ -79,6 +77,7 @@ async function signUpHospital(req, res) {
       email: newHospital.email,
       inn: newHospital.inn,
       headOfDep: newHospital.headOfDep,
+      role: 'hospital',
     };
     await BloodStorage.bulkCreate([
       { bloodTypeId: 1, hospitalId: req.session.hospital.id },
@@ -92,7 +91,6 @@ async function signUpHospital(req, res) {
     ]);
     res.json(req.session.hospital)
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }

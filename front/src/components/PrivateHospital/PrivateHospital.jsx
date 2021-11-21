@@ -1,31 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './stylePrivateHospital.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { oneHospitalFromServer } from '../../redux/ac/hospitalAC';
 
 function PrivateHospital() {
-  const hospital = [
-    {
-      email: 'hamzat@mail.ru',
-      photo: 'https://www.gannett-cdn.com/presto/2021/09/13/NCOD/aacc9c8a-e5b2-454d-b96a-71ae89181d38-PMH_Rendering_1.jpg?crop=1121,841,x252,y0&quality=50&width=640',
-      inn: 435397459387539857938457,
-      headOfDep: 'Галина Петровна',
-      phoneNumber: '8929 - 234 - 54 - 67',
-      city: 'Москва',
-      street: 'Мира',
-      building: '4b',
-      webSite: 'hospitalwebsite.com',
-      title: 'title',
-      about: 'Больница нормальная',
-    },
-  ];
+  const { hospital } = useSelector(state => state);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(oneHospitalFromServer());
+  }, [dispatch])
+
   return (
     <div className={styles.mainPrivateUser}>
     <div className="container">
-      {
-        hospital?.map(el => (
+      {/* { */}
+        {/* hospital?.map(el => ( */}
           <>
             <div className={styles.privateWrapper}>
               <div className={styles.userCard}>
-                <img className={styles.privateImg} src={el.photo} alt="" />
+              <img className={styles.privateImg} src="https://lh3.googleusercontent.com/proxy/KJtQthlUFkcwxiXYvE-RM9LbrK9Mn1byHnMX0iYbslIcAhY3GLWTGtuIR_tfogLIAiIzYPwJ7YM8TKHP7RRQjtllAp97U_wDFUyqa5Ib0QRwtNdiKq02s_nsCZuemntXxWM8qe0" alt="" />
                 <button className={styles.privateImgBtn}>Сменить фото</button>
               </div>
               <div className={styles.userTextWrapper}>
@@ -34,37 +28,37 @@ function PrivateHospital() {
                   <p className={styles.userTextBlockItem}>
                     Руководитель :
                   </p>
-                  <p>{el.headOfDep}</p>
+                  <p>{hospital.headOfDep}</p>
                 </div>
                 <div className={styles.userTextBlockList}>
                   <p className={styles.userTextBlockItem}>
                     Телефон :
                   </p>
-                  <p>{el.phoneNumber}</p>
+                  <p>{hospital.phoneNumber}</p>
                 </div>
                 <div className={styles.userTextBlockList}>
                   <p className={styles.userTextBlockItem}>
                     Адрес :
                   </p>
-                  <p>{el.city} {el.street} {el.building}</p>
+                  <p>{hospital.city} {hospital.street} {hospital.building}</p>
                 </div>
                 <div className={styles.userTextBlockList}>
                   <p className={styles.userTextBlockItem}>
                     Веб сайт :
                   </p>
-                  {el.webSite}
+                  {hospital.webSite}
                 </div>
                 <div className={styles.userTextBlockList}>
                   <p className={styles.userTextBlockItem}>
                     Описание :
                   </p>
-                  {el.about}
+                  {hospital.about}
                 </div>
               </div>
             </div>
           </>
-        ))
-      }
+        {/* )) */}
+      {/* } */}
     </div>
   </div>
   )

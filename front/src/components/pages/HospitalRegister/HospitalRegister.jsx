@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { regHospital } from '../../../redux/ac/hospitalAC';
-// import { Link } from 'react-router-dom'
 
 const HospitalRegister = () => {
   const initialValues = {
@@ -162,11 +161,9 @@ const HospitalRegister = () => {
           name='title'
         />
       </div>
-      {/* <Link className="reg-link__btn" to={'/hospital'}> */}
       <button type='submit' className='btn btn-reg'>
         Зарегистрироваться
       </button>
-      {/* </Link> */}
     </form>
   );
 };

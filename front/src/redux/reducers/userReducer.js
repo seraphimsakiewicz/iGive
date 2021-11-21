@@ -1,13 +1,11 @@
 import { SET_USER, DELETE_USER } from '../types/userTypes';
 
-const userReducer = (state = null, action) => {
+const userReducer = (state = [null], action) => {
   switch (action.type) {
     case SET_USER:
       return action.payload;
-
     case DELETE_USER:
       return null;
-
     default:
       return state;
   }
