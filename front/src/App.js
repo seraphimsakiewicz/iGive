@@ -16,7 +16,7 @@ import UserRegister from "./components/pages/UserRegister/UserRegister";
 import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
 import PrivateUser from "./components/PrivateUser/PrivateUser";
 import Footer from "./components/Footer/Footer";
-// import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
+import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
 // import PrivateHospital from "./components/PrivateHospital/PrivateHospital";
 import DetailUser from "./components/DetailUser/DetailUser";
 import UserEvent from "./components/UserEvent/UserEvent";
@@ -43,7 +43,7 @@ console.log('asfd')
         <Route path="/private/user" element={<PrivateUser />} />
         <Route path="/private/hospital" element={<PrivateHospital />} />
         <Route path="/logout/:role" element={<Logout />} />
-        {/* <Route path="/confirmedForm" element={<ConfirmedForm />} /> */}
+        <Route path="/confirmedForm" element={<ConfirmedForm />} />
         {/* <Route
           path="/user/:role"
           element={
