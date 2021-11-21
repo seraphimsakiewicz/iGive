@@ -7,8 +7,10 @@ async function signUpUser(req, res) {
     const {
       name,
       lastName,
+      birthday,
       email,
       password,
+      phoneNumber,
       city,
       street,
       building,
@@ -19,8 +21,10 @@ async function signUpUser(req, res) {
     const newUser = await User.create({
       name,
       lastName,
+      birthday,
       email,
       password: pass,
+      phoneNumber,
       city,
       street,
       building,
@@ -54,6 +58,8 @@ async function signUpHospital(req, res) {
       city,
       street,
       building,
+      webSite,
+      title,
     } = req.body;
     const pass = await bcrypt.hash(password, 5);
     const newHospital = await Hospital.create({
@@ -65,6 +71,8 @@ async function signUpHospital(req, res) {
       city,
       street,
       building,
+      webSite,
+      title,
     });
     req.session.hospital = {
       id: newHospital.id,

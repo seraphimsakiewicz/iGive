@@ -2,7 +2,7 @@ import {
   SET_CONFIRMED,
   SUBMIT_CONFIRMED,
   UPDATE_CF_COUNT,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
 const confirmedReducer = (state = [], action) => {
   const { type, payload } = action;

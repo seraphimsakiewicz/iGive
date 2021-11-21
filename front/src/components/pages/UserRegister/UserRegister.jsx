@@ -7,13 +7,13 @@ const UserRegister = () => {
   const initialValues = {
     name: "",
     lastName: "",
-    // bday: "",
+    birthday: "",
     bloodTypeId: "-1",
     oms: "",
     city: "",
     building: "",
     street: "",
-    telephone: "",
+    phoneNumber: "",
     email: "",
     password: "",
   };

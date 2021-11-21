@@ -1,4 +1,4 @@
-import { DELETE_HOSPITAL, SET_HOSPITAL } from "../types/hospitalTypes";
+import { DELETE_HOSPITAL, SET_HOSPITAL } from '../types/hospitalTypes';
 
 const hospitalReducer = (state = null, action) => {
   switch (action.type) {

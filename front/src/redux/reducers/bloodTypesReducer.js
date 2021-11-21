@@ -1,5 +1,4 @@
-import { ALL_BLOOD_TYPES } from "../ac/bloodTypesTypes";
-
+import { ALL_BLOOD_TYPES } from "../types/bloodTypesTypes";
 
 const bloodTypesReducer = (state = [], action) => {
   const { type, payload } = action;

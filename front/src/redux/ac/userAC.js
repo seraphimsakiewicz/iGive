@@ -1,6 +1,5 @@
-
-import { SET_USER, DELETE_USER } from "../types/userTypes";
-import axios from "axios";
+import { SET_USER, DELETE_USER } from '../types/userTypes';
+import axios from 'axios';
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -22,7 +21,7 @@ export const deleteUser = () => ({
 
 export const regUser = (payload) => async (dispatch) => {
   console.log('@@@@@', payload);
-  const response = await axios.post("/signup/user", payload);
+  const response = await axios.post('/signup/user', payload);
 
   if (response.status === 200) {
     const user = response.data;
@@ -34,24 +33,22 @@ export const regUser = (payload) => async (dispatch) => {
   // }
 };
 
-
 export const userIn = (payload, navigate) => async (dispatch) => {
   console.log('!!!!!!!!!', payload, navigate);
-  const response = await axios.post("/login/user",  payload );
+  const response = await axios.post('/login/user', payload);
 
   if (response) {
     const user = await response.data;
     console.log('>>>>>>>>>>>>>>>>>>>>>>>>>', user);
     dispatch(setUser(user));
-    navigate("/");
+    navigate('/');
   } else {
-    navigate("/login");
+    navigate('/login');
   }
 };
 
-
 export const userOut = () => async (dispatch) => {
-  const response = await axios.get("/user/logout", {});
+  const response = await axios.get('/user/logout', {});
   if (response.status === 200) {
     dispatch(deleteUser());
   }
