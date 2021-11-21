@@ -1,16 +1,46 @@
 import React from 'react'
 import styles from './styleFooter.module.css';
 import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 function Footer() {
+  const { user } = useSelector((state) => state);
+  const { hospital } = useSelector((state) => state);
+
   return (
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerWrapper}>
           <div className="footer-one">
-            <Link to={'/'}>
-              <p className={styles.footerLogo} > iGive</p>
-            </Link>
+            {
+              user || hospital ?
+                <>
+                  {
+                    user ?
+                      <>
+                        <Link Link className={styles.footerLogo} to={`/${user.role}`}>
+                          iGive
+                        </Link>
+                      </>
+                      :
+                      ''
+                  }
+                  {
+                    hospital ?
+                      <>
+                        <Link className={styles.footerLogo} to={`/${hospital.role}`}>
+                          iGive
+                        </Link>
+                      </>
+                      :
+                      ''
+                  }
+                </>
+                :
+                <Link className={styles.footerLogo} to="/">
+                  iGive
+                </Link>
+            }
             <ul className={styles.footerList}>
               <li className="footer-list__item">
                 <p className={styles.footerListLink}>Download Now</p>
@@ -47,7 +77,7 @@ function Footer() {
             <span className={styles.footerSpan}>
               Get the App
             </span>
-            <img className={styles.footerIcon}  src="http://localhost:3000/google-play.svg" alt="icon: App Store" />
+            <img className={styles.footerIcon} src="http://localhost:3000/google-play.svg" alt="icon: App Store" />
             <img className={styles.footerIcon} src="http://localhost:3000/app-store.svg" alt="icon: Google-play" />
           </div>
         </div>
