@@ -2,9 +2,9 @@ import {
   SET_CONFIRMED,
   SUBMIT_CONFIRMED,
   UPDATE_CF_COUNT,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
-import confirmed from "../data";
+import confirmed from '../data';
 
 export const getConfirmed = () => async (dispatch) => {
   // const response = await axios.get("/confirmed/");

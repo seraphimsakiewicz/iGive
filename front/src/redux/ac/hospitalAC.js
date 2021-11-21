@@ -1,5 +1,5 @@
-import axios from "axios";
-import { DELETE_HOSPITAL, SET_HOSPITAL } from "../types/hospitalTypes";
+import axios from 'axios';
+import { DELETE_HOSPITAL, SET_HOSPITAL } from '../types/hospitalTypes';
 
 export const setHospital = (user) => ({
   type: SET_HOSPITAL,
@@ -8,10 +8,8 @@ export const setHospital = (user) => ({
 
 
 export const oneHospitalFromServer = () => async (dispatch) => {
-  console.log(1);
   const response = await fetch('/hospital');
   const dataFromServer = await response.json();
-  console.log(dataFromServer);
   dispatch(setHospital(dataFromServer));
 }
 

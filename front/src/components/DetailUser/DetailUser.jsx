@@ -6,12 +6,11 @@ import { allEventUserFromServer } from '../../redux/ac/eventAC';
 
 function DetailUser() {
   const { event } = useSelector(state => state);
-  console.log(event);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(allEventUserFromServer());
-  }, [])
+  }, [dispatch])
   return (
     <div className={styles.event}>
       <div className="container">

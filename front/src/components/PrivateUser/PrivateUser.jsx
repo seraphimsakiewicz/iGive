@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 function PrivateUser() {
   const { user } = useSelector(state => state);
-  console.log(user);
 
   return (
     <div className={styles.mainPrivateUser}>

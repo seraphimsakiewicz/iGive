@@ -9,7 +9,6 @@ const Logout = () => {
   const navigate = useNavigate();
 
   const { role } = useParams();
-  console.log('!!!!!!!!!!!!!!', role);
 
   useEffect(() => {
     if (role === "user") {

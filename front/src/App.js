@@ -3,20 +3,20 @@ import "./general.css";
 import { Routes, Route } from "react-router-dom";
 
 import Nav from "./components/Nav/Nav";
-import User from "./components/User/User";
+// import User from "./components/User/User";
 import Main from "./components/Main/Main";
 import Hospital from "./components/Hospital/Hospital";
 import CreateEvent from "./components/CreateEvent/CreateEvent";
 import Login from "./components/pages/Login/Login";
-import { UserRoute } from "./components/UserRoute";
-import { HospitalRoute } from "./components/HospitalRoute";
+// import { UserRoute } from "./components/UserRoute";
+// import { HospitalRoute } from "./components/HospitalRoute";
 
 import Logout from "./components/LogOut";
 import UserRegister from "./components/pages/UserRegister/UserRegister";
 import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
 import PrivateUser from "./components/PrivateUser/PrivateUser";
 import Footer from "./components/Footer/Footer";
-import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
+// import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
 // import PrivateHospital from "./components/PrivateHospital/PrivateHospital";
 import DetailUser from "./components/DetailUser/DetailUser";
 import UserEvent from "./components/UserEvent/UserEvent";

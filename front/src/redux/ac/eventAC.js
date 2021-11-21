@@ -1,6 +1,11 @@
 import { ADD_EVENT, ALL_HOSPITAL_EVENTS, ALL_USER_EVENTS } from "../types/eventTypes";
 
-export const addNewEvent = (bloodTypeId, bloodQuantity, eventDate, priority) => ({
+export const addNewEvent = (
+  bloodTypeId,
+  bloodQuantity,
+  eventDate,
+  priority
+) => ({
   type: ADD_EVENT,
   payload: {
     bloodTypeId,
@@ -11,7 +16,6 @@ export const addNewEvent = (bloodTypeId, bloodQuantity, eventDate, priority) => 
 });
 
 export const addNewEventFromServer = (bloodTypeId, bloodQuantity, eventDate, priority) => async (dispatch) => {
-  console.log(bloodTypeId, bloodQuantity, eventDate, priority);
   const response = await fetch('/hospital/events/new', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

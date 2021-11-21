@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom'
 function UserEvent() {
   const { id } = useParams();
   const [event, setEvent] = useState({})
-  console.log(event);
-
 
   useEffect(() => {
     fetch(`http://localhost:3001/user/event/${id}`)
