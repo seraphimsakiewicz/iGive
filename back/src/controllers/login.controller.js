@@ -15,15 +15,18 @@ async function loginUser(req, res) {
         city: currUser.city,
         bloodTypeId: currUser.bloodTypeId,
       };
-      res.sendStatus(200);
+      res.json(req.session.user);
+    } else {
+
+      res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
-    res.json({ message: 'INVALID EMAIL OR PASSWORD' });
   } catch (error) {
     res.sendStatus(500);
   }
 }
 
 async function loginHospital(req, res) {
+  console.log(req.body);
   try {
     const { email, password } = req.body;
     const currHospital = await Hospital.findOne({ where: { email } });
@@ -35,10 +38,12 @@ async function loginHospital(req, res) {
         inn: currHospital.inn,
         headOfDep: currHospital.headOfDep,
       };
-      res.sendStatus(200);
+      res.json(req.session.hospital);
+    } else {
+      res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
-    res.json({ message: 'INVALID EMAIL OR PASSWORD' });
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

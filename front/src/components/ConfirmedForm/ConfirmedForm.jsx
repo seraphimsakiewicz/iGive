@@ -16,9 +16,9 @@ export default function ConfirmedForm() {
     e.preventDefault();
   };
 
-  const handleCollect=(e)=>{
-    e.preventDefault()
-  }
+  const handleCollect = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <form>

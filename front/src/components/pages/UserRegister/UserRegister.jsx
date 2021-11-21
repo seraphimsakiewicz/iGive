@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { regUser } from "../../../redux/ac/userAC";
-import { Link } from 'react-router-dom'
 
 const UserRegister = () => {
   const initialValues = {
-    firstName: "",
+    name: "",
     lastName: "",
-    bday: "",
-    bloodType: "",
-    OMS: "",
+    // bday: "",
+    bloodTypeId: "",
+    oms: "",
     city: "",
     building: "",
     street: "",
     telephone: "",
     email: "",
-    pass: "",
+    password: "",
   };
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   const [values, setValues] = useState(initialValues);
 
@@ -32,10 +32,12 @@ const UserRegister = () => {
 
   function submitRegister(e) {
     e.preventDefault();
-    dispatch(regUser(values, navigate));
+    dispatch(regUser(values));
+    console.log(32542423423423);
 
     setValues(initialValues);
   }
+  console.log(values);
 
   return (
     <form className="reg-container" onSubmit={submitRegister}>
@@ -46,9 +48,9 @@ const UserRegister = () => {
         <input
           type="text"
           className="form-control"
-          value={values.firstName}
+          value={values.name}
           onChange={handleInputChange}
-          name="firstName"
+          name="name"
         />
       </div>
       <div className="mb-3">
@@ -90,7 +92,7 @@ const UserRegister = () => {
           name="telephone"
         />
       </div>
-      <div className="nativeDatePicker">
+      {/* <div className="nativeDatePicker">
         <label htmlFor="bday">Birthday:</label>
         <input
           type="date"
@@ -101,24 +103,24 @@ const UserRegister = () => {
           onChange={handleInputChange}
         />
         <span className="validity"></span>
-      </div>
+      </div> */}
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Blood Type
         </label>
         <select
-          name="bloodType"
+          name="bloodTypeId"
           onChange={handleInputChange}
-          value={values.bloodType}
+          value={values.bloodTypeId}
         >
-          <option value="A-">A- </option>
-          <option value="B-">B- </option>
-          <option value="AB-">AB- </option>
-          <option value="O-">O- </option>
-          <option value="A+">A+ </option>
-          <option value="B+">B+ </option>
-          <option value="AB+">AB+ </option>
-          <option value="O+">O+ </option>
+          <option selected="selected" value="1">A- </option>
+          <option value="2">B- </option>
+          <option value="3">AB- </option>
+          <option value="4">O- </option>
+          <option value="5">A+ </option>
+          <option value="6">B+ </option>
+          <option value="7">AB+ </option>
+          <option value="8">O+ </option>
         </select>
       </div>
 
@@ -129,10 +131,10 @@ const UserRegister = () => {
         <input
           type="text"
           className="form-control"
-          value={values.OMS}
+          value={values.oms}
           onChange={handleInputChange}
           pattern="[0-9]+"
-          name="OMS"
+          name="oms"
         />
       </div>
       <div className="mb-3">
@@ -180,14 +182,14 @@ const UserRegister = () => {
           type="password"
           className="form-control"
           id="exampleInputPassword1"
-          value={values.pass}
+          value={values.password}
           onChange={handleInputChange}
-          name="pass"
+          name="password"
         />
       </div>
-      <Link className="reg-link__btn" to={'/user'}>
+      {/* <Link className="reg-link__btn" to={'/user'}> */}
         <button type="submit" className="btn btn-reg">Зарегистрироваться</button>
-      </Link>
+      {/* </Link> */}
     </form>
   );
 };

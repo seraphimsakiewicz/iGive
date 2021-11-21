@@ -1,7 +1,7 @@
-import { editConfirmCount } from "../../../redux/ac/confirmedAC";
 
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { editConfirmCount } from "../../../redux/ac/confirmedAC";
 
 export default function ConfirmedPerson({ confirmed }) {
   const [liters, setLiters] = useState("0");
