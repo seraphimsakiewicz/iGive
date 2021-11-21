@@ -112,7 +112,7 @@ const UserRegister = () => {
           onChange={handleInputChange}
           value={values.bloodTypeId}
         >
-          {/*  */}
+          
           <option value="-1" selected>
             Please choose
           </option>

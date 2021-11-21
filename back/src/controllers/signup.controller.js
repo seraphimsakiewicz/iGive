@@ -34,6 +34,7 @@ async function signUpUser(req, res) {
       email: newUser.email,
       city: newUser.city,
       bloodTypeId: newUser.bloodTypeId,
+      role: 'user',
     };
     res.json(req.session.user);
   } catch (err) {
@@ -71,6 +72,7 @@ async function signUpHospital(req, res) {
       email: newHospital.email,
       inn: newHospital.inn,
       headOfDep: newHospital.headOfDep,
+      role: 'hospital',
     };
     await BloodStorage.bulkCreate([
       { bloodTypeId: 1, hospitalId: req.session.hospital.id },

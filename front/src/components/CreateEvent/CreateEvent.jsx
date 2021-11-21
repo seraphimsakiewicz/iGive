@@ -7,7 +7,6 @@ function CreateEvent() {
   const [inputBloodType, setInputBloodType] = useState('');
   const [inputAmountBlood, setInputAmountBlood] = useState('');
   const [inputDate, setInputDate] = useState('');
-  // const [inputTime, setInputTime] = useState('');
   const [inputPriority, setInputPriority] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ function CreateEvent() {
     setInputBloodType('');
     setInputAmountBlood('');
     setInputDate('');
-    // setInputTime('');
     navigate('/hospital');
   };
   return (
@@ -30,7 +28,7 @@ function CreateEvent() {
     >
       <h2 className='mb-4'>Сбор крови</h2>
       <div className='mb-3'>
-        <input
+        {/* <input
           type='text'
           value={inputBloodType}
           onChange={(e) => setInputBloodType(e.target.value)}
@@ -38,7 +36,27 @@ function CreateEvent() {
           className='form-control my-2'
           id='exampleInputEmail1'
           aria-describedby='emailHelp'
-        />
+        /> */}
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Blood Type
+        </label>
+        <select
+          name="bloodTypeId"
+          onChange={(e) => setInputBloodType(e.target.value)}
+          value={inputBloodType}
+        >
+          <option value="-1" selected>
+            Please choose
+          </option>
+          <option value="1">A-</option>
+          <option value="2">B- </option>
+          <option value="3">AB- </option>
+          <option value="4">O- </option>
+          <option value="5">A+ </option>
+          <option value="6">B+ </option>
+          <option value="7">AB+ </option>
+          <option value="8">O+ </option>
+        </select>
         <input
           type='number'
           value={inputAmountBlood}
@@ -57,15 +75,6 @@ function CreateEvent() {
           id='exampleInputEmail1'
           aria-describedby='emailHelp'
         />
-        {/* <input
-          type='time'
-          value={inputTime}
-          onChange={(e) => setInputTime(e.target.value)}
-          placeholder='Время сбора'
-          className='form-control my-2'
-          id='exampleInputEmail1'
-          aria-describedby='emailHelp'
-        /> */}
         <label htmlFor="exampleInputEmail1" className="form-label">
           Blood Type
         </label>

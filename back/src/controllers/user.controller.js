@@ -11,7 +11,6 @@ async function getSessionUser(req, res) {
 }
 
 async function logoutUser(req, res) {
-  console.log(32482738273482347823423);
   try {
     req.session.destroy();
     res.clearCookie('sid').end();
