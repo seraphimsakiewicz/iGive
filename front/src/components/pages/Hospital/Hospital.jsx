@@ -12,7 +12,7 @@ function Hospital() {
   useEffect(() => {
     dispatch(allEventFronServer());
   }, [dispatch]);
-  
+
   return (
     <div className='container'>
       <div className={styles.event}>
