@@ -1,4 +1,2 @@
 export const ADD_EVENT = "ADD_EVENT";
-export const ALL_USER_EVENTS = "ALL_USER_EVENTS";
-export const ALL_HOSPITAL_EVENTS = "ALL_HOSPITAL_EVENTS";
-
+export const SET_EVENTS = "SET_EVENTS";

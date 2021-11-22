@@ -34,3 +34,23 @@
   margin: 0;
   margin-bottom: 20px;
 }
+
+.eventWrapper{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.eventLeftBlock{
+  max-width: 900px;
+}
+.eventLeftText{
+  margin-bottom: 20px;
+}
+
+.eventRigthBlockCard{
+  margin-bottom: 20px;
+}
+.eventRigthBlockCardImg{
+  width: 300px;
+}
+

@@ -1,3 +1,4 @@
+
 const {
   Hospital,
   Event,
@@ -8,6 +9,7 @@ const {
   sequelize,
 } = require('../db/models');
 
+
 async function getSessionHospital(req, res) {
   try {
     const { id } = req.session.hospital;
@@ -16,6 +18,7 @@ async function getSessionHospital(req, res) {
       raw: true,
     });
     res.json({ ...currSessionHospital, role: 'hospital' });
+
   } catch (error) {
     res.sendStatus(500);
   }
@@ -24,7 +27,7 @@ async function getSessionHospital(req, res) {
 async function logoutHospital(req, res) {
   try {
     req.session.destroy();
-    res.clearCookie('sid').end();
+    res.clearCookie("sid").end();
   } catch (error) {
     res.sendStatus(500);
   }
@@ -75,17 +78,21 @@ async function addDonationFromEvent(req, res) {
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
+
     const donationData = req.body;
     await Donation.bulkCreate(
       donationData.map((el) => ({ ...el, eventId: id }))
     );
     const sumBloodDonation = await Donation.sum('bloodQuantity', {
+
       where: { eventId: id },
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
       where: { id },
+
       attributes: ['bloodTypeId', 'eventDate'],
       raw: true,
+
     });
     await BloodStorage.update(
       {

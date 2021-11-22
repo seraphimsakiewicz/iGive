@@ -16,24 +16,14 @@ import Logout from './components/Routes+LogOut/LogOut';
 import Footer from './components/Footer/Footer';
 
 
-// import User from "./components/User/User";
-
-// import { UserRoute } from "./components/UserRoute";
-// import { HospitalRoute } from "./components/HospitalRoute";
-
-
-// import ConfirmedForm from "./components/ConfirmedForm/ConfirmedForm";
-// import PrivateHospital from "./components/PrivateHospital/PrivateHospital";
-
-
-
 function App() {
-  console.log('asfd');
+
 
   return (
     <>
       <Nav />
       <Routes>
+
         <Route path='/' element={<Main />} />
         <Route path='/login/:role' element={<Login />} />
         <Route path='/user' element={<DetailUser />} />
@@ -47,6 +37,7 @@ function App() {
         <Route path='/private/hospital' element={<PrivateHospital />} />
         <Route path='/logout/:role' element={<Logout />} />
         {/* <Route path="/confirmedForm" element={<ConfirmedForm />} /> */}
+
         {/* <Route
           path="/user/:role"
           element={

@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getConfirmed } from "../../../redux/ac/confirmedAC";
 import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
+import {getConfirmed} from '../../../redux/ac/confirmedAC'
+
 
 export default function ConfirmedForm() {
   const dispatch = useDispatch();
@@ -10,7 +11,8 @@ export default function ConfirmedForm() {
     dispatch(getConfirmed());
   }, [dispatch]);
 
-  const confirmed = useSelector((state) => state.confirmed);
+  const confirmedList = useSelector((state) => state.confirmedList);
+
 
   const handleEnd = (e) => {
     e.preventDefault();
@@ -25,7 +27,9 @@ export default function ConfirmedForm() {
       <h3>Confirm Donors:</h3>
       <form>
         <ul class="list-group">
-          {confirmed.map((confirmed) => (
+
+          {confirmedList.map((confirmed) => (
+
             <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
           ))}
           <button type="submit">Collect</button>

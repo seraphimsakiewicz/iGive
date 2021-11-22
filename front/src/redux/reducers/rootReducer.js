@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   event: eventReducer,
   user: userReducer,
   hospital: hospitalReducer,
-  confirmed: confirmedReducer,
+  confirmedList: confirmedReducer,
   bloodTypes: bloodTypesReducer,
 });
 
