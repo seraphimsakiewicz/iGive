@@ -20,30 +20,38 @@ export const deleteUser = () => ({
 // };
 
 export const regUser = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/signup/user", payload);
+  const response = await axios.post('/signup/user', payload);
   if (response.status === 200) {
     const user = await response.data;
     dispatch(setUser(user));
-    navigate("/user");
+    navigate('/user');
   } else {
-    navigate("/user/signup");
+    navigate('/user/signup');
   }
 };
 
 export const userIn = (payload, navigate) => async (dispatch) => {
-  const response = await axios.post("/login/user",  payload );
+  const response = await axios.post('/login/user', payload);
   if (response.status === 200) {
     const user = await response.data;
     dispatch(setUser(user));
-    navigate("/user");
+    navigate('/user');
   } else {
-    navigate("/login/user");
+    navigate('/login/user');
   }
 };
 
 export const userOut = () => async (dispatch) => {
-  const response = await axios.get('/user/logout', {});
+  const response = await axios.get('/user/logout');
   if (response.status === 200) {
     dispatch(deleteUser());
+  }
+};
+
+export const oneUserFromServer = () => async (dispatch) => {
+  const response = await axios.get('/user/profile');
+  if (response.status === 200) {
+    const oneUser = await response.data;
+    dispatch(setUser(oneUser));
   }
 };

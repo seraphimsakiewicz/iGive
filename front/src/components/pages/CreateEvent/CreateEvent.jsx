@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addNewEventFromServer } from '../../redux/ac/eventAC';
+import { addNewEventFromServer } from '../../../redux/ac/eventAC';
 
 function CreateEvent() {
   const [inputBloodType, setInputBloodType] = useState('');

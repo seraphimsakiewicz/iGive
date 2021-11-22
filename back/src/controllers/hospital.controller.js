@@ -1,10 +1,21 @@
-const { Hospital, Event, BloodStorage } = require('../db/models');
+const {
+  Hospital,
+  Event,
+  BloodStorage,
+  Donation,
+  User,
+  UserEvent,
+  sequelize,
+} = require('../db/models');
 
 async function getSessionHospital(req, res) {
   try {
     const { id } = req.session.hospital;
-    const currSessionHospital = await Hospital.findOne({ where: { id } });
-    res.json(currSessionHospital);
+    const currSessionHospital = await Hospital.findOne({
+      where: { id },
+      raw: true,
+    });
+    res.json({ ...currSessionHospital, role: 'hospital' });
   } catch (error) {
     res.sendStatus(500);
   }
@@ -55,6 +66,7 @@ async function addNewEvent(req, res) {
     });
     res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -63,25 +75,41 @@ async function addDonationFromEvent(req, res) {
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
-    const { bloodQuantity, userId } = req.body;
-    await Donation.create({ bloodQuantity, userId, eventId: id });
+    const donationData = req.body;
+    await Donation.bulkCreate(
+      donationData.map((el) => ({ ...el, eventId: id }))
+    );
     const sumBloodDonation = await Donation.sum('bloodQuantity', {
       where: { eventId: id },
     });
-    const eventBloodType = await Event.findOne({
+    const { bloodTypeId, eventDate } = await Event.findOne({
       where: { id },
-      attributes: ['bloodTypeId'],
+      attributes: ['bloodTypeId', 'eventDate'],
+      raw: true,
     });
     await BloodStorage.update(
       {
         bloodTotalQuantity: sequelize.literal(
-          `bloodTotalQuantity + ${sumBloodDonation}`
+          `"bloodTotalQuantity" + ${sumBloodDonation}`
         ),
       },
-      { where: { bloodTypeId: eventBloodType, hospitalId } }
+      { where: { bloodTypeId, hospitalId } }
+    );
+    donationData.forEach(
+      async (el) =>
+        await User.update(
+          {
+            totalDonation: sequelize.literal(
+              `"totalDonation" + ${el.bloodQuantity}`
+            ),
+            lastDonationDate: eventDate,
+          },
+          { where: { id: el.userId } }
+        )
     );
     res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -98,6 +126,30 @@ async function getAllArchiveEvents(req, res) {
   }
 }
 
+async function getAllSubscribeUsers(req, res) {
+  try {
+    const { id } = req.params;
+    const allSubscribeUsers = await User.findAll({
+      include: { model: Event, where: { id } },
+    });
+    res.json(allSubscribeUsers);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
+async function closeEvent(req, res) {
+  try {
+    const { id } = req.params;
+    const closedEvent = await Event.findByPk(id)
+    await Event.update({ active: !closedEvent.active}, { where: { id } });
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionHospital,
   logoutHospital,
@@ -106,4 +158,6 @@ module.exports = {
   addDonationFromEvent,
   getAllArchiveEvents,
   addNewEvent,
+  getAllSubscribeUsers,
+  closeEvent,
 };

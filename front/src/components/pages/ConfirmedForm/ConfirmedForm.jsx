@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getConfirmed } from "../../redux/ac/confirmedAC";
+import { getConfirmed } from "../../../redux/ac/confirmedAC";
 import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
 
 export default function ConfirmedForm() {
