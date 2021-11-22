@@ -3,37 +3,36 @@ import "./general.css";
 import { Routes, Route } from "react-router-dom";
 
 import Nav from "./components/Nav/Nav";
-// import User from "./components/User/User";
-import Main from "./components/pages/Main/Main";
-import Hospital from "./components/pages/Hospital/Hospital";
-import CreateEvent from "./components/pages/CreateEvent/CreateEvent";
 import Login from "./components/pages/Login/Login";
 // import { UserRoute } from "./components/UserRoute";
 // import { HospitalRoute } from "./components/HospitalRoute";
 
 import UserRegister from "./components/pages/UserRegister/UserRegister";
 import HospitalRegister from "./components/pages/HospitalRegister/HospitalRegister";
-import PrivateUser from "./components/pages/PrivateUser/PrivateUser";
 import Footer from "./components/Footer/Footer";
-import DetailUser from "./components/pages/DetailUser/DetailUser";
-import UserEvent from "./components/pages/UserEvent/UserEvent";
-import PrivateHospital from "./components/pages/PrivateHospital/PrivateHospital";
-import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
 
+import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
+import DetailUser from "./components/pages/DetailUser/DetailUser";
+import Main from "./components/pages/Main/Main";
+import UserEvent from "./components/pages/UserEvent/UserEvent";
+import Hospital from "./components/pages/Hospital/Hospital";
+import PrivateUser from "./components/pages/PrivateUser/PrivateUser";
 import Logout from "./components/Routes+LogOut/LogOut";
+import CreateEvent from "./components/pages/CreateEvent/CreateEvent";
+import PrivateHospital from './components/pages/PrivateHospital/PrivateHospital'
+
 
 function App() {
-  console.log("asfd");
 
   return (
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main/>} />
         <Route path="/login/:role" element={<Login />} />
         <Route path="/user" element={<DetailUser />} />
         <Route path="/user/:id" element={<DetailUser />} />
-        <Route path="/user/event" element={<UserEvent />} />
+        <Route path="/user/event" element={<UserEvent/>} />
         <Route path="/user/signup" element={<UserRegister />} />
         <Route path="/hospital" element={<Hospital />} />
         <Route path="/hospital/signup" element={<HospitalRegister />} />

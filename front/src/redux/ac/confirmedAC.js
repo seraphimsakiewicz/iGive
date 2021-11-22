@@ -28,7 +28,6 @@ export const updateDonor = (id, liters) => ({
 export const submitConfirmed = () => async (dispatch, getState) => {
   const confirmedList = getState().confirmedList;
 
-  // console.log(confirmedList);
   const newList = confirmedList?.map((confirmedPerson) =>
     confirmedPerson.liters > 0
       ? { ...confirmedPerson, status: true }
