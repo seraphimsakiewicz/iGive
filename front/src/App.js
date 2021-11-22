@@ -24,19 +24,21 @@ function App() {
       <Nav />
       <Routes>
 
-        <Route path='/' element={<Main />} />
-        <Route path='/login/:role' element={<Login />} />
-        <Route path='/user' element={<DetailUser />} />
-        <Route path='/user/:id' element={<DetailUser />} />
-        <Route path='/user/event' element={<UserEvent />} />
-        <Route path='/user/signup' element={<UserRegister />} />
-        <Route path='/hospital' element={<Hospital />} />
-        <Route path='/hospital/signup' element={<HospitalRegister />} />
-        <Route path='/hospital/event' element={<CreateEvent />} />
-        <Route path='/private/user' element={<PrivateUser />} />
-        <Route path='/private/hospital' element={<PrivateHospital />} />
-        <Route path='/logout/:role' element={<Logout />} />
-        {/* <Route path="/confirmedForm" element={<ConfirmedForm />} /> */}
+        <Route path="/" element={<Main/>} />
+        <Route path="/login/:role" element={<Login />} />
+        <Route path="/user" element={<DetailUser />} />
+        <Route path="/user/:id" element={<DetailUser />} />
+        <Route path="/user/event" element={<UserEvent/>} />
+        <Route path="/user/signup" element={<UserRegister />} />
+        <Route path="/hospital" element={<Hospital />} />
+        <Route path="/hospital/signup" element={<HospitalRegister />} />
+        <Route path="/hospital/event" element={<CreateEvent />} />
+        <Route path="/private/user" element={<PrivateUser />} />
+        <Route path="/private/hospital" element={<PrivateHospital />} />
+        <Route path="/logout/:role" element={<Logout />} />
+        <Route path="/confirming" element={<ConfirmedForm />} />
+
+        {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
 
         {/* <Route
           path="/user/:role"
