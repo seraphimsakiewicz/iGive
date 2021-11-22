@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getConfirmed } from "../../redux/ac/confirmedAC";
 import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
+import {getConfirmed} from '../../../redux/ac/confirmedAC'
 
 export default function ConfirmedForm() {
   const dispatch = useDispatch();
