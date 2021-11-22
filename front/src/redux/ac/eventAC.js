@@ -50,3 +50,9 @@ export const allEventUserFromServer = () => async (dispatch) => {
   const allEvents = await response.json();
   dispatch(setEvents(allEvents));
 };
+
+// export const closeEvent = (id) => async (dispatch) => {
+
+//   const response = await fetch(`/hospital/events/${id}/status)
+
+// };

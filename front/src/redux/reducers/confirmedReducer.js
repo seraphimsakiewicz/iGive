@@ -14,12 +14,12 @@ const confirmedReducer = (state = [], action) => {
       const updatedId = payload.id;
       return state.map((confirmed) =>
         confirmed.id === updatedId
-          ? { ...confirmed, liters: payload.liters }
+          ? { ...confirmed, bloodQuantity: payload.bloodQuantity }
           : confirmed
       );
 
     case COLLECT_DONORS:
-      return state.filter((confirmedPerson) => !confirmedPerson.liters > 0);
+      return state.filter((confirmedPerson) => !confirmedPerson.bloodQuantity > 0);
     default:
       return state;
   }

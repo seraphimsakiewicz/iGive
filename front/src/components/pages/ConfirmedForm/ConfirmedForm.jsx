@@ -10,8 +10,9 @@ export default function ConfirmedForm() {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  
+
   useEffect(() => {
+    // dispatch(getConfirmed(id))
     dispatch(getConfirmed());
   }, []);
 

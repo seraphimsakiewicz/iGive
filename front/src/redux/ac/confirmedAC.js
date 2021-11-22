@@ -20,22 +20,26 @@ export const setConfirmed = (confirmedList) => ({
   payload: confirmedList,
 });
 
-export const updateDonor = (id, liters) => ({
+export const updateDonor = (id, bloodQuantity) => ({
   type: UPDATE_DONOR,
-  payload: { id, liters },
+  payload: { id, bloodQuantity },
 });
 
 export const collectDonors = () => async (dispatch, getState) => {
+  //place id in paramter then post to 
   const confirmedList = getState().confirmedList;
 
   //pretty much what server will do---------->
-  // const response = await axios.post("/confirmed",{confirmedList});
+  // const response = await axios.post(`/events/${id}`,{confirmedList});
 
   // );
-  const fixedList = confirmedList.map((confirmedPerson) =>
-    confirmedPerson.liters > 0
-      ? { ...confirmedPerson, status: true }
-      : confirmedPerson
+  const fixedList = confirmedList.map(
+    (
+      confirmedPerson //back does this
+    ) =>
+      confirmedPerson.bloodQuantity > 0
+        ? { ...confirmedPerson, status: true }
+        : confirmedPerson
   );
   // if (response.status === 200) {
   dispatch({ type: COLLECT_DONORS, fixedList });
