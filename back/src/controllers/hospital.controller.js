@@ -4,7 +4,7 @@ async function getSessionHospital(req, res) {
   try {
     const { id } = req.session.hospital;
     const currSessionHospital = await Hospital.findOne({ where: { id } });
-    res.json(currSessionHospital);
+    res.json({...currSessionHospital,role:'hospital'});
   } catch (error) {
     res.sendStatus(500);
   }
