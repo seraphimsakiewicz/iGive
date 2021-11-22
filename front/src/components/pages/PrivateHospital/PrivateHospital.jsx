@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styles from './stylePrivateHospital.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { oneHospitalFromServer } from '../../redux/ac/hospitalAC';
+import { oneHospitalFromServer } from '../../../redux/ac/hospitalAC';
 
 function PrivateHospital() {
   const { hospital } = useSelector(state => state);

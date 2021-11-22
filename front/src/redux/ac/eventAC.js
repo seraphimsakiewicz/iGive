@@ -41,6 +41,7 @@ export const setEvents = (array) => ({
 export const allEventFronServer = () => async (dispatch) => {
   const response = await fetch("/hospital/events");
   const allEvents = await response.json();
+  console.log(allEvents);
   dispatch(setEvents(allEvents));
 };
 

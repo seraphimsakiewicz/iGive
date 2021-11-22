@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getConfirmed, submitConfirmed } from "../../redux/ac/confirmedAC";
+import { getConfirmed, submitConfirmed } from "../../../redux/ac/confirmedAC";
 import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
+import ConfirmModal from "./ConfirmModal/ConfirmModal";
 
 export default function ConfirmedForm() {
   const dispatch = useDispatch();
@@ -11,6 +12,11 @@ export default function ConfirmedForm() {
   }, [dispatch]);
 
   const confirmedList = useSelector((state) => state.confirmedList);
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   const handleEnd = (e) => {
     e.preventDefault();
@@ -19,7 +25,6 @@ export default function ConfirmedForm() {
     e.preventDefault();
     dispatch(submitConfirmed());
   };
-  console.log(confirmedList);
   return (
     <div>
       <h3>Confirm Donors:</h3>
@@ -35,9 +40,10 @@ export default function ConfirmedForm() {
           <button type="submit">Collect</button>
         </ul>
       </form>
-      <form>
-        <button type="submit">End Collection</button>
-      </form>
+
+      {!modal && <button onClick={toggleModal}>End Event</button>}
+      {modal && <ConfirmModal toggleModal={toggleModal} />}
+      <form onSubmit={handleEnd}></form>
     </div>
   );
 }

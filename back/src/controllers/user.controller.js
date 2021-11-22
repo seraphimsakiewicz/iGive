@@ -3,7 +3,7 @@ const { User, Event, Hospital } = require("../db/models");
 async function getSessionUser(req, res) {
   try {
     const { id } = req.session.user;
-    const currSessionUser = await User.findOne({ where: { id } });
+    const currSessionUser = await User.findOne({ where: { id }, raw: true });
     res.json({ ...currSessionUser, role: "user" });
   } catch (error) {
     res.sendStatus(500);
