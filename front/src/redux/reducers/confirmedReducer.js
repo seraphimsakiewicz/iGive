@@ -1,8 +1,8 @@
 import {
   SET_CONFIRMED,
-  SUBMIT_CONFIRMED,
-  UPDATE_CF_COUNT,
-} from '../types/confirmedTypes';
+  COLLECT_DONORS,
+  UPDATE_DONOR,
+} from "../types/confirmedTypes";
 
 const confirmedReducer = (state = [], action) => {
   const { type, payload } = action;
@@ -10,24 +10,16 @@ const confirmedReducer = (state = [], action) => {
     case SET_CONFIRMED:
       return payload;
 
-    // case UPDATE_CF_STATUS:
-    //   const confirmedId = action.payload;
-    //   return state.map((confirmed) =>
-    //     confirmed.id === confirmedId
-    //       ? { ...confirmed, status: !confirmed.status }
-    //       : confirmed
-    //   );
-
-    case UPDATE_CF_COUNT:
-      const updatedId = action.payload.id;
+    case UPDATE_DONOR:
+      const updatedId = payload.id;
       return state.map((confirmed) =>
         confirmed.id === updatedId
-          ? { ...confirmed, liters: action.payload.liters }
+          ? { ...confirmed, liters: payload.liters }
           : confirmed
       );
 
-    case SUBMIT_CONFIRMED:
-      return [];
+    case COLLECT_DONORS:
+      return payload;
     default:
       return state;
   }

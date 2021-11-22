@@ -1,10 +1,10 @@
 import {
   SET_CONFIRMED,
-  SUBMIT_CONFIRMED,
-  UPDATE_CF_COUNT,
-} from '../types/confirmedTypes';
+  COLLECT_DONORS,
+  UPDATE_DONOR,
+} from "../types/confirmedTypes";
 
-import confirmed from '../data';
+import confirmed from "../data";
 
 export const getConfirmed = () => async (dispatch) => {
   // const response = await axios.get("/confirmed/");
@@ -20,16 +20,24 @@ export const setConfirmed = (confirmedList) => ({
   payload: confirmedList,
 });
 
-export const editConfirmCount = (id, liters) => ({
-  type: UPDATE_CF_COUNT,
+export const updateDonor = (id, liters) => ({
+  type: UPDATE_DONOR,
   payload: { id, liters },
 });
 
-export const submitConfirmed = () => async (dispatch) => {
+export const submitConfirmed = () => async (dispatch, getState) => {
+  const confirmedList = getState().confirmedList;
+
+  const newList = confirmedList?.map((confirmedPerson) =>
+    confirmedPerson.liters > 0
+      ? { ...confirmedPerson, status: true }
+      : confirmedPerson
+  );
+  //pretty much what server will do---------->
   // const response = await axios.post("/confirmed",{});
 
   // if (response.status === 200) {
   //   const confirmedList = response.data;
   // }
-  dispatch({ type: SUBMIT_CONFIRMED });
+  dispatch({ type: COLLECT_DONORS, payload: newList });
 };

@@ -1,10 +1,13 @@
-const { Hospital, Event, BloodStorage } = require('../db/models');
+const { Hospital, Event, BloodStorage } = require("../db/models");
 
 async function getSessionHospital(req, res) {
   try {
     const { id } = req.session.hospital;
-    const currSessionHospital = await Hospital.findOne({ where: { id } });
-    res.json(currSessionHospital);
+    const currSessionHospital = await Hospital.findOne({
+      where: { id },
+      raw: true,
+    });
+    res.json({ ...currSessionHospital, role: "hospital" });
   } catch (error) {
     res.sendStatus(500);
   }
@@ -13,7 +16,7 @@ async function getSessionHospital(req, res) {
 async function logoutHospital(req, res) {
   try {
     req.session.destroy();
-    res.clearCookie('sid').end();
+    res.clearCookie("sid").end();
   } catch (error) {
     res.sendStatus(500);
   }
@@ -65,12 +68,12 @@ async function addDonationFromEvent(req, res) {
     const hospitalId = req.session.hospital.id;
     const { bloodQuantity, userId } = req.body;
     await Donation.create({ bloodQuantity, userId, eventId: id });
-    const sumBloodDonation = await Donation.sum('bloodQuantity', {
+    const sumBloodDonation = await Donation.sum("bloodQuantity", {
       where: { eventId: id },
     });
     const eventBloodType = await Event.findOne({
       where: { id },
-      attributes: ['bloodTypeId'],
+      attributes: ["bloodTypeId"],
     });
     await BloodStorage.update(
       {

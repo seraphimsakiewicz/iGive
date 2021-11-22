@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './style.module.css';
-import { allEventFronServer } from '../../redux/ac/eventAC';
+import { allEventFronServer } from '../../../redux/ac/eventAC';
 
 function Hospital() {
   const { event } = useSelector((state) => state);
@@ -12,7 +12,7 @@ function Hospital() {
   useEffect(() => {
     dispatch(allEventFronServer());
   }, [dispatch]);
-
+  
   return (
     <div className='container'>
       <div className={styles.event}>
