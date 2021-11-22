@@ -2,7 +2,7 @@ import {
   SET_CONFIRMED,
   COLLECT_DONORS,
   UPDATE_DONOR,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
 const confirmedReducer = (state = [], action) => {
   const { type, payload } = action;
@@ -19,7 +19,9 @@ const confirmedReducer = (state = [], action) => {
       );
 
     case COLLECT_DONORS:
-      return state.filter((confirmedPerson) => !confirmedPerson.bloodQuantity > 0);
+      return state.filter(
+        (confirmedPerson) => !confirmedPerson.bloodQuantity > 0
+      );
     default:
       return state;
   }

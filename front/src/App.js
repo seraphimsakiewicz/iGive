@@ -15,34 +15,30 @@ import PrivateHospital from './components/pages/PrivateHospital/PrivateHospital'
 import Logout from './components/Routes+LogOut/LogOut';
 import Footer from './components/Footer/Footer';
 
-
-import Loader from "./components/Loader/Loader";
-
+import Loader from './components/Loader/Loader';
+import ConfirmedForm from './components/pages/ConfirmedForm/ConfirmedForm';
 
 function App() {
-
-
   return (
     <>
       <Nav />
       <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/login/:role' element={<Login />} />
+        <Route path='/user' element={<DetailUser />} />
+        <Route path='/user/:id' element={<DetailUser />} />
+        <Route path='/user/event' element={<UserEvent />} />
+        <Route path='/user/signup' element={<UserRegister />} />
+        <Route path='/hospital' element={<Hospital />} />
+        <Route path='/hospital/signup' element={<HospitalRegister />} />
+        <Route path='/hospital/event' element={<CreateEvent />} />
+        <Route path='/private/user' element={<PrivateUser />} />
+        <Route path='/private/hospital' element={<PrivateHospital />} />
+        <Route path='/logout/:role' element={<Logout />} />
 
-        <Route path="/" element={<Main/>} />
-        <Route path="/login/:role" element={<Login />} />
-        <Route path="/user" element={<DetailUser />} />
-        <Route path="/user/:id" element={<DetailUser />} />
-        <Route path="/user/event" element={<UserEvent/>} />
-        <Route path="/user/signup" element={<UserRegister />} />
-        <Route path="/hospital" element={<Hospital />} />
-        <Route path="/hospital/signup" element={<HospitalRegister />} />
-        <Route path="/hospital/event" element={<CreateEvent />} />
-        <Route path="/private/user" element={<PrivateUser />} />
-        <Route path="/private/hospital" element={<PrivateHospital />} />
-        <Route path="/logout/:role" element={<Logout />} />
+        <Route path='/aaa' element={<Loader />} />
 
-        <Route path="/aaa" element={<Loader />} />
-
-        <Route path="/confirming" element={<ConfirmedForm />} />
+        <Route path='/confirming' element={<ConfirmedForm />} />
 
         {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
 

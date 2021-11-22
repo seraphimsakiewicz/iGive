@@ -1,20 +1,19 @@
-.header{
+.header {
   padding: 22px 0;
-  background-color: #028E9B;
+  background-color: #028e9b;
   /* position: fixed; */
   width: 100%;
   z-index: 1;
   left: 0;
   top: 0;
 }
-.headerWrapper{
+.headerWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-weight: 900;
   font-size: 22px;
 }
-.logo{
+.logo {
   color: white;
 }
-

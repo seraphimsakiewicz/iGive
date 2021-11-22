@@ -1,6 +1,4 @@
-
 const { User, Event, Hospital, UserEvent } = require('../db/models');
-
 
 async function getSessionUser(req, res) {
   try {
@@ -8,7 +6,6 @@ async function getSessionUser(req, res) {
     const currSessionUser = await User.findOne({ where: { id }, raw: true });
 
     res.json({ ...currSessionUser, role: 'user' });
-
   } catch (error) {
     res.sendStatus(500);
   }
@@ -17,7 +14,7 @@ async function getSessionUser(req, res) {
 async function logoutUser(req, res) {
   try {
     req.session.destroy();
-    res.clearCookie("sid").end();
+    res.clearCookie('sid').end();
   } catch (error) {
     res.sendStatus(500);
   }
@@ -81,6 +78,20 @@ async function subscribeUser(req, res) {
   }
 }
 
+async function changeProfileData(req, res) {
+  try {
+    const { id } = req.session.user;
+    const { phoneNumber, city, street, building, image } = req.body;
+    await User.update(
+      { phoneNumber, city, street, building, image },
+      { where: { id } }
+    );
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionUser,
   addUserData,
@@ -89,4 +100,5 @@ module.exports = {
   showDetailEvent,
   getUserAllArchiveEvents,
   subscribeUser,
+  changeProfileData,
 };

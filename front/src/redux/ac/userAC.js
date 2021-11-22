@@ -19,7 +19,6 @@ export const deleteUser = () => ({
 //   }
 // };
 
-
 export const regUser = (payload, navigate) => async (dispatch) => {
   const response = await axios.post('/signup/user', payload);
   if (response.status === 200) {

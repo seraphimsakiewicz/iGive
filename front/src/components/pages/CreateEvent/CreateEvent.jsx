@@ -14,7 +14,12 @@ function CreateEvent() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      addNewEventFromServer(inputBloodType, inputAmountBlood, inputDate, inputPriority)
+      addNewEventFromServer(
+        inputBloodType,
+        inputAmountBlood,
+        inputDate,
+        inputPriority
+      )
     );
     setInputBloodType('');
     setInputAmountBlood('');
@@ -28,26 +33,25 @@ function CreateEvent() {
     >
       <h2 className='mb-4'>Сбор крови</h2>
       <div className='mb-3'>
-
-        <label htmlFor="exampleInputEmail1" className="form-label">
+        <label htmlFor='exampleInputEmail1' className='form-label'>
           Blood Type
         </label>
         <select
-          name="bloodTypeId"
+          name='bloodTypeId'
           onChange={(e) => setInputBloodType(e.target.value)}
           value={inputBloodType}
         >
-          <option value="-1" selected>
+          <option value='-1' selected>
             Please choose
           </option>
-          <option value="1">A-</option>
-          <option value="2">B- </option>
-          <option value="3">AB- </option>
-          <option value="4">O- </option>
-          <option value="5">A+ </option>
-          <option value="6">B+ </option>
-          <option value="7">AB+ </option>
-          <option value="8">O+ </option>
+          <option value='1'>A-</option>
+          <option value='2'>B- </option>
+          <option value='3'>AB- </option>
+          <option value='4'>O- </option>
+          <option value='5'>A+ </option>
+          <option value='6'>B+ </option>
+          <option value='7'>AB+ </option>
+          <option value='8'>O+ </option>
         </select>
         <input
           type='number'
@@ -67,12 +71,11 @@ function CreateEvent() {
           id='exampleInputEmail1'
           aria-describedby='emailHelp'
         />
-        <label htmlFor="exampleInputEmail1" className="form-label">
-
+        <label htmlFor='exampleInputEmail1' className='form-label'>
           Priority
         </label>
         <select
-          name="priority"
+          name='priority'
           onChange={(e) => setInputPriority(e.target.value)}
           value={inputPriority}
         >
@@ -80,8 +83,6 @@ function CreateEvent() {
           <option value={`${2}`}>Средний</option>
           <option value={`${3}`}>Высокий</option>
         </select>
-
-      
       </div>
       <button type='submit' className='btn btn-primary mt-1'>
         Добавить

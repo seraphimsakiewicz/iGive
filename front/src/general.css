@@ -1,7 +1,7 @@
-*{
+* {
   box-sizing: border-box;
 }
-body{
+body {
   height: 100%;
   font-family: 'Montserrat Alternates', sans-serif;
 }
@@ -9,10 +9,10 @@ body{
   width: 1740px;
   margin: 0 auto;
 }
-a{
+a {
   text-decoration: none;
 }
-.reg-container{
+.reg-container {
   width: 400px;
   margin: 0 auto;
   display: flex;
@@ -20,12 +20,12 @@ a{
   font-size: 20px;
   margin-top: 20px;
 }
-.btn-reg{
-  background-color: #028E9B;
+.btn-reg {
+  background-color: #028e9b;
   color: white;
   margin-bottom: 20px;
 }
-.reg-link__btn{
+.reg-link__btn {
   display: flex;
   justify-content: center;
 }

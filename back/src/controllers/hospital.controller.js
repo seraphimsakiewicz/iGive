@@ -1,14 +1,11 @@
-
 const {
   Hospital,
   Event,
   BloodStorage,
   Donation,
   User,
-  UserEvent,
   sequelize,
 } = require('../db/models');
-
 
 async function getSessionHospital(req, res) {
   try {
@@ -18,7 +15,6 @@ async function getSessionHospital(req, res) {
       raw: true,
     });
     res.json({ ...currSessionHospital, role: 'hospital' });
-
   } catch (error) {
     res.sendStatus(500);
   }
@@ -27,7 +23,7 @@ async function getSessionHospital(req, res) {
 async function logoutHospital(req, res) {
   try {
     req.session.destroy();
-    res.clearCookie("sid").end();
+    res.clearCookie('sid').end();
   } catch (error) {
     res.sendStatus(500);
   }
@@ -49,6 +45,7 @@ async function showHospitalAllEvents(req, res) {
     const { id } = req.session.hospital;
     const allEventsForHospital = await Event.findAll({
       where: { hospitalId: id },
+      include: User,
     });
     res.json(allEventsForHospital);
   } catch (error) {
@@ -84,7 +81,6 @@ async function addDonationFromEvent(req, res) {
       donationData.map((el) => ({ ...el, eventId: id }))
     );
     const sumBloodDonation = await Donation.sum('bloodQuantity', {
-
       where: { eventId: id },
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
@@ -92,7 +88,6 @@ async function addDonationFromEvent(req, res) {
 
       attributes: ['bloodTypeId', 'eventDate'],
       raw: true,
-
     });
     await BloodStorage.update(
       {
@@ -149,8 +144,31 @@ async function getAllSubscribeUsers(req, res) {
 async function closeEvent(req, res) {
   try {
     const { id } = req.params;
-    const closedEvent = await Event.findByPk(id)
-    await Event.update({ active: !closedEvent.active}, { where: { id } });
+    const closedEvent = await Event.findByPk(id);
+    await Event.update({ active: !closedEvent.active }, { where: { id } });
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
+async function getStorageData(req, res) {
+  try {
+    const { id } = req.session.hospital;
+    const storageData = await BloodStorage.findAll({
+      where: { hospitalId: id },
+    });
+    res.json(storageData);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
+async function changeHospitalData(req, res) {
+  try {
+    const { id } = req.session.hospital;
+    const { headOfDep, about } = req.body;
+    await Hospital.update({ headOfDep, about }, { where: { id } });
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(500);
@@ -167,4 +185,6 @@ module.exports = {
   addNewEvent,
   getAllSubscribeUsers,
   closeEvent,
+  getStorageData,
+  changeHospitalData,
 };

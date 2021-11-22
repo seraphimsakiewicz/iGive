@@ -7,7 +7,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 30px;
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
   .container-slider {
     margin: 100px 10px 0;
   }
@@ -57,7 +57,6 @@
   transform: translateY(-60%);
 }
 
-
 .container-dots {
   position: absolute;
   bottom: 10px;
@@ -76,6 +75,6 @@
 .dot.active {
   background: rgb(32, 32, 32);
 }
-.img-slider{
+.img-slider {
   border-radius: 10px;
 }

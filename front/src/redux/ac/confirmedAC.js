@@ -2,9 +2,9 @@ import {
   SET_CONFIRMED,
   COLLECT_DONORS,
   UPDATE_DONOR,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
-import confirmed from "../data";
+import confirmed from '../data';
 
 export const getConfirmed = () => async (dispatch) => {
   // const response = await axios.get("/confirmed/");
@@ -26,7 +26,7 @@ export const updateDonor = (id, bloodQuantity) => ({
 });
 
 export const collectDonors = () => async (dispatch, getState) => {
-  //place id in paramter then post to 
+  //place id in paramter then post to
   const confirmedList = getState().confirmedList;
 
   //pretty much what server will do---------->
