@@ -21,10 +21,11 @@
   height: 300px;
   object-fit: cover;
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 .privateImgBtn{
   padding: 5px 15px;
-  border-radius: 30px;
+  border-radius: 20px;
   background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #627fb8 100%);
   background-position: 100% 0;
   background-size: 200% 200%;

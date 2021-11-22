@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
 import styles from "./style.module.css";
 const Nav = () => {
   const { user } = useSelector((state) => state);

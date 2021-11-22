@@ -16,6 +16,9 @@ import Logout from './components/Routes+LogOut/LogOut';
 import Footer from './components/Footer/Footer';
 
 
+import Loader from "./components/Loader/Loader";
+
+
 function App() {
 
 
@@ -36,6 +39,9 @@ function App() {
         <Route path="/private/user" element={<PrivateUser />} />
         <Route path="/private/hospital" element={<PrivateHospital />} />
         <Route path="/logout/:role" element={<Logout />} />
+
+        <Route path="/aaa" element={<Loader />} />
+
         <Route path="/confirming" element={<ConfirmedForm />} />
 
         {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
