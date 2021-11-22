@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+
 import { updateDonor } from "../../../../redux/ac/confirmedAC";
+
 
 export default function ConfirmedPerson({ confirmed }) {
   const [liters, setLiters] = useState("0");
@@ -11,6 +13,7 @@ export default function ConfirmedPerson({ confirmed }) {
     setLiters(e.target.value);
 
     const mL = +e.target.value;
+
     dispatch(updateDonor(confirmed.id, mL));
   };
   return (

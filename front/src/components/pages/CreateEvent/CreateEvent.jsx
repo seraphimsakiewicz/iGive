@@ -28,7 +28,7 @@ function CreateEvent() {
     >
       <h2 className='mb-4'>Сбор крови</h2>
       <div className='mb-3'>
-       
+
         <label htmlFor="exampleInputEmail1" className="form-label">
           Blood Type
         </label>
@@ -68,6 +68,7 @@ function CreateEvent() {
           aria-describedby='emailHelp'
         />
         <label htmlFor="exampleInputEmail1" className="form-label">
+
           Priority
         </label>
         <select
@@ -79,7 +80,8 @@ function CreateEvent() {
           <option value={`${2}`}>Средний</option>
           <option value={`${3}`}>Высокий</option>
         </select>
-       
+
+      
       </div>
       <button type='submit' className='btn btn-primary mt-1'>
         Добавить

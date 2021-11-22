@@ -6,6 +6,7 @@ import confirmed from "../../../redux/data";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
 import { useParams } from "react-router";
 
+
 export default function ConfirmedForm() {
   const dispatch = useDispatch();
 
@@ -14,15 +15,16 @@ export default function ConfirmedForm() {
   useEffect(() => {
     // dispatch(getConfirmed(id))
     dispatch(getConfirmed());
-  }, []);
+  }, [dispatch]);
 
   const confirmedList = useSelector((state) => state.confirmedList);
+
 
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
-  };
+
 
   const handleCollect = () => {
     dispatch(collectDonors());
@@ -51,5 +53,6 @@ export default function ConfirmedForm() {
       </button>
       {modal && <ConfirmModal toggleModal={toggleModal} />}
     </div>
+
   );
 }
