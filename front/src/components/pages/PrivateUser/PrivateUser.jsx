@@ -50,6 +50,7 @@ function PrivateUser() {
 
   );
 }
+export default PrivateUser;
 
 
 
