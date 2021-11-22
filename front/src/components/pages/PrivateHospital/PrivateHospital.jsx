@@ -5,12 +5,11 @@ import { oneHospitalFromServer } from '../../../redux/ac/hospitalAC';
 
 function PrivateHospital() {
   const { hospital } = useSelector(state => state);
-  console.log(hospital);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(oneHospitalFromServer());
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={styles.mainPrivateUser}>

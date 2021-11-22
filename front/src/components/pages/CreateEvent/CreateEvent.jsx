@@ -28,15 +28,7 @@ function CreateEvent() {
     >
       <h2 className='mb-4'>Сбор крови</h2>
       <div className='mb-3'>
-        {/* <input
-          type='text'
-          value={inputBloodType}
-          onChange={(e) => setInputBloodType(e.target.value)}
-          placeholder='Тип крови'
-          className='form-control my-2'
-          id='exampleInputEmail1'
-          aria-describedby='emailHelp'
-        /> */}
+
         <label htmlFor="exampleInputEmail1" className="form-label">
           Blood Type
         </label>
@@ -76,10 +68,11 @@ function CreateEvent() {
           aria-describedby='emailHelp'
         />
         <label htmlFor="exampleInputEmail1" className="form-label">
-          Blood Type
+
+          Priority
         </label>
         <select
-          name="bloodTypeId"
+          name="priority"
           onChange={(e) => setInputPriority(e.target.value)}
           value={inputPriority}
         >
@@ -87,15 +80,8 @@ function CreateEvent() {
           <option value={`${2}`}>Средний</option>
           <option value={`${3}`}>Высокий</option>
         </select>
-        {/* <input
-          type='time'
-          value={inputPriority}
-          onChange={(e) => setinputPriority(e.target.value)}
-          placeholder='Время сбора'
-          className='form-control my-2'
-          id='exampleInputEmail1'
-          aria-describedby='emailHelp'
-        /> */}
+
+      
       </div>
       <button type='submit' className='btn btn-primary mt-1'>
         Добавить

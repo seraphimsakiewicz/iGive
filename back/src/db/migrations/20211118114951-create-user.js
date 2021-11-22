@@ -18,6 +18,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      birthday: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       email: {
         allowNull: false,
         unique: true,
@@ -27,6 +31,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       password: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
         allowNull: false,
         type: Sequelize.STRING,
       },

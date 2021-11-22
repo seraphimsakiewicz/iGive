@@ -48,12 +48,14 @@ module.exports = {
         type: Sequelize.STRING,
       },
       webSite: {
+        allowNull: false,
         validate: {
           isUrl: true,
         },
         type: Sequelize.STRING,
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       about: {

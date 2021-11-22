@@ -3,7 +3,7 @@ const initState = {
   event: [],
   user: null,
   hospital: null,
-  confirmed: [],
+  confirmedList: [],
   bloodTypes: []
 };
 

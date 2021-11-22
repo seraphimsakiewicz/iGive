@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const { User, Hospital } = require('../db/models');
 
 async function loginUser(req, res) {
-  console.log(req.body);
   try {
     const { email, password } = req.body;
     const currUser = await User.findOne({ where: { email } });
@@ -27,7 +26,6 @@ async function loginUser(req, res) {
 }
 
 async function loginHospital(req, res) {
-  console.log(req.body);
   try {
     const { email, password } = req.body;
     const currHospital = await Hospital.findOne({ where: { email } });
@@ -45,7 +43,6 @@ async function loginHospital(req, res) {
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }

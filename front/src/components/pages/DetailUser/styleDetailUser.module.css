@@ -30,6 +30,7 @@
   margin: 0;
   margin-bottom: 20px;
 }
+
 .eventWrapper{
   display: flex;
   align-items: flex-start;
@@ -51,3 +52,4 @@
 .eventRigthBlockCardImg{
   width: 300px;
 }
+
