@@ -40,7 +40,9 @@ function App() {
         <Route path="/private/user" element={<PrivateUser />} />
         <Route path="/private/hospital" element={<PrivateHospital />} />
         <Route path="/logout/:role" element={<Logout />} />
-        <Route path="/confirmedForm" element={<ConfirmedForm />} />
+        <Route path="/confirming" element={<ConfirmedForm />} />
+
+        {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
         {/* <Route
           path="/user/:role"
           element={

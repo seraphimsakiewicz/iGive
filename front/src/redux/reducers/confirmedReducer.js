@@ -19,7 +19,7 @@ const confirmedReducer = (state = [], action) => {
       );
 
     case COLLECT_DONORS:
-      return payload;
+      return state.filter((confirmedPerson) => !confirmedPerson.liters > 0);
     default:
       return state;
   }

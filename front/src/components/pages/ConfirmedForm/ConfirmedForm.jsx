@@ -1,37 +1,54 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ConfirmedPerson from "./ConfirmedPerson/ConfirmedPerson";
-import {getConfirmed} from '../../../redux/ac/confirmedAC'
+import { collectDonors, getConfirmed } from "../../../redux/ac/confirmedAC";
+import confirmed from "../../../redux/data";
+import ConfirmModal from "./ConfirmModal/ConfirmModal";
+import { useParams } from "react-router";
 
 export default function ConfirmedForm() {
   const dispatch = useDispatch();
 
+  const { id } = useParams();
+  
   useEffect(() => {
     dispatch(getConfirmed());
   }, []);
 
   const confirmedList = useSelector((state) => state.confirmedList);
 
-  const handleEnd = (e) => {
-    e.preventDefault();
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
   };
 
-  const handleCollect = (e) => {
-    e.preventDefault();
+  const handleCollect = () => {
+    dispatch(collectDonors());
   };
 
   return (
-    <form>
+    <div>
       <h3>Confirm Donors:</h3>
-      <form>
-        <ul class="list-group">
-          {confirmedList.map((confirmed) => (
-            <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
-          ))}
-          <button type="submit">Collect</button>
-        </ul>
-      </form>
-      <button type="submit">End Collection</button>
-    </form>
+      <ul class="list-group">
+        {confirmedList.map(
+          (confirmed) =>
+            !confirmed.status && (
+              <ConfirmedPerson key={confirmed.id} confirmed={confirmed} />
+            )
+        )}
+        {confirmedList.length > 0 ? (
+          <button type="button" onClick={handleCollect}>
+            Collect
+          </button>
+        ) : (
+          ""
+        )}
+      </ul>
+      <button type="button" onClick={toggleModal}>
+        End Collection
+      </button>
+      {modal && <ConfirmModal toggleModal={toggleModal} />}
+    </div>
   );
 }

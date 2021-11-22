@@ -25,19 +25,19 @@ export const updateDonor = (id, liters) => ({
   payload: { id, liters },
 });
 
-export const submitConfirmed = () => async (dispatch, getState) => {
+export const collectDonors = () => async (dispatch, getState) => {
   const confirmedList = getState().confirmedList;
 
-  const newList = confirmedList?.map((confirmedPerson) =>
+  //pretty much what server will do---------->
+  // const response = await axios.post("/confirmed",{confirmedList});
+
+  // );
+  const fixedList = confirmedList.map((confirmedPerson) =>
     confirmedPerson.liters > 0
       ? { ...confirmedPerson, status: true }
       : confirmedPerson
   );
-  //pretty much what server will do---------->
-  // const response = await axios.post("/confirmed",{});
-
   // if (response.status === 200) {
-  //   const confirmedList = response.data;
+  dispatch({ type: COLLECT_DONORS, fixedList });
   // }
-  dispatch({ type: COLLECT_DONORS, payload: newList });
 };
