@@ -10,7 +10,7 @@ export default function ConfirmedForm() {
     dispatch(getConfirmed());
   }, [dispatch]);
 
-  let confirmedList = useSelector((state) => state.confirmedList);
+  const confirmedList = useSelector((state) => state.confirmedList);
 
   const handleEnd = (e) => {
     e.preventDefault();
