@@ -7,7 +7,6 @@ import Slider from '../../Slider/Slider';
 
 function DetailUser() {
   const { event } = useSelector(state => state);
-  console.log(event);
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,10 +20,9 @@ function DetailUser() {
             {
               event?.length === 0 ? null :
                 <>
-                  <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
+                  <h3 className={styles.eventTitle}>Места для сдачи крови по вашему типу крови</h3>
                   <div className={styles.eventInfo}>
                     <p className={styles.eventInfoItem}>Название больницы:</p>
-                    <p className={styles.eventInfoItem}>Тип крови:</p>
                     <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
                     <p className={styles.eventInfoItem}>Дата публикации:</p>
                     <p className={styles.eventInfoItem}>Приоритет:</p>
@@ -33,7 +31,6 @@ function DetailUser() {
                     event?.map(el => (
                       <div className={styles.eventBlock}>
                         <p>{el?.Hospital?.headOfDep}</p>
-                        <p>{el?.bloodTypeId}</p>
                         <p>{el?.bloodQuantity}</p>
                         <p>{el?.eventDate}</p>
                         <p>{el?.priority}</p>
@@ -55,13 +52,13 @@ function DetailUser() {
             <div className={styles.eventRigthBlockCard}>
               <img src="http://localhost:3000/covid/1.jpg" className={styles.eventRigthBlockCardImg} alt="" />
               <p className={styles.eventRigthBlockCardTitle} >
-                Коронавирус в России и мире: хроника <br /> событий
+                Коронавирус в России и мире: <br /> хроника событий
               </p>
             </div>
             <div className={styles.eventRigthBlockCard}>
               <img src="http://localhost:3000/covid/2.jpg" className={styles.eventRigthBlockCardImg} alt="" />
               <p className={styles.eventRigthBlockCardTitle} >
-                Что делать если в семье кто-то заболел?
+                Что делать если в семье кто-то <br /> заболел?
               </p>
             </div>
             <div className={styles.eventRigthBlockCard}>

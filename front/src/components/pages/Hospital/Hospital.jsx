@@ -7,9 +7,7 @@ import { allEventFronServer } from '../../../redux/ac/eventAC';
 function Hospital() {
 
   const { event } = useSelector(state => state);
-  const { hospital } = useSelector(state => state);
-  console.log(event);
-  console.log(hospital);
+
   const dispatch = useDispatch()
 
   useEffect(() => {

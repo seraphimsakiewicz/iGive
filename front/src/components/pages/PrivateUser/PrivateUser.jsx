@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './stylePrivateUser.module.css';
 import { useSelector } from "react-redux";
 
@@ -7,12 +7,16 @@ function PrivateUser() {
   const { user } = useSelector(state => state);
   console.log(user);
 
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <div className={styles.mainPrivateUser}>
       <div className="container">
         <div className={styles.privateWrapper}>
           <div className={styles.userCard}>
-            <img className={styles.privateImg} src="https://lh3.googleusercontent.com/proxy/KJtQthlUFkcwxiXYvE-RM9LbrK9Mn1byHnMX0iYbslIcAhY3GLWTGtuIR_tfogLIAiIzYPwJ7YM8TKHP7RRQjtllAp97U_wDFUyqa5Ib0QRwtNdiKq02s_nsCZuemntXxWM8qe0" alt="" />
+            <img className={styles.privateImg} src="https://lh3.googleusercontent.com/proxy/cjoR8kk6cVicQeGbd4UEfLq77IuXaMssPREmr-A_NTZVM_moaZ7T-DaRXlDZa5K85yAZZfLZ-Obr43w" alt="" />
             <button className={styles.privateImgBtn}>Сменить фото</button>
           </div>
           <div className={styles.userTextWrapper}>

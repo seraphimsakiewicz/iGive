@@ -20,6 +20,7 @@ import PrivateUser from "./components/pages/PrivateUser/PrivateUser";
 import Logout from "./components/Routes+LogOut/LogOut";
 import CreateEvent from "./components/pages/CreateEvent/CreateEvent";
 import PrivateHospital from './components/pages/PrivateHospital/PrivateHospital'
+import Loader from "./components/Loader/Loader";
 
 function App() {
 
@@ -43,22 +44,7 @@ function App() {
         <Route path="/private/hospital" element={<PrivateHospital />} />
         <Route path="/logout/:role" element={<Logout />} />
         <Route path="/confirmedForm" element={<ConfirmedForm />} />
-        {/* <Route
-          path="/user/:role"
-          element={
-            <UserRoute>
-              <User />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/hospital/:role"
-          element={
-            <HospitalRoute>
-              <Hospital />
-            </HospitalRoute>
-          }
-        /> */}
+        <Route path="/aaa" element={<Loader />} />
       </Routes>
       <Footer />
     </>
