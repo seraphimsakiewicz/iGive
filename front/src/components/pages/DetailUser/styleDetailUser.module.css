@@ -1,13 +1,13 @@
-.event{
+.event {
   margin-top: 20px;
   flex: 1 1 auto;
 }
-.eventTitle{
+.eventTitle {
   margin: 0;
   text-align: center;
   margin-bottom: 30px;
 }
-.eventBlock{
+.eventBlock {
   padding: 5px;
   display: flex;
   align-items: center;
@@ -16,40 +16,38 @@
   margin-bottom: 20px;
   border-radius: 8px;
 }
-.eventInfo{
+.eventInfo {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 650px;
 }
-.eventLink{
+.eventLink {
   display: flex;
   justify-content: center;
 }
-.eventInfoItem{
+.eventInfoItem {
   margin: 0;
   margin-bottom: 20px;
 }
 
-.eventWrapper{
+.eventWrapper {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
-.eventLeftBlock{
+.eventLeftBlock {
   max-width: 900px;
 }
-.eventLeftText{
+.eventLeftText {
   margin: 0;
   margin-bottom: 20px;
 }
-.eventRigthBlock{
-  
+.eventRigthBlock {
 }
-.eventRigthBlockCard{
+.eventRigthBlockCard {
   margin-bottom: 20px;
 }
-.eventRigthBlockCardImg{
+.eventRigthBlockCardImg {
   width: 300px;
 }
-

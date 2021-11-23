@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getConfirmed } from "../../../redux/ac/confirmedAC";
@@ -17,13 +18,10 @@ export default function ConfirmedForm() {
   }, []);
 
   const confirmedList = useSelector((state) => state?.confirmedList);
-
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
-  };
-
   return (
     <div>
       {confirmedList && <ConfirmedList confirmedList={confirmedList}/>}

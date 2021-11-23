@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styleDetailUser.module.css";
@@ -20,7 +21,7 @@ function DetailUser() {
 
   return (
     <div className={styles.event}>
-      <div className="container">
+      <div className='container'>
         <div className={styles.eventWrapper}>
           <div className={styles.eventLeftBlock}>
             {event?.length === 0 ? null : (

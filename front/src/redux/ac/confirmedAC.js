@@ -2,7 +2,7 @@ import {
   SET_CONFIRMED,
   COLLECT_DONORS,
   UPDATE_DONOR,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
 import axios from "axios";
 

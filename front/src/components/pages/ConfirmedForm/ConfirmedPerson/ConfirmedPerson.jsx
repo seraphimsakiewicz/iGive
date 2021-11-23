@@ -1,9 +1,9 @@
+
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { updateDonor } from "../../../../redux/ac/confirmedAC";
-
 export default function ConfirmedPerson({ confirmed }) {
-  const [liters, setLiters] = useState("0");
+  const [liters, setLiters] = useState('0');
 
   const dispatch = useDispatch();
 
@@ -14,14 +14,14 @@ export default function ConfirmedPerson({ confirmed }) {
     dispatch(updateDonor(confirmed.id, mL));
   };
   return (
-    <li className="list-group-item">
+    <li className='list-group-item'>
       {confirmed.name}
       <input
-        type="number"
-        min="0"
-        step="10"
-        max="1000"
-        placeholder="quantity in mL"
+        type='number'
+        min='0'
+        step='10'
+        max='1000'
+        placeholder='quantity in mL'
         value={liters}
         onChange={handleOnChange}
       />

@@ -1,5 +1,4 @@
 import "./general.css";
-
 import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Main from "./components/pages/Main/Main";
