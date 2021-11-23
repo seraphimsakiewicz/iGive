@@ -4,15 +4,16 @@ import {
   UPDATE_DONOR,
 } from '../types/confirmedTypes';
 
-import confirmed from '../data';
+import axios from "axios";
 
-export const getConfirmed = () => async (dispatch) => {
-  // const response = await axios.get("/confirmed/");
+export const getConfirmed = (id) => async (dispatch) => {
+  console.log('getConfirmed')
+  const response = await axios.get(`/hospital/events/${id}/users`);
 
-  // if (response.status === 200) {
-  //   const confirmedList = response.data;
-  dispatch(setConfirmed(confirmed));
-  // }
+  if (response.status === 200) {
+    const confirmedList = await response.data;
+    dispatch(setConfirmed(confirmedList));
+  }
 };
 
 export const setConfirmed = (confirmedList) => ({

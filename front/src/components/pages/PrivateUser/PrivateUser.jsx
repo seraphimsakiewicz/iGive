@@ -50,5 +50,6 @@ function PrivateUser() {
     </div>
   );
 }
+export default PrivateUser;
 
 export default PrivateUser;
