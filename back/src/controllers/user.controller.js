@@ -71,8 +71,8 @@ async function getUserAllArchiveEvents(req, res) {
 }
 
 async function subscribeUser(req, res) {
-  console.log(req.body)
-  console.log(req.params.id)
+  console.log(req.body);
+  console.log(req.params.id);
   try {
     const eventId = req.params.id;
     const { userId } = req.body;
@@ -83,14 +83,37 @@ async function subscribeUser(req, res) {
   }
 }
 
+async function unsubscribeUser(req, res) {
+  try {
+    const eventId = req.params.id;
+    const { userId } = req.body;
+    await UserEvent.destroy({ where: { userId, eventId } });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
 async function changeProfileData(req, res) {
   try {
     const { id } = req.session.user;
-    const { phoneNumber, city, street, building, image } = req.body;
+    const { phoneNumber, city, street, building } = req.body;
     await User.update(
-      { phoneNumber, city, street, building, image },
+      { phoneNumber, city, street, building },
       { where: { id } }
     );
+    res.sendStatus(200);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
+async function changeProfileImage(req, res) {
+  try {
+    const { id } = req.session.user;
+    const { image } = req.body;
+    await User.update({ image }, { where: { id } });
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(500);
@@ -105,5 +128,7 @@ module.exports = {
   showDetailEvent,
   getUserAllArchiveEvents,
   subscribeUser,
+  unsubscribeUser,
   changeProfileData,
+  changeProfileImage,
 };
