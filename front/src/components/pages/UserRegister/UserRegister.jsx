@@ -87,15 +87,15 @@ const UserRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Telephone:
+        Phone number:
         </label>
         <input
           type='text'
           className='form-control'
-          value={values.telephone}
+          value={values.phoneNumber}
           onChange={handleInputChange}
           pattern='[0-9]+'
-          name='telephone'
+          name='phoneNumber'
         />
       </div>
       <div className='mb-3'>

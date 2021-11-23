@@ -1,4 +1,6 @@
-import { ADD_EVENT, SET_EVENTS } from '../types/eventTypes';
+
+import { ADD_EVENT, SET_EVENTS, TAKE_ADDRESS_USER_AND_HOSPITAL } from "../types/eventTypes";
+
 
 export const addNewEvent = (
   bloodTypeId,
@@ -41,7 +43,6 @@ export const setEvents = (array) => ({
 export const allEventFronServer = () => async (dispatch) => {
   const response = await fetch('/hospital/events');
   const allEvents = await response.json();
-  console.log(allEvents);
   dispatch(setEvents(allEvents));
 };
 
@@ -51,8 +52,10 @@ export const allEventUserFromServer = () => async (dispatch) => {
   dispatch(setEvents(allEvents));
 };
 
-// export const closeEvent = (id) => async (dispatch) => {
-
-//   const response = await fetch(`/hospital/events/${id}/status)
-
-// };
+export const takeAddressUserAndHospital = (city, street, building) => (
+  console.log(city, street, building), {
+  type:TAKE_ADDRESS_USER_AND_HOSPITAL,
+  payload:{
+    city, street, building
+  }
+})

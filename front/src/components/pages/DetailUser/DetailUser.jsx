@@ -1,11 +1,11 @@
 
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./styleDetailUser.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { allEventUserFromServer } from "../../../redux/ac/eventAC";
-import Slider from "../../Slider/Slider";
-import { subscribeUser } from "../../../redux/ac/userAC";
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './styleDetailUser.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { allEventUserFromServer } from '../../../redux/ac/eventAC';
+import Slider from '../../Slider/Slider';
+
 
 function DetailUser() {
   const { event } = useSelector((state) => state);
@@ -24,52 +24,33 @@ function DetailUser() {
       <div className='container'>
         <div className={styles.eventWrapper}>
           <div className={styles.eventLeftBlock}>
-            {event?.length === 0 ? null : (
-              <>
-                <h3 className={styles.eventTitle}>
-                  Места для сдачи крови по вашему типу крови
-                </h3>
-                <div className={styles.eventInfo}>
-                  <p className={styles.eventInfoItem}>Название больницы:</p>
-                  <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
-                  <p className={styles.eventInfoItem}>Дата публикации:</p>
-                  <p className={styles.eventInfoItem}>Приоритет:</p>
-                </div>
-                {event?.map((el) =>
-                  el.id === user.id ? (
-                    <div className={styles.eventBlock}>
-                      <p>{el?.Hospital?.headOfDep}</p>
-                      <p>{el?.bloodQuantity}</p>
-                      <p>{el?.eventDate}</p>
-                      <p>{el?.priority}</p>
 
-                      <Link
-                        type="button"
-                        to=""
-                        className="btn btn-success"
-                      >
-                        Вы уже подписаный
-                      </Link>
-                    </div>
-                  ) : (
-                    <div className={styles.eventBlock}>
-                      <p>{el?.Hospital?.headOfDep}</p>
-                      <p>{el?.bloodQuantity}</p>
-                      <p>{el?.eventDate}</p>
-                      <p>{el?.priority}</p>
+            {
+              event?.length === 0 ? null :
+                <>
+                  <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
+                  <div className={styles.eventInfo}>
+                    <p className={styles.eventInfoItem}>Название больницы:</p>
+                    <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
+                    <p className={styles.eventInfoItem}>Дата публикации:</p>
+                    <p className={styles.eventInfoItem}>Приоритет:</p>
+                  </div>
+                  {
+                    event?.map(el => (
+                      <div className={styles.eventBlock}>
+                        <p>{el?.Hospital?.headOfDep}</p>
+                        <p>{el?.bloodQuantity}</p>
+                        <p>{el?.eventDate}</p>
+                        <p>{el?.priority}</p>
+                        <Link to={`/user/event/${el.id}`}>
+                          <button type="button" className="btn btn-info">Подробнее</button>
+                        </Link>
+                      </div>
+                    ))
+                  }
+                </>
+            }
 
-                      <button
-                        type="button"
-                        onClick={() => dispatch(subscribeUser(el.id))}
-                        className="btn btn-success"
-                      >
-                        Стать донором
-                      </button>
-                    </div>
-                  )
-                )}
-              </>
-            )}
             <Slider />
             <h3>Статистика</h3>
             <p className={styles.eventLeftText}>
