@@ -71,6 +71,8 @@ async function getUserAllArchiveEvents(req, res) {
 }
 
 async function subscribeUser(req, res) {
+  console.log(req.body)
+  console.log(req.params.id)
   try {
     const eventId = req.params.id;
     const { userId } = req.body;
