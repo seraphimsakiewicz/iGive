@@ -13,9 +13,11 @@ async function getSessionHospital(req, res) {
     const currSessionHospital = await Hospital.findOne({
       where: { id },
       raw: true,
+      attributes: { exclude: ['password'] },
     });
     res.json({ ...currSessionHospital, role: 'hospital' });
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -75,7 +77,6 @@ async function addDonationFromEvent(req, res) {
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
-
     const donationData = req.body;
     await Donation.bulkCreate(
       donationData.map((el) => ({ ...el, eventId: id }))
@@ -85,7 +86,6 @@ async function addDonationFromEvent(req, res) {
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
       where: { id },
-
       attributes: ['bloodTypeId', 'eventDate'],
       raw: true,
     });
