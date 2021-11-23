@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_HOSPITAL, SET_HOSPITAL } from '../types/hospitalTypes';
+import { DELETE_HOSPITAL, EDIT_HOSPITAL, SET_HOSPITAL } from '../types/hospitalTypes';
 
 export const setHospital = (user) => ({
   type: SET_HOSPITAL,
@@ -57,3 +57,26 @@ export const hospitalOut = () => async (dispatch) => {
     dispatch(deleteHospital());
   }
 };
+
+
+export const editHospitalProfile = (data) => ({
+  type: EDIT_HOSPITAL,
+  payload: data,
+})
+
+export const editHospitalProfileFromServer = (headOfDep, about) => async (dispatch) => {
+  console.log(headOfDep, about);
+  const response = await fetch('/hospital/profile/data', {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      headOfDep, about
+    })
+  })
+
+  const data = await response.json();
+  console.log('!!!!!!', data);
+  if (response.ok) {
+    dispatch(editHospitalProfile(data))
+  }
+}

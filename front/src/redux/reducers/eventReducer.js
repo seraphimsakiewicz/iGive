@@ -5,7 +5,6 @@ const eventReducer = (state = [], action) => {
   switch (type) {
     case SET_EVENTS:
       return payload;
-
     case ADD_EVENT:
       return [...state, payload];
     default:

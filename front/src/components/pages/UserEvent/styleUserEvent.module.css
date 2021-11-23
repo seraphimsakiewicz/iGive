@@ -1,0 +1,15 @@
+.eventUser{
+  padding: 50px 0 50px 0;
+}
+.eventUserCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid red;
+}
+.eventInfo{
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

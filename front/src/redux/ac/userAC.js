@@ -1,4 +1,4 @@
-import { SET_USER, DELETE_USER } from '../types/userTypes';
+import { SET_USER, DELETE_USER, EDIT_USER } from '../types/userTypes';
 import axios from 'axios';
 
 export const setUser = (user) => ({
@@ -32,6 +32,7 @@ export const regUser = (payload, navigate) => async (dispatch) => {
 };
 
 export const userIn = (payload, navigate) => async (dispatch) => {
+  console.log(payload);
   const response = await axios.post('/login/user', payload);
   if (response.status === 200) {
     const user = await response.data;
@@ -56,3 +57,25 @@ export const oneUserFromServer = () => async (dispatch) => {
     dispatch(setUser(oneUser));
   }
 };
+
+export const editUserProfile = (data) => ({
+  type: EDIT_USER,
+  payload: data,
+})
+
+export const editUserProfileFromServer = (city, street, building, phoneNumber) => async (dispatch) => {
+  console.log(city, street, building, phoneNumber);
+  const response = await fetch('/user/profile/data', {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      city, street, building, phoneNumber
+    })
+
+  })
+  const data = await response.json();
+  console.log('!!!!!!', data);
+  if (response.ok) {
+    dispatch(editUserProfile(data))
+  }
+}

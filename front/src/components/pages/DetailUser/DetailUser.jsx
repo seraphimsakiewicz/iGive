@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './styleDetailUser.module.css';
@@ -21,7 +20,7 @@ function DetailUser() {
             {
               event?.length === 0 ? null :
                 <>
-                  <h3 className={styles.eventTitle}>Места для сдачи крови по вашему типу крови</h3>
+                  <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
                   <div className={styles.eventInfo}>
                     <p className={styles.eventInfoItem}>Название больницы:</p>
                     <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
@@ -35,8 +34,8 @@ function DetailUser() {
                         <p>{el?.bloodQuantity}</p>
                         <p>{el?.eventDate}</p>
                         <p>{el?.priority}</p>
-                        <Link to={`/user/event/${el?.id}`}>
-                          <button type="button" className="btn btn-success">Стать донором</button>
+                        <Link to={`/user/event/${el.id}`}>
+                          <button type="button" className="btn btn-info">Подробнее</button>
                         </Link>
                       </div>
                     ))
