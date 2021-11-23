@@ -31,14 +31,14 @@ function DetailUser() {
                   <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
                   <div className={styles.eventInfo}>
                     <p className={styles.eventInfoItem}>Название больницы:</p>
-                    <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
+                    <p className={styles.eventInfoItem}>Кол-во крови которое требуется:</p>
                     <p className={styles.eventInfoItem}>Дата публикации:</p>
                     <p className={styles.eventInfoItem}>Приоритет:</p>
                   </div>
                   {
                     event?.map(el => (
                       <div className={styles.eventBlock}>
-                        <p>{el?.Hospital?.headOfDep}</p>
+                        <p>{el?.Hospital?.title}</p>
                         <p>{el?.bloodQuantity}</p>
                         <p>{el?.eventDate}</p>
                         <p>{el?.priority}</p>

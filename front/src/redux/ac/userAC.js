@@ -1,7 +1,5 @@
-
-import { SET_USER, DELETE_USER, EDIT_USER } from '../types/userTypes';
-import axios from 'axios';
-
+import { SET_USER, DELETE_USER, EDIT_USER } from "../types/userTypes";
+import axios from "axios";
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -33,7 +31,6 @@ export const regUser = (payload, navigate) => async (dispatch) => {
 };
 
 export const userIn = (payload, navigate) => async (dispatch) => {
-
   const response = await axios.post("/login/user", payload);
 
   if (response.status === 200) {
@@ -63,29 +60,33 @@ export const oneUserFromServer = () => async (dispatch) => {
 export const editUserProfile = (data) => ({
   type: EDIT_USER,
   payload: data,
-})
+});
 
-export const editUserProfileFromServer = (city, street, building, phoneNumber) => async (dispatch) => {
-  console.log(city, street, building, phoneNumber);
-  const response = await fetch('/user/profile/data', {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      city, street, building, phoneNumber
-    })
-
-  })
-  const data = await response.json();
-  if (response.ok) {
-    dispatch(editUserProfile(data))
-  }
-}
+export const editUserProfileFromServer =
+  (city, street, building, phoneNumber) => async (dispatch) => {
+    console.log(city, street, building, phoneNumber);
+    const response = await fetch("/user/profile/data", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        city,
+        street,
+        building,
+        phoneNumber,
+      }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      dispatch(editUserProfile(data));
+    }
+  };
 
 export const subscribeUser = (eventId) => async (dispatch, getState) => {
+
   const user = getState().user;
   const userId = user.id;
-  await axios.post(`user/events/${eventId}/subscribe`, {userId});
+  await axios.post(`/user/events/${eventId}/subscribe`, { userId });
 
   dispatch({ type: SET_USER, payload: user });
-};
 
+};
