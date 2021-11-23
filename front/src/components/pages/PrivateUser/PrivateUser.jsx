@@ -8,7 +8,6 @@ import { oneUserFromServer } from '../../../redux/ac/userAC';
 
 function PrivateUser() {
   const { user } = useSelector((state) => state);
-  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(oneUserFromServer());
@@ -16,12 +15,14 @@ function PrivateUser() {
 
   return (
     <div className={styles.mainPrivateUser}>
-      <div className='container'>
+      <div className="container">
         <div className={styles.privateWrapper}>
           <div className={styles.userCard}>
-
-          <img className={styles.privateImg} src="https://lh3.googleusercontent.com/proxy/KJtQthlUFkcwxiXYvE-RM9LbrK9Mn1byHnMX0iYbslIcAhY3GLWTGtuIR_tfogLIAiIzYPwJ7YM8TKHP7RRQjtllAp97U_wDFUyqa5Ib0QRwtNdiKq02s_nsCZuemntXxWM8qe0" alt="" />
-
+            <img
+              className={styles.privateImg}
+              src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+              alt="profilePicture"
+            />
 
             <button className={styles.privateImgBtn}>Сменить фото</button>
           </div>
@@ -54,7 +55,9 @@ function PrivateUser() {
               <p>{user?.bloodTypeId}</p>
             </div>
             <div className={styles.userTextBlockList}>
-              <p className={styles.userTextBlockItem}>Сколько сдано всего крови:</p>
+              <p className={styles.userTextBlockItem}>
+                Сколько сдано всего крови:
+              </p>
               <p>{user?.totalDonation}</p>
             </div>
             <div className={styles.userTextBlockList}>

@@ -32,6 +32,7 @@ function DetailUser() {
               event?.length === 0 ? null :
                 <>
                   <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
+
                   <div>
                     <Tabs>
                       <TabList>
@@ -48,7 +49,7 @@ function DetailUser() {
                         {
                           event?.map(el => (
                             <div className={styles.eventBlock}>
-                              <p>{el?.Hospital?.headOfDep}</p>
+                              <p>{el?.Hospital?.title}</p>
                               <p>{el?.bloodQuantity}</p>
                               <p>{el?.eventDate}</p>
                               <p>{el?.priority}</p>
@@ -64,6 +65,7 @@ function DetailUser() {
                       </TabPanel>
                     </Tabs>
                   </div>
+
                 </>
             }
             <Slider />

@@ -1,18 +1,17 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import styles from './styleUserEvent.module.css';
-import { useDispatch } from 'react-redux'
-import { takeAddressUserAndHospital } from '../../../redux/ac/eventAC';
+import React from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import styles from "./styleUserEvent.module.css";
+import { useDispatch } from "react-redux";
+// import { takeAddressUserAndHospital } from "../../../redux/ac/eventAC";
+import { subscribeUser } from "../../../redux/ac/userAC";
 
 function UserEvent() {
   const { id } = useParams();
-  const dispatch = useDispatch()
-  const { event } = useSelector(state => state);
-  const { user } = useSelector(state => state);
-  const currEvent = event.find(el => el.id === +id);
-  console.log(currEvent);
-  console.log(user);
+  const dispatch = useDispatch();
+  const { event } = useSelector((state) => state);
+  // const { user } = useSelector((state) => state);
+  const currEvent = event.find((el) => el.id === +id);
 
   return (
     <div className={styles.eventUser}>
@@ -27,16 +26,40 @@ function UserEvent() {
           </div>
           <div className={styles.eventUserCard}>
             <p>{currEvent.Hospital?.title}</p>
-            <p>{currEvent.Hospital?.city}, {currEvent.Hospital?.street}, {currEvent.Hospital?.building}</p>
+            <p>
+              {currEvent.Hospital?.city}, {currEvent.Hospital?.street},{" "}
+              {currEvent.Hospital?.building}
+            </p>
             <p>{currEvent.Hospital?.phoneNumber}</p>
             <p>{currEvent.Hospital?.webSite}</p>
-            <button type="button" onClick={(e) => dispatch(takeAddressUserAndHospital(currEvent.Hospital.city, currEvent.Hospital.street, currEvent.Hospital.building))}  className="btn btn-success">Проложить путь</button>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={() => dispatch(subscribeUser(id))}
+            >
+              Подписаться
+            </button>
+            {/* <button
+              type="button"
+              onClick={() =>
+                dispatch(
+                  takeAddressUserAndHospital(
+                    currEvent.Hospital.city,
+                    currEvent.Hospital.street,
+                    currEvent.Hospital.building
+                  )
+                )
+              }
+              className="btn btn-success"
+            >
+              Проложить путь
+            </button> */}
           </div>
           Описание:
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default UserEvent
+export default UserEvent;

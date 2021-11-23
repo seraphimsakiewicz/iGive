@@ -77,7 +77,18 @@ async function addDonationFromEvent(req, res) {
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
-    const donationData = req.body;
+    const donationDataFromFront = req.body; // quantity, userId,
+    const donationData = donationDataFromFront.filter(
+      (el) => el.bloodQuantity > 0
+    );
+    await UserEvent.update(
+      { donated: true },
+      {
+        where: {
+          attributes: donationData.map((item) => item.userId),
+        },
+      }
+    );
     await Donation.bulkCreate(
       donationData.map((el) => ({ ...el, eventId: id }))
     );
@@ -175,6 +186,20 @@ async function changeHospitalData(req, res) {
   }
 }
 
+async function getHospitalDonors(req, res) {
+  try {
+    const { id } = req.session.hospital;
+    // const id = '1';
+    const hospitalDonors = await User.findAll({
+      include: { model: Event, where: { hospitalId: id } },
+      attributes: { exclude: ['password'] },
+    });
+    res.json(hospitalDonors);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionHospital,
   logoutHospital,
@@ -187,4 +212,5 @@ module.exports = {
   closeEvent,
   getStorageData,
   changeHospitalData,
+  getHospitalDonors,
 };

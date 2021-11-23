@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
+
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(
