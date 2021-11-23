@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { allEventFronServer } from '../../../redux/ac/eventAC';
 import { allhospitalMyDonorFromServer } from '../../../redux/ac/hospitalMyDonorAC';
 import styles from './style.module.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 function Hospital() {
   const { event } = useSelector((state) => state);
@@ -54,21 +56,37 @@ function Hospital() {
           </Link>
         </div>
       </div>
-      <div className="hospitalTotalBlood">
+      <Tabs>
+        <TabList>
+          <Tab>Наши доноры</Tab>
+          <Tab>Сколько осталось крови</Tab>
+          <Tab>Архивные события</Tab>
+        </TabList>
+        <TabPanel>
+          <div className="hospitalMyUser">
+            <ul className="list-group">
 
-      </div>
-      <div className="hospitalMyUser">
-        <ul className="list-group">
-
-          <h3>Наши доноры:</h3>
-          {
-            !hospitalMyDonor ? hospitalMyDonor?.map((el, index) => (
-              <li className="list-group-item">{index + 1}&nbsp;{el.name}&nbsp;{el.lastName}</li>
-            ))
-              : 'Доноров нет'
-          }
-        </ul>
-      </div>
+              <h3>Наши доноры:</h3>
+              {
+                !hospitalMyDonor ? hospitalMyDonor?.map((el, index) => (
+                  <li className="list-group-item">{index + 1}&nbsp;{el.name}&nbsp;{el.lastName}</li>
+                ))
+                  : 'Доноров нет'
+              }
+            </ul>
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="hospitalTotalBlood">
+            Вся кровь
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="hospitalArchivedEvents">
+            Архивные события
+          </div>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }
