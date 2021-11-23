@@ -1,4 +1,4 @@
-import { ADD_EVENT, SET_EVENTS } from "../types/eventTypes";
+import { ADD_EVENT, SET_EVENTS } from '../types/eventTypes';
 
 const eventReducer = (state = [], action) => {
   const { type, payload } = action;

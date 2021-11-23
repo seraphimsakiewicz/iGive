@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './general.css';
@@ -48,6 +49,25 @@ function App() {
             </Routes>
             <Footer />
           </>)}
+
+
+        {/* <Route
+          path="/user/:role"
+          element={
+            <UserRoute>
+              <User />
+            </UserRoute>
+          }
+        />
+        <Route
+          path="/hospital/:role"
+          element={
+            <HospitalRoute>
+              <Hospital />
+            </HospitalRoute>
+          }
+        /> */}
+    
     </>
   )
 }

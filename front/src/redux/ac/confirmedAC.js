@@ -2,17 +2,18 @@ import {
   SET_CONFIRMED,
   COLLECT_DONORS,
   UPDATE_DONOR,
-} from "../types/confirmedTypes";
+} from '../types/confirmedTypes';
 
-import confirmed from "../data";
+import axios from "axios";
 
-export const getConfirmed = () => async (dispatch) => {
-  // const response = await axios.get("/confirmed/");
+export const getConfirmed = (id) => async (dispatch) => {
+  console.log('getConfirmed')
+  const response = await axios.get(`/hospital/events/${id}/users`);
 
-  // if (response.status === 200) {
-  //   const confirmedList = response.data;
-  dispatch(setConfirmed(confirmed));
-  // }
+  if (response.status === 200) {
+    const confirmedList = await response.data;
+    dispatch(setConfirmed(confirmedList));
+  }
 };
 
 export const setConfirmed = (confirmedList) => ({
@@ -26,7 +27,7 @@ export const updateDonor = (id, bloodQuantity) => ({
 });
 
 export const collectDonors = () => async (dispatch, getState) => {
-  //place id in paramter then post to 
+  //place id in paramter then post to
   const confirmedList = getState().confirmedList;
 
   //pretty much what server will do---------->

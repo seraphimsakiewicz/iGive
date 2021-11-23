@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./style.module.css";
+import React from 'react';
+import styles from './style.module.css';
 
 export default function ConfirmModal({ toggleModal }) {
   const handleEnd = () => {};

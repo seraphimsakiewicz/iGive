@@ -1,4 +1,6 @@
+
 import { ADD_EVENT, SET_EVENTS, TAKE_ADDRESS_USER_AND_HOSPITAL } from "../types/eventTypes";
+
 
 export const addNewEvent = (
   bloodTypeId,
@@ -17,9 +19,9 @@ export const addNewEvent = (
 
 export const addNewEventFromServer =
   (bloodTypeId, bloodQuantity, eventDate, priority) => async (dispatch) => {
-    const response = await fetch("/hospital/events/new", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('/hospital/events/new', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         bloodTypeId,
         bloodQuantity,
@@ -39,13 +41,13 @@ export const setEvents = (array) => ({
 });
 
 export const allEventFronServer = () => async (dispatch) => {
-  const response = await fetch("/hospital/events");
+  const response = await fetch('/hospital/events');
   const allEvents = await response.json();
   dispatch(setEvents(allEvents));
 };
 
 export const allEventUserFromServer = () => async (dispatch) => {
-  const response = await fetch("/user/events");
+  const response = await fetch('/user/events');
   const allEvents = await response.json();
   dispatch(setEvents(allEvents));
 };
