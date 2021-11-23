@@ -49,25 +49,6 @@ function App() {
             </Routes>
             <Footer />
           </>)}
-
-
-        {/* <Route
-          path="/user/:role"
-          element={
-            <UserRoute>
-              <User />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/hospital/:role"
-          element={
-            <HospitalRoute>
-              <Hospital />
-            </HospitalRoute>
-          }
-        /> */}
-    
     </>
   )
 }
