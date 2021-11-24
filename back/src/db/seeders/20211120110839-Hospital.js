@@ -1,48 +1,10 @@
-'use strict';
+const bcrypt = require('bcryptjs');
+
+('use strict');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert(
-      'Hospitals',
-      [
-        {
-          email: 'hospital1@mail.ru',
-          password: '123',
-          inn: 278136,
-          headOfDep: 'head',
-          phoneNumber: '7634871',
-          city: 'City',
-          street: 'Street',
-          building: '123',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          email: 'hospital2@mail.ru',
-          password: '123',
-          inn: 849578,
-          headOfDep: 'head',
-          phoneNumber: '7634871',
-          city: 'City',
-          street: 'Street',
-          building: '123',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          email: 'hospital3@mail.ru',
-          password: '123',
-          inn: 4753949,
-          headOfDep: 'head',
-          phoneNumber: '7634871',
-          city: 'City',
-          street: 'Street',
-          building: '123',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      {}
-    );
+    const hospitals = await createHospitals();
+    await queryInterface.bulkInsert('Hospitals', [...hospitals], {});
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -51,4 +13,25 @@ module.exports = {
       truncate: true,
     });
   },
+};
+
+const createHospitals = async () => {
+  const hospitalsArr = [];
+  for (let i = 1; i < 9; i++) {
+    hospitalsArr.push({
+      email: `hospital${i}@mail.ru`,
+      password: await bcrypt.hash('123', 5),
+      inn: `${i}${i}${i}${i}${i}${i}`,
+      headOfDep: `HeadOfDep${i}`,
+      phoneNumber: `${i}${i}${i}${i}${i}${i}`,
+      city: `City${i}`,
+      street: `Street${i}`,
+      building: `Building${i}`,
+      webSite: 'https://www.google.ru',
+      title: `Hospital${i}`,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
+  return hospitalsArr;
 };

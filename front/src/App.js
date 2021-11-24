@@ -18,6 +18,7 @@ import EditUser from "./components/pages/EditUser/EditUser";
 import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
+// import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -48,6 +49,7 @@ function App() {
             <Route path="/hospital/edit" element={<EditHospital />} />
             <Route path="/user/event/:id" element={<UserEvent />} />
             <Route path="/hospital/event/:id" element={<ConfirmedForm />} />
+            {/* <Route path="/test" element={<ApiTestComp />} /> */}
           </Routes>
           <Footer />
         </>
