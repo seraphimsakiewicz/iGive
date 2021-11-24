@@ -8,7 +8,7 @@ export const allhospitalMyDonor = (array) => ({
 })
 
 export const allhospitalMyDonorFromServer = () => async (dispatch) => {
-  const response = await fetch('hospiatl/donors');
+  const response = await fetch('/hospital/donors');
   const dataFromServer = await response.json();
   dispatch(allhospitalMyDonor(dataFromServer));
 }

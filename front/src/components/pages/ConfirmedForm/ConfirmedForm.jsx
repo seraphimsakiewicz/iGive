@@ -29,5 +29,4 @@ export default function ConfirmedForm() {
       {modal && <ConfirmModal toggleModal={toggleModal} />}
     </div>
   );
-}
-
+      }

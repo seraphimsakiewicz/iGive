@@ -13,6 +13,9 @@ import CreateEvent from "./components/pages/CreateEvent/CreateEvent";
 import PrivateUser from "./components/pages/PrivateUser/PrivateUser";
 import PrivateHospital from "./components/pages/PrivateHospital/PrivateHospital";
 import Logout from "./components/Routes+LogOut/LogOut";
+import { UserRoute } from "./components/Routes+LogOut/UserRoute";
+import { HospitalRoute } from "./components/Routes+LogOut/HospitalRoute";
+
 import Footer from "./components/Footer/Footer";
 import EditUser from "./components/pages/EditUser/EditUser";
 import EditHospital from "./components/pages/EditHospital/EditHospital";
@@ -34,44 +37,116 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/login/:role" element={<Login />} />
-            <Route path="/user" element={<DetailUser />} />
-            <Route path="/user/:id" element={<DetailUser />} />
-            <Route path="/user/event" element={<UserEvent />} />
-            <Route path="/user/signup" element={<UserRegister />} />
-            <Route path="/hospital" element={<Hospital />} />
             <Route path="/hospital/signup" element={<HospitalRegister />} />
-            <Route path="/hospital/event" element={<CreateEvent />} />
-            <Route path="/private/user" element={<PrivateUser />} />
-            <Route path="/private/hospital" element={<PrivateHospital />} />
+            <Route path="/user/signup" element={<UserRegister />} />
+            <Route path="/login/:role" element={<Login />} />
             <Route path="/logout/:role" element={<Logout />} />
-            <Route path="/user/edit" element={<EditUser />} />
-            <Route path="/hospital/edit" element={<EditHospital />} />
-            <Route path="/user/event/:id" element={<UserEvent />} />
-            <Route path="/hospital/event/:id" element={<ConfirmedForm />} />
             {/* <Route path="/test" element={<ApiTestComp />} /> */}
+
+            <Route
+              path="/user/event/:id"
+              element={
+                <UserRoute>
+                  <UserEvent />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/user/edit"
+              element={
+                <UserRoute>
+                  <EditUser />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/private/user"
+              element={
+                <UserRoute>
+                  <PrivateUser />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/user/event"
+              element={
+                <UserRoute>
+                  <UserEvent />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/user"
+              element={
+                <UserRoute>
+                  <DetailUser />
+                </UserRoute>
+              }
+            />
+
+            <Route
+              path="/hospital/edit"
+              element={
+                <HospitalRoute>
+                  <EditHospital />
+                </HospitalRoute>
+              }
+            />
+            <Route
+              path="/hospital/event/:id"
+              element={
+                <HospitalRoute>
+                  <ConfirmedForm />
+                </HospitalRoute>
+              }
+            />
+
+            <Route
+              path="/hospital/event"
+              element={
+                <HospitalRoute>
+                  <CreateEvent />
+                </HospitalRoute>
+              }
+            />
+
+            <Route
+              path="/private/hospital"
+              element={
+                <HospitalRoute>
+                  <PrivateHospital />
+                </HospitalRoute>
+              }
+            />
+
+            <Route
+              path="/hospital"
+              element={
+                <HospitalRoute>
+                  <Hospital />
+                </HospitalRoute>
+              }
+            />
           </Routes>
           <Footer />
         </>
       )}
 
-      {/* <Route
-          path="/user/:role"
-          element={
-            <UserRoute>
-              <User />
-            </UserRoute>
-          }
-        />
-        <Route
-          path="/hospital/:role"
-          element={
-            <HospitalRoute>
-              <Hospital />
-            </HospitalRoute>
-          }
-        /> */}
+      {/* <Route path="/hospital/edit" element={<EditHospital />} /> */}
+      {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
+      {/* <Route path="/hospital/event" element={<CreateEvent />} /> */}
+      {/* <Route path="/private/hospital" element={<PrivateHospital />} /> */}
+      {/* <Route path="/hospital" element={<Hospital />} /> */}
 
+      {/* <Route path="/user/event/:id" element={<UserEvent />} /> */}
+      {/* <Route path="/user/edit" element={<EditUser />} /> */}
+      {/* <Route path="/private/user" element={<PrivateUser />} /> */}
+      {/* <Route path="/user/event" element={<UserEvent />} /> */}
+      {/* <Route path="/user" element={<DetailUser />} /> */}
     </>
   );
 }

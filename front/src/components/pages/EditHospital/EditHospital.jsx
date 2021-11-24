@@ -4,7 +4,7 @@ import { editHospitalProfileFromServer } from '../../../redux/ac/hospitalAC';
 
 function EditHospital() {
   const { hospital } = useSelector(state => state);
-  const [inputHeadOfDep, setInputHeadOfDep] = useState(hospital.headOfDep);
+  const [inputHeadOfDep, setInputHeadOfDep] = useState(hospital?.headOfDep);
   const [inputDescription, setInputDescription] = useState('');
 
   const dispatch = useDispatch();
