@@ -138,6 +138,19 @@ async function getHospitalAddress(req, res) {
   }
 }
 
+async function getAllUserSubcribingEvent(req, res) {
+  try {
+    const { id } = req.session.user;
+    const allSubscribeEvent = await Event.findAll({
+      include: { model: User, where: { id }, attributes: ['id']},
+    });
+    res.json(allSubscribeEvent);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionUser,
   addUserData,
@@ -150,4 +163,5 @@ module.exports = {
   changeProfileData,
   changeProfileImage,
   getHospitalAddress,
+  getAllUserSubcribingEvent,
 };
