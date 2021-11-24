@@ -21,6 +21,7 @@ import EditUser from "./components/pages/EditUser/EditUser";
 import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
+import EditUserPhoto from "./components/pages/EditUser/EditUserPhoto";
 
 import MapPage from "./components/Google/MapPage";
 // import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
@@ -43,6 +44,12 @@ function App() {
             <Route path="/user/signup" element={<UserRegister />} />
             <Route path="/login/:role" element={<Login />} />
             <Route path="/logout/:role" element={<Logout />} />
+
+            <Route path="/user/edit" element={<EditUser />} />
+            <Route path="/user/edit/photo" element={<EditUserPhoto />} />
+            <Route path="/hospital/edit" element={<EditHospital />} />
+          
+
 
             <Route path="/map" element={<MapPage />} />
 
