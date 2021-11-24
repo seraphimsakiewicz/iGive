@@ -5,7 +5,7 @@
 .privateWrapper {
   margin-top: 50px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .userCard {
   display: flex;

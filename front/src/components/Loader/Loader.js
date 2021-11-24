@@ -4,12 +4,12 @@ import styles from './style.module.css';
 function Loader() {
   return (
     <>
-      <div class={styles.wrapper}>
+      <div className={styles.wrapper}>
         <span></span>
         <span></span>
         <span></span>
-        <span class={styles.shadow}></span>
-        <span class={styles.text}>Loading</span>
+        <span className={styles.shadow}></span>
+        <span className={styles.text}>Loading</span>
       </div>
       <svg xmlns='http://www.w3.org/2000/svg' version='1.1'>
         <defs>

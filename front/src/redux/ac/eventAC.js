@@ -43,7 +43,7 @@ export const setEvents = (array) => ({
   payload: array,
 });
 
-export const allEventFronServer = () => async (dispatch) => {
+export const allEventHospitalFromServer = () => async (dispatch) => {
   const response = await fetch("/hospital/events");
   const allEvents = await response.json();
   dispatch(setEvents(allEvents));
@@ -67,11 +67,13 @@ export const takeAddressUserAndHospital = (city, street, building) => (
   }
 );
 
+
+
 export const closeEvent = (id, navigate) => async (dispatch) => {
   const response = await axios.patch(`/hospital/events/${id}/status`);
   console.log(response);
   if (response.status === 200) {
-    dispatch(allEventFronServer);
+    dispatch(allEventHospitalFromServer);
     navigate("/hospital");
   }
 };

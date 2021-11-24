@@ -18,6 +18,7 @@ import EditUser from "./components/pages/EditUser/EditUser";
 import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
+import EditUserPhoto from "./components/pages/EditUser/EditUserPhoto";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -45,6 +46,7 @@ function App() {
             <Route path="/private/hospital" element={<PrivateHospital />} />
             <Route path="/logout/:role" element={<Logout />} />
             <Route path="/user/edit" element={<EditUser />} />
+            <Route path="/user/edit/photo" element={<EditUserPhoto />} />
             <Route path="/hospital/edit" element={<EditHospital />} />
             <Route path="/user/event/:id" element={<UserEvent />} />
             <Route path="/hospital/event/:id" element={<ConfirmedForm />} />

@@ -11,9 +11,9 @@ export default function ConfirmedList({ confirmedList }) {
   };
 
   return (
-    <div>
+    <div className="container">
       <h3>Confirm Donors:</h3>
-      <ul class="list-group">
+      <ul className="list-group">
         {confirmedList?.map(
           (confirmed) =>
             !confirmed?.status && (

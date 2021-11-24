@@ -8,9 +8,11 @@ import { oneUserFromServer } from '../../../redux/ac/userAC';
 
 function PrivateUser() {
   const { user } = useSelector((state) => state);
+  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(oneUserFromServer());
+
   }, [dispatch]);
 
   return (
@@ -20,11 +22,13 @@ function PrivateUser() {
           <div className={styles.userCard}>
             <img
               className={styles.privateImg}
-              src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+              src={`http://localhost:3001/uploads/${user.image}`}
               alt="profilePicture"
             />
+            <Link to={`/user/edit/photo`}>
+              <button  className={styles.privateImgBtn}>Сменить фото</button>
+            </Link>
 
-            <button className={styles.privateImgBtn}>Сменить фото</button>
           </div>
           <div className={styles.userTextWrapper}>
             <h3 className={styles.userTextTitle}>Общая информация</h3>
@@ -73,7 +77,7 @@ function PrivateUser() {
               <p>{user?.building}</p>
             </div>
             <Link to={`/user/edit`}>
-              <button class="btn btn-warning">Редактировать профиль</button>
+              <button className="btn btn-warning">Редактировать профиль</button>
             </Link>
           </div>
         </div>

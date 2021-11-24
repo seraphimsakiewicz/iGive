@@ -16,7 +16,7 @@ const Nav = () => {
                   <Link Link className={styles.logo} to={`/${user.role}`}>
                     iGive
                   </Link>
-                  <p className={styles.logo}>Здравстуйте, {user.name}</p>
+                  <p className={styles.greetings}>Здравстуйте, {user.name}</p>
                   <Link className={styles.logo} to={`/private/${user.role}`}>
                     Личный кабинет
                   </Link>
@@ -32,7 +32,7 @@ const Nav = () => {
                   <Link className={styles.logo} to={`/${hospital.role}`}>
                     iGive
                   </Link>
-                  <p className={styles.logo}>
+                  <p className={styles.greetings}>
                     Здравстуйте, {hospital.headOfDep}
                   </p>
                   <Link

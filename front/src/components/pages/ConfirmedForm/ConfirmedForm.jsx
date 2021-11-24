@@ -21,7 +21,7 @@ export default function ConfirmedForm() {
     setModal(!modal);
   };
   return (
-    <div>
+    <div className="container">
       {confirmedList && <ConfirmedList confirmedList={confirmedList} />}
       <button type="button" onClick={toggleModal}>
         End Collection
