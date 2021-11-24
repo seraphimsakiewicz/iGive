@@ -21,6 +21,7 @@
   "homepage": "https://github.com/seraphimsakiewicz/iGive#readme",
   "dependencies": {
     "concurrently": "^6.3.0",
+    "react-geocode": "^0.2.3",
     "react-tabs": "^3.2.3"
   }
 }

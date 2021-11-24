@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import styles from './style.module.css';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styles from "./style.module.css";
 const Nav = () => {
   const { user } = useSelector((state) => state);
   const { hospital } = useSelector((state) => state);
 
   return (
     <header className={styles.header}>
-      <div className='container'>
+      <div className="container">
         <div className={styles.headerWrapper}>
           {user || hospital ? (
             <>
@@ -25,7 +25,7 @@ const Nav = () => {
                   </Link>
                 </>
               ) : (
-                ''
+                ""
               )}
               {hospital ? (
                 <>
@@ -46,14 +46,17 @@ const Nav = () => {
                   </Link>
                 </>
               ) : (
-                ''
+                ""
               )}
             </>
           ) : (
-            <Link className={styles.logo} to='/'>
+            <Link className={styles.logo} to="/">
               iGive
             </Link>
           )}
+          <Link className={styles.logo} to="/map">
+            Map
+          </Link>
         </div>
       </div>
     </header>

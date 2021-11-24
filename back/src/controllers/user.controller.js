@@ -72,13 +72,12 @@ async function getUserAllArchiveEvents(req, res) {
 }
 
 async function subscribeUser(req, res) {
-  console.log('>>>>', req.body);
-  console.log('<<<<', req.params.id);
+
   try {
     const eventId = req.params.id;
     const { userId } = req.body;
-    await UserEvent.create({ userId, eventId });
-    res.sendStatus(200);
+    const subscriber = await UserEvent.create({ userId, eventId });
+    res.json(subscriber);
   } catch (error) {
     res.sendStatus(500);
   }
@@ -126,6 +125,19 @@ async function changeProfileImage(req, res) {
   }
 }
 
+async function getHospitalAddress(req, res) {
+  try {
+    const { id } = req.params;
+    const hospitalAddress = await Event.findByPk(id, {
+      include: Hospital,
+      where: { exclude: ['password'] },
+    });
+    res.json(hospitalAddress);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionUser,
   addUserData,
@@ -137,4 +149,5 @@ module.exports = {
   unsubscribeUser,
   changeProfileData,
   changeProfileImage,
+  getHospitalAddress,
 };
