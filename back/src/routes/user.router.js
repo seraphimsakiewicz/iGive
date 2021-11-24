@@ -11,10 +11,12 @@ const {
   changeProfileImage,
   unsubscribeUser,
   getHospitalAddress,
+  getAllUserSubcribingEvent,
 } = require('../controllers/user.controller');
 const { checkingUserSession } = require('../middleware/checkSession');
 
 userRouter.route('/').get(getSessionUser);
+userRouter.route('/myevents').get(getAllUserSubcribingEvent);
 userRouter.route('/profile').get(getSessionUser).post(addUserData);
 userRouter.route('/profile/data').patch(changeProfileData);
 userRouter.route('/profile/data/image').patch(changeProfileImage);
