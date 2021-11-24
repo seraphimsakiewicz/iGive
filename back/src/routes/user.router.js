@@ -10,6 +10,7 @@ const {
   changeProfileData,
   changeProfileImage,
   unsubscribeUser,
+  getHospitalAddress,
 } = require('../controllers/user.controller');
 const { checkingUserSession } = require('../middleware/checkSession');
 
@@ -20,6 +21,7 @@ userRouter.route('/profile/data/image').patch(changeProfileImage);
 userRouter.route('/events').get(showUserAllEvents);
 userRouter.route('/events/archive').get(getUserAllArchiveEvents);
 userRouter.route('/events/:id').get(showDetailEvent);
+userRouter.route('/events/:id/map').get(getHospitalAddress);
 userRouter
   .route('/events/:id/subscribe')
   .post(subscribeUser)
