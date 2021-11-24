@@ -21,7 +21,11 @@ import EditUser from "./components/pages/EditUser/EditUser";
 import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
+
 import MapPage from "./components/Google/MapPage";
+=======
+// import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
+
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -41,7 +45,11 @@ function App() {
             <Route path="/user/signup" element={<UserRegister />} />
             <Route path="/login/:role" element={<Login />} />
             <Route path="/logout/:role" element={<Logout />} />
+
             <Route path="/map" element={<MapPage />} />
+
+            {/* <Route path="/test" element={<ApiTestComp />} /> */}
+
 
             <Route
               path="/user/event/:id"
