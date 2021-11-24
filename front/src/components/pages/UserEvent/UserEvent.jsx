@@ -3,15 +3,13 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-// import { takeAddressUserAndHospital } from "../../../redux/ac/eventAC";
 import { subscribeUser } from "../../../redux/ac/userAC";
 
 function UserEvent() {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const { event } = useSelector((state) => state);
-  // const { user } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.eventUser}>
@@ -39,21 +37,13 @@ function UserEvent() {
             >
               Подписаться
             </button>
-            {/* <button
+            <button
               type="button"
-              onClick={() =>
-                dispatch(
-                  takeAddressUserAndHospital(
-                    currEvent.Hospital.city,
-                    currEvent.Hospital.street,
-                    currEvent.Hospital.building
-                  )
-                )
-              }
-              className="btn btn-success"
+              className="btn btn-danger"
+              onClick={() => dispatch(subscribeUser(id))}
             >
-              Проложить путь
-            </button> */}
+              Подписаться
+            </button>
           </div>
           Описание:
         </div>

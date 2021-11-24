@@ -87,6 +87,12 @@ export const subscribeUser = (eventId) => async (dispatch, getState) => {
   const userId = user.id;
   await axios.post(`/user/events/${eventId}/subscribe`, { userId });
 
-  dispatch({ type: SET_USER, payload: user });
+  dispatch({ payload: user });
 
 };
+
+
+// export const unSubscribeUser = (eventId) => async (dispatch, getState) => {
+//   const user = getState().user;
+//   const userId = user.id;
+// }
