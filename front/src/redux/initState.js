@@ -5,11 +5,12 @@ const initState = {
   hospital: null,
   confirmedList: [],
   bloodTypes: [],
-  hospitalMyDonor: []
+  hospitalMyDonor: [],
+  coordinates: {},
 };
 
 const getInitState = () => {
-  const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+  const stateFromLS = JSON.parse(window.localStorage.getItem("redux"));
   return stateFromLS ? stateFromLS : initState;
 };
 
