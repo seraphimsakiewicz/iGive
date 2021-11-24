@@ -118,6 +118,19 @@ async function changeProfileImage(req, res) {
   }
 }
 
+async function getHospitalAddress(req, res) {
+  try {
+    const { id } = req.params;
+    const hospitalAddress = await Event.findByPk(id, {
+      include: Hospital,
+      where: { exclude: ['password'] },
+    });
+    res.json(hospitalAddress);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 module.exports = {
   getSessionUser,
   addUserData,
@@ -129,4 +142,5 @@ module.exports = {
   unsubscribeUser,
   changeProfileData,
   changeProfileImage,
+  getHospitalAddress,
 };

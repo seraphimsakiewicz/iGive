@@ -23,9 +23,7 @@ import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
 
 import MapPage from "./components/Google/MapPage";
-=======
 // import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
-
 
 function App() {
   const [loader, setLoader] = useState(true);
