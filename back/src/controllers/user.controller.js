@@ -44,6 +44,7 @@ async function showUserAllEvents(req, res) {
     });
     res.json(allEventsForUser);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

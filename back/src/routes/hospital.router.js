@@ -11,11 +11,9 @@ const {
   closeEvent,
   getStorageData,
   changeHospitalData,
-  getHospitalDonors,
   changeProfileImage,
 } = require("../controllers/hospital.controller");
 const { showDetailEvent } = require("../controllers/user.controller");
-const { checkingHospitalSession } = require("../middleware/checkSession");
 
 hospitalRouter.route("/").get(getSessionHospital);
 hospitalRouter.route("/profile").get(getSessionHospital).post(addHospitalData);
@@ -28,7 +26,6 @@ hospitalRouter.route("/events/:id/status").patch(closeEvent);
 hospitalRouter.route("/events/:id/users").get(getAllSubscribeUsers);
 hospitalRouter.route("/events/:id/donation").post(addDonationFromEvent);
 hospitalRouter.route("/storage").get(getStorageData);
-hospitalRouter.route("/donors").get(getHospitalDonors);
 hospitalRouter.route("/logout").get(logoutHospital);
 hospitalRouter.route("/profile/data/image").patch(changeProfileImage);
 

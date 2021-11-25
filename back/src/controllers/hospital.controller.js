@@ -146,6 +146,7 @@ async function getAllArchiveEvents(req, res) {
     });
     res.json(allArchiveEvents);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -214,37 +215,6 @@ async function changeHospitalData(req, res) {
   }
 }
 
-async function getHospitalDonors(req, res) {
-  try {
-    // const { id } = req.session.hospital;
-    const id = "1";
-    // const hospitalEvents = await Event.findAll({
-    //   attributes: ['id'],
-    //   where: { hospitalId: id },
-    //   raw: true,
-    // });
-    // const arrayofEventsId = hospitalEvents.map((el) => el.id);
-    // console.log(arrayofEventsId);
-    const hospitalDonors = await UserEvent.findAll({
-      raw: true,
-      where: { donated: true },
-      include: [
-        { model: User, attributes: ["id"] },
-        { model: Event, attributes: ["id", "hospitalId"] },
-      ],
-    });
-    console.log(hospitalDonors);
-    // const hospitalDonors = await User.findAll({
-    // include: { model: Event, where: { donated: true } },
-    // });
-    // res.json(hospitalDonors);
-    res.sendStatus(200);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-}
-
 module.exports = {
   getSessionHospital,
   logoutHospital,
@@ -257,6 +227,5 @@ module.exports = {
   closeEvent,
   getStorageData,
   changeHospitalData,
-  getHospitalDonors,
   changeProfileImage,
 };
