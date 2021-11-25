@@ -64,7 +64,6 @@ export const editUserProfile = (data) => ({
 
 export const editUserProfileFromServer =
   (city, street, building, phoneNumber) => async (dispatch) => {
-    console.log(city, street, building, phoneNumber);
     const response = await fetch("/user/profile/data", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },

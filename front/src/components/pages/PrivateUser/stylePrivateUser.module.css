@@ -38,7 +38,7 @@
   font-size: 18px;
   font-weight: 300;
   color: white;
-  box-shadow: 0 16px 32px 0 rgba(0, 40, 120, 0.35);
+  box-shadow: 0 16px 32px 0 rgba(149, 169, 207, 0.35);
   transition: 0.5s;
 }
 .privateImgBtn:hover {
