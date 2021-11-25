@@ -1,6 +1,5 @@
 const {
   Hospital,
-  UserEvent,
   Event,
   UserEvent,
   BloodStorage,
@@ -15,7 +14,7 @@ async function getSessionHospital(req, res) {
     const currSessionHospital = await Hospital.findOne({
       where: { id },
       raw: true,
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
       include: { model: BloodStorage },
     });
     res.json({ ...currSessionHospital, role: "hospital" });
@@ -51,7 +50,7 @@ async function showHospitalAllEvents(req, res) {
       where: { hospitalId: id },
       include: {
         model: User,
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ["password"] },
       },
     });
     res.json(allEventsForHospital);
@@ -102,7 +101,7 @@ async function addDonationFromEvent(req, res) {
       where: { eventId: id },
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
-      attributes: ['bloodTypeId', 'eventDate'],
+      attributes: ["bloodTypeId", "eventDate"],
       where: { id },
       raw: true,
     });
@@ -149,7 +148,7 @@ async function getAllSubscribeUsers(req, res) {
     const { id } = req.params;
     const allSubscribeUsers = await User.findAll({
       include: { model: Event, where: { id } },
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
     });
     res.json(allSubscribeUsers);
   } catch (error) {
@@ -211,7 +210,7 @@ async function changeHospitalData(req, res) {
 async function getHospitalDonors(req, res) {
   try {
     // const { id } = req.session.hospital;
-    const id = '1';
+    const id = "1";
     // const hospitalEvents = await Event.findAll({
     //   attributes: ['id'],
     //   where: { hospitalId: id },
@@ -223,8 +222,8 @@ async function getHospitalDonors(req, res) {
       raw: true,
       where: { donated: true },
       include: [
-        { model: User, attributes: ['id'] },
-        { model: Event, attributes: ['id', 'hospitalId'] },
+        { model: User, attributes: ["id"] },
+        { model: Event, attributes: ["id", "hospitalId"] },
       ],
     });
     console.log(hospitalDonors);
