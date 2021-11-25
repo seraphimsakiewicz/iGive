@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
@@ -8,10 +8,12 @@ import { subscribeUser } from "../../../redux/ac/userAC";
 import Map from "../../Google/Map";
 
 function UserEvent() {
+  const [btnDisabled, setBtnDisabled] = useState(false);
   const { id } = useParams();
-  const dispatch = useDispatch();
   const { event } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     const address =
@@ -22,9 +24,11 @@ function UserEvent() {
       currEvent.Hospital.building +
       " " +
       currEvent.Hospital.city;
+      currEvent.Hospital.building;
     dispatch(getCoordinates(address));
   }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
+
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -48,6 +52,7 @@ function UserEvent() {
               type="button"
               className="btn btn-success"
               onClick={() => dispatch(subscribeUser(id))}
+              // disabled={true}
             >
               Подписаться
             </button>
