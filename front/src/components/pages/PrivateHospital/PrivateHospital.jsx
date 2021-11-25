@@ -20,11 +20,18 @@ function PrivateHospital() {
           <div className={styles.userCard}>
             <img
               className={styles.privateImg}
-              src="http://localhost:3000/default_photo/no-avatar.png"
+              src={
+                hospital.image
+                  ? `http://localhost:3001/uploads/${hospital.image}`
+                  : "http://localhost:3000/default_photo/no-avatar.png"
+              }
               alt="profilePic"
             />
-            <button className={styles.privateImgBtn}>Сменить фото</button>
+            <Link to={`/hospital/edit/photo`}>
+              <button className={styles.privateImgBtn}>Сменить фото</button>
+            </Link>
           </div>
+
           <div className={styles.userTextWrapper}>
             <h3 className={styles.userTextTitle}>Общая информация</h3>
             <div className={styles.userTextBlockList}>

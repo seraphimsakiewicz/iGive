@@ -75,7 +75,7 @@ async function addNewEvent(req, res) {
 }
 
 async function addDonationFromEvent(req, res) {
-  console.log(req.body)
+  console.log(req.body);
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
@@ -165,6 +165,23 @@ async function closeEvent(req, res) {
   }
 }
 
+async function changeProfileImage(req, res) {
+  try {
+    const { id } = req.session.hospital;
+    const file = req.files.file;
+    file.mv(
+      `${process.env.PWD}/public/uploads/${file.name}`,
+      async (err) => {}
+    );
+    await Hospital.update({ image: file.name }, { where: { id } });
+    let result = await Hospital.findOne({ where: { id } });
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+}
+
 async function getStorageData(req, res) {
   try {
     const { id } = req.session.hospital;
@@ -215,4 +232,5 @@ module.exports = {
   getStorageData,
   changeHospitalData,
   getHospitalDonors,
+  changeProfileImage,
 };
