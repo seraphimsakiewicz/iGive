@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-// import { takeAddressUserAndHospital } from "../../../redux/ac/eventAC";
+import { getCoordinates } from "../../../redux/ac/geocodeAC";
 import { subscribeUser } from "../../../redux/ac/userAC";
+import Map from "../../Google/Map";
 
 function UserEvent() {
+  const [btnDisabled, setBtnDisabled] = useState(false);
   const { id } = useParams();
-  const dispatch = useDispatch();
   const { event } = useSelector((state) => state);
-  // const { user } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const address =
+      currEvent.Hospital.title +
+      " " +
+      currEvent.Hospital.street +
+      " " +
+      currEvent.Hospital.building +
+      " " +
+      currEvent.Hospital.city;
+
+    dispatch(getCoordinates(address));
+  }, [dispatch, currEvent]);
+  const coordinates = useSelector((state) => state?.coordinates);
 
   return (
     <div className={styles.eventUser}>
@@ -36,26 +51,12 @@ function UserEvent() {
               type="button"
               className="btn btn-success"
               onClick={() => dispatch(subscribeUser(id))}
+              // disabled={true}
             >
               Подписаться
             </button>
-            {/* <button
-              type="button"
-              onClick={() =>
-                dispatch(
-                  takeAddressUserAndHospital(
-                    currEvent.Hospital.city,
-                    currEvent.Hospital.street,
-                    currEvent.Hospital.building
-                  )
-                )
-              }
-              className="btn btn-success"
-            >
-              Проложить путь
-            </button> */}
           </div>
-          Описание:
+          <Map eventData={currEvent} coordinates={coordinates} zoom={12} />
         </div>
       </div>
     </div>

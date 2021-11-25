@@ -12,7 +12,7 @@ export default function ConfirmedForm() {
 
   useEffect(() => {
     dispatch(getConfirmed(id));
-  }, []);
+  }, [dispatch,id]);
 
   const confirmedList = useSelector((state) => state?.confirmedList);
   const [modal, setModal] = useState(false);
@@ -21,7 +21,7 @@ export default function ConfirmedForm() {
     setModal(!modal);
   };
   return (
-    <div>
+    <div className="container">
       {confirmedList && <ConfirmedList confirmedList={confirmedList} />}
       <button type="button" onClick={toggleModal}>
         End Collection

@@ -32,3 +32,5 @@ export const getCoordinates = (address) => async (dispatch) => {
     }
   );
 };
+
+

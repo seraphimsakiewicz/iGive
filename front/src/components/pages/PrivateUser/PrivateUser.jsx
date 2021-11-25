@@ -1,13 +1,13 @@
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom'
-
-import React, { useEffect } from 'react';
-import styles from './stylePrivateUser.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { oneUserFromServer } from '../../../redux/ac/userAC';
+import React, { useEffect } from "react";
+import styles from "./stylePrivateUser.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { oneUserFromServer } from "../../../redux/ac/userAC";
 
 function PrivateUser() {
   const { user } = useSelector((state) => state);
+  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(oneUserFromServer());
@@ -20,11 +20,14 @@ function PrivateUser() {
           <div className={styles.userCard}>
             <img
               className={styles.privateImg}
-              src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+              src={
+                user.image ? `http://localhost:3001/uploads/${user.image}` : "http://localhost:3000/default_photo/no-avatar.png"
+              }
               alt="profilePicture"
             />
-
-            <button className={styles.privateImgBtn}>Сменить фото</button>
+            <Link to={`/user/edit/photo`}>
+              <button className={styles.privateImgBtn}>Сменить фото</button>
+            </Link>
           </div>
           <div className={styles.userTextWrapper}>
             <h3 className={styles.userTextTitle}>Общая информация</h3>
@@ -73,7 +76,7 @@ function PrivateUser() {
               <p>{user?.building}</p>
             </div>
             <Link to={`/user/edit`}>
-              <button class="btn btn-warning">Редактировать профиль</button>
+              <button className="btn btn-warning">Редактировать профиль</button>
             </Link>
           </div>
         </div>
