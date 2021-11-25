@@ -86,11 +86,10 @@ async function subscribeUser(req, res) {
 async function unsubscribeUser(req, res) {
   try {
     const eventId = req.params.id;
-    const { userId } = req.body;
-    await UserEvent.destroy({ where: { userId, eventId } });
+    const { id } = req.session.user;
+    await UserEvent.destroy({ where: { userId: id, eventId } });
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -142,7 +141,7 @@ async function getAllUserSubcribingEvent(req, res) {
   try {
     const { id } = req.session.user;
     const allSubscribeEvent = await Event.findAll({
-      include: { model: User, where: { id }, attributes: ['id']},
+      include: { model: User, where: { id }, attributes: ['id'] },
     });
     res.json(allSubscribeEvent);
   } catch (error) {

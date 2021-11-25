@@ -7,6 +7,7 @@ import { oneUserFromServer } from "../../../redux/ac/userAC";
 
 function PrivateUser() {
   const { user } = useSelector((state) => state);
+  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(oneUserFromServer());
@@ -20,7 +21,7 @@ function PrivateUser() {
             <img
               className={styles.privateImg}
               src={
-                user.image ? `http://localhost:3001/uploads/${user.image}` : "/"
+                user.image ? `http://localhost:3001/uploads/${user.image}` : "http://localhost:3000/default_photo/no-avatar.png"
               }
               alt="profilePicture"
             />
