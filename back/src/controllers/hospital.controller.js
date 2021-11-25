@@ -8,6 +8,22 @@ const {
   sequelize,
 } = require("../db/models");
 
+const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+
+const CLIENT_ID = "791671273658-515ku4j038jm2t1l612e7ncjg6ts5u9b.apps.googleusercontent.com";
+const CLEINT_SECRET = "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";
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = "1//04-bQ2AjlAneFCgYIARAAGAQSNwF-L9IrbX9cGDIVmVHX6XXtsLTtdfpouzH57KSfVhQRJr1Hm44pZMh2ywZ0SdxHOvyjEf_8NsY";
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLEINT_SECRET,
+  REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+
 async function getSessionHospital(req, res) {
   try {
     const { id } = req.session.hospital;
@@ -18,7 +34,6 @@ async function getSessionHospital(req, res) {
     });
     res.json({ ...currSessionHospital, role: "hospital" });
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -56,10 +71,41 @@ async function showHospitalAllEvents(req, res) {
   }
 }
 
+// async function sendMail(email) {
+//   try {
+//     const accessToken = await oAuth2Client.getAccessToken();
+//     const transport = nodemailer.createTransport({
+//       service: 'gmail',
+//       auth: {
+//         type: 'OAuth2',
+//         user: 'adambahaev122@mail.com',
+//         clientId: CLIENT_ID,
+//         clientSecret: CLEINT_SECRET,
+//         refreshToken: REFRESH_TOKEN,
+//         accessToken: accessToken,
+//       },
+//     });
+
+//     const mailOptions = {
+//       from: 'iGive <adambahaev122@mail.com>',
+//       to: email,
+//       subject: 'Сбор крови',
+//       html: '<div> <p style="font-size: 18px">Здравствуйте! Срочно нужна ваша кровь, можете перейти по ссылке.</p> <button style="padding: 15px; border-radius: 10px; border:none; background-color: blue"><a style="text-decoration:none; color: white; font-size: 18px" href="http://localhost:3000">Войти</a></button></div>'
+//     };
+
+//     const result = await transport.sendMail(mailOptions);
+//     return result;
+//   } catch (error) {
+//     return error;
+//   }
+// }
+
 async function addNewEvent(req, res) {
+
   try {
-    const { id } = req.session.hospital;
+    const { id, city } = req.session.hospital;
     const { bloodTypeId, bloodQuantity, eventDate, priority } = req.body;
+
     await Event.create({
       bloodTypeId,
       bloodQuantity,
@@ -67,15 +113,20 @@ async function addNewEvent(req, res) {
       priority,
       hospitalId: id,
     });
+    // const userEmails = await User.findAll({ raw: true, where: { bloodTypeId, city }, attributes: ['email'] })
+    // const emailsArr = userEmails.map(el => el.email)
+    // emailsArr.forEach(el => {
+    //   sendMail(el)
+    //     .then((result) => console.log('Email sent...', result))
+    //     .catch((error) => console.log(error.message));
+    // })
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
 
 async function addDonationFromEvent(req, res) {
-  console.log(req.body)
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;

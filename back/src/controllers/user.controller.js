@@ -35,13 +35,18 @@ async function addUserData(req, res) {
   }
 }
 
+
+
 async function showUserAllEvents(req, res) {
+  console.log('>>>>>', req.session.user)
+  ///////
   try {
-    const { bloodTypeId, city } = req.session.user;
+    const { bloodTypeId, city, email } = req.session.user;
     const allEventsForUser = await Event.findAll({
       where: { bloodTypeId },
       include: { model: Hospital, where: { city } },
     });
+
     res.json(allEventsForUser);
   } catch (error) {
     res.sendStatus(500);

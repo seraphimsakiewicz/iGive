@@ -29,7 +29,7 @@ function Hospital() {
   return (
     <div className="container">
       <div className={styles.event}>
-        {activeEventsLength?.length >= 1 ? (
+        {event ? (
           <div className={styles.eventInfo}>
             <p>Тип крови:</p>
             <p>Кол-во крови:</p>

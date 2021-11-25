@@ -39,6 +39,7 @@ async function loginHospital(req, res) {
         id: currHospital.id,
         email: currHospital.email,
         inn: currHospital.inn,
+        city: currHospital.city,
         headOfDep: currHospital.headOfDep,
         role: 'hospital',
       };
