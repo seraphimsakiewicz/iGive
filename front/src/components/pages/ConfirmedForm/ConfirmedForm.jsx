@@ -12,7 +12,7 @@ export default function ConfirmedForm() {
 
   useEffect(() => {
     dispatch(getConfirmed(id));
-  }, []);
+  }, [dispatch,id]);
 
   const confirmedList = useSelector((state) => state?.confirmedList);
   const [modal, setModal] = useState(false);

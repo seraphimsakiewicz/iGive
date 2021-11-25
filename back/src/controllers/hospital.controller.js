@@ -1,11 +1,12 @@
 const {
   Hospital,
   Event,
+  UserEvent,
   BloodStorage,
   Donation,
   User,
   sequelize,
-} = require('../db/models');
+} = require("../db/models");
 
 async function getSessionHospital(req, res) {
   try {
@@ -13,9 +14,9 @@ async function getSessionHospital(req, res) {
     const currSessionHospital = await Hospital.findOne({
       where: { id },
       raw: true,
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
     });
-    res.json({ ...currSessionHospital, role: 'hospital' });
+    res.json({ ...currSessionHospital, role: "hospital" });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -25,7 +26,7 @@ async function getSessionHospital(req, res) {
 async function logoutHospital(req, res) {
   try {
     req.session.destroy();
-    res.clearCookie('sid').end();
+    res.clearCookie("sid").end();
   } catch (error) {
     res.sendStatus(500);
   }
@@ -74,6 +75,7 @@ async function addNewEvent(req, res) {
 }
 
 async function addDonationFromEvent(req, res) {
+  console.log(req.body)
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
@@ -92,12 +94,12 @@ async function addDonationFromEvent(req, res) {
     await Donation.bulkCreate(
       donationData.map((el) => ({ ...el, eventId: id }))
     );
-    const sumBloodDonation = await Donation.sum('bloodQuantity', {
+    const sumBloodDonation = await Donation.sum("bloodQuantity", {
       where: { eventId: id },
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
       where: { id },
-      attributes: ['bloodTypeId', 'eventDate'],
+      attributes: ["bloodTypeId", "eventDate"],
       raw: true,
     });
     await BloodStorage.update(
@@ -192,7 +194,7 @@ async function getHospitalDonors(req, res) {
     // const id = '1';
     const hospitalDonors = await User.findAll({
       include: { model: Event, where: { hospitalId: id } },
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
     });
     res.json(hospitalDonors);
   } catch (error) {

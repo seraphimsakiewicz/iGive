@@ -21,7 +21,7 @@ function DetailUser() {
 
   useEffect(() => {
     dispatch(allEventUserFromServer());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.event}>
