@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-import { subscribeUser } from "../../../redux/ac/userAC";
+import { subscribeUser, unSubscribeUser } from "../../../redux/ac/userAC";
 
 function UserEvent() {
   const { id } = useParams();
   const { event } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
   const dispatch = useDispatch();
+
 
   return (
     <div className={styles.eventUser}>
@@ -40,9 +41,9 @@ function UserEvent() {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={() => dispatch(subscribeUser(id))}
+              onClick={() => dispatch(unSubscribeUser(id))}
             >
-              Подписаться
+              Отписаться
             </button>
           </div>
           Описание:

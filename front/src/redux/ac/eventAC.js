@@ -55,8 +55,23 @@ export const allEventUserFromServer = () => async (dispatch) => {
   dispatch(setEvents(allEvents));
 };
 
+
+export const myEventUser = (array) => ({
+  type: SET_EVENTS,
+  payload: array,
+});
+
+
+export const myEventUserFromServer = () => async (dispatch) => {
+  const response = await fetch("/user/myevents");
+  const myEvents = await response.json();
+  dispatch(myEventUser(myEvents));
+
+}
+
+
+
 export const takeAddressUserAndHospital = (city, street, building) => (
-  console.log(city, street, building),
   {
     type: TAKE_ADDRESS_USER_AND_HOSPITAL,
     payload: {

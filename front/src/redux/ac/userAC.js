@@ -64,7 +64,6 @@ export const editUserProfile = (data) => ({
 
 export const editUserProfileFromServer =
   (city, street, building, phoneNumber) => async (dispatch) => {
-    console.log(city, street, building, phoneNumber);
     const response = await fetch("/user/profile/data", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -87,12 +86,12 @@ export const subscribeUser = (eventId) => async (dispatch, getState) => {
   const userId = user.id;
   await axios.post(`/user/events/${eventId}/subscribe`, { userId });
 
-  dispatch({ payload: user });
+  dispatch({ type: SET_USER, payload: user });
 
 };
 
 
-// export const unSubscribeUser = (eventId) => async (dispatch, getState) => {
-//   const user = getState().user;
-//   const userId = user.id;
-// }
+export const unSubscribeUser = (eventId) => async (dispatch, getState) => {
+  const user = getState().user;
+  const userId = user.id;
+}

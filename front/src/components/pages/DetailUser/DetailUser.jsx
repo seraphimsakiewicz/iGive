@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './styleDetailUser.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { allEventUserFromServer } from '../../../redux/ac/eventAC';
+import { allEventUserFromServer, deleteMyEvent, deleteMyEventFromServer, myEventUserFromServer } from '../../../redux/ac/eventAC';
 import Slider from '../../Slider/Slider';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -12,15 +12,13 @@ import SideInfo from '../SideInfo/SideInfo';
 
 function DetailUser() {
   const { event } = useSelector((state) => state);
-  const { user } = useSelector((state) => state);
-  
+  console.log(event);
 
-  console.log(event)
-  console.log(user)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allEventUserFromServer());
+
   }, []);
 
   return (
@@ -35,8 +33,8 @@ function DetailUser() {
                   <div>
                     <Tabs>
                       <TabList>
-                        <Tab>Все события</Tab>
-                        <Tab>Мои</Tab>
+                        <Tab onClick={(e) => dispatch(allEventUserFromServer())} >Все события</Tab>
+                        <Tab onClick={(e) => dispatch(myEventUserFromServer())} >Мои</Tab>
                       </TabList>
                       <TabPanel>
                         <div className={styles.eventInfo}>
@@ -60,11 +58,27 @@ function DetailUser() {
                         }
                       </TabPanel>
                       <TabPanel>
-                        <h2>Чики пуки</h2>
+                        <div className={styles.eventInfo}>
+                          <p className={styles.eventInfoItem}>Название больницы:</p>
+                          <p className={styles.eventInfoItem}>Кол-во крови в литрах:</p>
+                          <p className={styles.eventInfoItem}>Дата публикации:</p>
+                          <p className={styles.eventInfoItem}>Приоритет:</p>
+                        </div>
+                        {
+                          event?.map(el => (
+                            <div className={styles.eventBlock}>
+                              {/* <p>{el?.Hospital?.title}</p> */}
+                              <p>{el?.bloodQuantity}</p>
+                              <p>{el?.eventDate}</p>
+                              <p>{el?.priority}</p>
+                              <button type="button"  onClick={() => dispatch(deleteMyEvent(el.id))} className="btn btn-danger">Удалить</button>
+
+                            </div>
+                          ))
+                        }
                       </TabPanel>
                     </Tabs>
                   </div>
-
                 </>
             }
             <Slider />
