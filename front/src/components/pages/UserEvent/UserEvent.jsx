@@ -14,7 +14,6 @@ function UserEvent() {
   const currEvent = event.find((el) => el.id === +id);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     const address =
       currEvent.Hospital.title +
@@ -24,7 +23,7 @@ function UserEvent() {
       currEvent.Hospital.building +
       " " +
       currEvent.Hospital.city;
-      currEvent.Hospital.building;
+
     dispatch(getCoordinates(address));
   }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
