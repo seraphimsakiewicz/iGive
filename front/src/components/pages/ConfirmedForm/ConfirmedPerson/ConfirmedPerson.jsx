@@ -19,8 +19,8 @@ export default function ConfirmedPerson({ confirmed }) {
       <input
         type='number'
         min='0'
-        step='10'
-        max='1000'
+        step='.100'
+        max='900'
         placeholder='quantity in mL'
         value={liters}
         onChange={handleOnChange}

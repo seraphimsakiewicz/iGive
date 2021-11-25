@@ -31,8 +31,16 @@ async function getSessionHospital(req, res) {
       where: { id },
       raw: true,
       attributes: { exclude: ["password"] },
+      // include: { model: BloodStorage, where: { hospitalId: id } },
     });
-    res.json({ ...currSessionHospital, role: "hospital" });
+    const bloodStorages = await BloodStorage.findAll({
+      where: { hospitalId: id },
+    });
+    res.json({
+      ...currSessionHospital,
+      role: "hospital",
+      bloodStorages,
+    });
   } catch (error) {
     res.sendStatus(500);
   }
@@ -63,7 +71,10 @@ async function showHospitalAllEvents(req, res) {
     const { id } = req.session.hospital;
     const allEventsForHospital = await Event.findAll({
       where: { hospitalId: id },
-      include: User,
+      include: {
+        model: User,
+        attributes: { exclude: ["password"] },
+      },
     });
     res.json(allEventsForHospital);
   } catch (error) {
@@ -130,15 +141,16 @@ async function addDonationFromEvent(req, res) {
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
-    const donationDataFromFront = req.body; // quantity, userId,
+    const donationDataFromFront = req.body;
     const donationData = donationDataFromFront.filter(
       (el) => el.bloodQuantity > 0
     );
+    const arrayofUserId = donationData.map((item) => item.userId);
     await UserEvent.update(
       { donated: true },
       {
         where: {
-          attributes: donationData.map((item) => item.userId),
+          userId: arrayofUserId,
         },
       }
     );
@@ -149,8 +161,8 @@ async function addDonationFromEvent(req, res) {
       where: { eventId: id },
     });
     const { bloodTypeId, eventDate } = await Event.findOne({
-      where: { id },
       attributes: ["bloodTypeId", "eventDate"],
+      where: { id },
       raw: true,
     });
     await BloodStorage.update(
@@ -175,7 +187,6 @@ async function addDonationFromEvent(req, res) {
     );
     res.sendStatus(200);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -197,10 +208,10 @@ async function getAllSubscribeUsers(req, res) {
     const { id } = req.params;
     const allSubscribeUsers = await User.findAll({
       include: { model: Event, where: { id } },
+      attributes: { exclude: ["password"] },
     });
     res.json(allSubscribeUsers);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -212,6 +223,23 @@ async function closeEvent(req, res) {
     await Event.update({ active: !closedEvent.active }, { where: { id } });
     res.sendStatus(200);
   } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
+async function changeProfileImage(req, res) {
+  try {
+    const { id } = req.session.hospital;
+    const file = req.files.file;
+    file.mv(
+      `${process.env.PWD}/public/uploads/${file.name}`,
+      async (err) => {}
+    );
+    await Hospital.update({ image: file.name }, { where: { id } });
+    let result = await Hospital.findOne({ where: { id } });
+    res.json(result);
+  } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -241,14 +269,31 @@ async function changeHospitalData(req, res) {
 
 async function getHospitalDonors(req, res) {
   try {
-    const { id } = req.session.hospital;
-    // const id = '1';
-    const hospitalDonors = await User.findAll({
-      include: { model: Event, where: { hospitalId: id } },
-      attributes: { exclude: ["password"] },
+    // const { id } = req.session.hospital;
+    const id = "1";
+    // const hospitalEvents = await Event.findAll({
+    //   attributes: ['id'],
+    //   where: { hospitalId: id },
+    //   raw: true,
+    // });
+    // const arrayofEventsId = hospitalEvents.map((el) => el.id);
+    // console.log(arrayofEventsId);
+    const hospitalDonors = await UserEvent.findAll({
+      raw: true,
+      where: { donated: true },
+      include: [
+        { model: User, attributes: ["id"] },
+        { model: Event, attributes: ["id", "hospitalId"] },
+      ],
     });
-    res.json(hospitalDonors);
+    console.log(hospitalDonors);
+    // const hospitalDonors = await User.findAll({
+    // include: { model: Event, where: { donated: true } },
+    // });
+    // res.json(hospitalDonors);
+    res.sendStatus(200);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
@@ -266,4 +311,5 @@ module.exports = {
   getStorageData,
   changeHospitalData,
   getHospitalDonors,
+  changeProfileImage,
 };

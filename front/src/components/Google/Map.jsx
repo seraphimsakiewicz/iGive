@@ -10,7 +10,7 @@ const Map = ({ eventData, coordinates, zoom }) => {
     <LocationMarker
       lat={coordinates.lat}
       lng={coordinates.lng}
-      onClick={() => setLocationInfo({ title: eventData?.hospitalName })}
+      onClick={() => setLocationInfo(eventData)}
     />
   );
   return (

@@ -14,18 +14,20 @@ function UserEvent() {
   const currEvent = event.find((el) => el.id === +id);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     const address =
       currEvent.Hospital.title +
       " " +
       currEvent.Hospital.street +
       " " +
-      currEvent.Hospital.building;
+      currEvent.Hospital.building +
+      " " +
+      currEvent.Hospital.city;
+
     dispatch(getCoordinates(address));
   }, [dispatch, currEvent]);
+  const coordinates = useSelector((state) => state?.coordinates);
 
-  const { coordinates } = useSelector((state) => state);
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -54,7 +56,7 @@ function UserEvent() {
               Подписаться
             </button>
           </div>
-          <Map eventData={event} coordinates={coordinates} zoom={12} />
+          <Map eventData={currEvent} coordinates={coordinates} zoom={12} />
         </div>
       </div>
     </div>

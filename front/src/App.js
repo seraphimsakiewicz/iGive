@@ -22,6 +22,7 @@ import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
 import EditUserPhoto from "./components/pages/EditUser/EditUserPhoto";
+import EditHospitalPhoto from "./components/pages/EditHospital/EditHospitalPhoto";
 
 // import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
 
@@ -44,16 +45,49 @@ function App() {
             <Route path="/login/:role" element={<Login />} />
             <Route path="/logout/:role" element={<Logout />} />
 
-            <Route path="/user/edit" element={<EditUser />} />
-            <Route path="/user/edit/photo" element={<EditUserPhoto />} />
-            <Route path="/hospital/edit" element={<EditHospital />} />
-          
-
-
-            {/* <Route path="/map" element={<MapPage />} /> */}
-
             {/* <Route path="/test" element={<ApiTestComp />} /> */}
 
+            <Route
+              path="/hospital/edit"
+              element={
+                <HospitalRoute>
+                  <EditHospital />
+                </HospitalRoute>
+              }
+            />
+
+            <Route
+              path="/hospital/edit/photo"
+              element={
+                <HospitalRoute>
+                  <EditHospitalPhoto />
+                </HospitalRoute>
+              }
+            />
+            <Route
+              path="/user/edit/photo"
+              element={
+                <UserRoute>
+                  <EditUserPhoto />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/user/edit"
+              element={
+                <UserRoute>
+                  <EditUser />
+                </UserRoute>
+              }
+            />
+            <Route
+              path="/user/event/:id"
+              element={
+                <UserRoute>
+                  <UserEvent />
+                </UserRoute>
+              }
+            />
 
             <Route
               path="/user/event/:id"
@@ -147,18 +181,6 @@ function App() {
           <Footer />
         </>
       )}
-
-      {/* <Route path="/hospital/edit" element={<EditHospital />} /> */}
-      {/* <Route path="/hospital/event/:id" element={<ConfirmedForm />} /> */}
-      {/* <Route path="/hospital/event" element={<CreateEvent />} /> */}
-      {/* <Route path="/private/hospital" element={<PrivateHospital />} /> */}
-      {/* <Route path="/hospital" element={<Hospital />} /> */}
-
-      {/* <Route path="/user/event/:id" element={<UserEvent />} /> */}
-      {/* <Route path="/user/edit" element={<EditUser />} /> */}
-      {/* <Route path="/private/user" element={<PrivateUser />} /> */}
-      {/* <Route path="/user/event" element={<UserEvent />} /> */}
-      {/* <Route path="/user" element={<DetailUser />} /> */}
     </>
   );
 }
