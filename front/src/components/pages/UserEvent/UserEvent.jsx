@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-// import { takeAddressUserAndHospital } from "../../../redux/ac/eventAC";
+import { getCoordinates } from "../../../redux/ac/geocodeAC";
 import { subscribeUser } from "../../../redux/ac/userAC";
+import Map from "../../Google/Map";
 
 function UserEvent() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { event } = useSelector((state) => state);
-  // const { user } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
 
+  useEffect(() => {
+    const address =
+      currEvent.Hospital.title +
+      " " +
+      currEvent.Hospital.street +
+      " " +
+      currEvent.Hospital.building; 
+    dispatch(getCoordinates(address));
+  }, [dispatch,currEvent]);
+  const coordinates = useSelector((state) => state?.coordinates);
+  console.log(currEvent)
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -39,23 +50,8 @@ function UserEvent() {
             >
               Подписаться
             </button>
-            {/* <button
-              type="button"
-              onClick={() =>
-                dispatch(
-                  takeAddressUserAndHospital(
-                    currEvent.Hospital.city,
-                    currEvent.Hospital.street,
-                    currEvent.Hospital.building
-                  )
-                )
-              }
-              className="btn btn-success"
-            >
-              Проложить путь
-            </button> */}
           </div>
-          Описание:
+          <Map eventData={event} coordinates={coordinates} zoom={12} />
         </div>
       </div>
     </div>

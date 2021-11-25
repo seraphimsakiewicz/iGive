@@ -55,19 +55,14 @@ export const allEventUserFromServer = () => async (dispatch) => {
   dispatch(setEvents(allEvents));
 };
 
-export const takeAddressUserAndHospital = (city, street, building) => (
-  console.log(city, street, building),
-  {
-    type: TAKE_ADDRESS_USER_AND_HOSPITAL,
-    payload: {
-      city,
-      street,
-      building,
-    },
-  }
-);
-
-
+export const takeAddressUserAndHospital = (city, street, building) => ({
+  type: TAKE_ADDRESS_USER_AND_HOSPITAL,
+  payload: {
+    city,
+    street,
+    building,
+  },
+});
 
 export const closeEvent = (id, navigate) => async (dispatch) => {
   const response = await axios.patch(`/hospital/events/${id}/status`);
