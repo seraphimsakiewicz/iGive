@@ -13,7 +13,6 @@ const {
   getHospitalAddress,
   getAllUserSubcribingEvent,
 } = require('../controllers/user.controller');
-const { checkingUserSession } = require('../middleware/checkSession');
 
 userRouter.route('/').get(getSessionUser);
 userRouter.route('/myevents').get(getAllUserSubcribingEvent);
