@@ -23,7 +23,6 @@ function UserEvent() {
     dispatch(getCoordinates(address));
   }, [dispatch,currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
-  console.log(currEvent)
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -51,7 +50,7 @@ function UserEvent() {
               Подписаться
             </button>
           </div>
-          <Map eventData={event} coordinates={coordinates} zoom={12} />
+          <Map eventData={currEvent} coordinates={coordinates} zoom={12} />
         </div>
       </div>
     </div>

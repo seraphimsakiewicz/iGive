@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react'
-import styles from './stylePrivateHospital.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { oneHospitalFromServer } from '../../../redux/ac/hospitalAC';
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import styles from "./stylePrivateHospital.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { oneHospitalFromServer } from "../../../redux/ac/hospitalAC";
+import { Link } from "react-router-dom";
+import BloodStorage from "../../BloodStorage";
 
 function PrivateHospital() {
-  const { hospital } = useSelector(state => state);
-  const dispatch = useDispatch()
+  const { hospital } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(oneHospitalFromServer());
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <div className={styles.mainPrivateUser}>
@@ -61,6 +62,14 @@ function PrivateHospital() {
             <Link to={`/hospital/edit`}>
               <button className="btn btn-warning">Редактировать профиль</button>
             </Link>
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} />
           </div>
         </div>
       </div>
@@ -68,4 +77,4 @@ function PrivateHospital() {
   );
 }
 
-export default PrivateHospital
+export default PrivateHospital;

@@ -32,3 +32,29 @@ export const getCoordinates = (address) => async (dispatch) => {
     }
   );
 };
+
+export const getCoordinatesList = () => async (dispatch, getState) => {
+  const event = getState().event;
+
+  console.log(event)
+  const coordinates = [];
+  event.forEach((event) => {
+    const address =
+      event.Hospital.title +
+      " " +
+      event.Hospital.street +
+      " " +
+      event.Hospital.building;
+    Geocode.fromAddress(address).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        coordinates.push({ lat, lng });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  });
+
+  dispatch(setCoordinates(coordinates));
+};
