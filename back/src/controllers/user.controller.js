@@ -1,5 +1,6 @@
 const { User, Event, Hospital, UserEvent } = require('../db/models');
 
+
 async function getSessionUser(req, res) {
   try {
     const { id } = req.session.user;
@@ -75,6 +76,7 @@ async function getUserAllArchiveEvents(req, res) {
 }
 
 async function subscribeUser(req, res) {
+
   try {
     const eventId = req.params.id;
     const { userId } = req.body;
@@ -113,10 +115,15 @@ async function changeProfileData(req, res) {
 async function changeProfileImage(req, res) {
   try {
     const { id } = req.session.user;
-    const { image } = req.body;
-    await User.update({ image }, { where: { id } });
-    res.sendStatus(200);
+    const file = req.files.file;
+    console.log(process.env.PWD);
+    file.mv(`${process.env.PWD}/public/uploads/${file.name}`, async err => {
+    });
+    await User.update({ image: file.name }, { where: { id } });
+    let result = await User.findOne({ where: { id } })
+    res.json(result);
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

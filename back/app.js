@@ -1,8 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const session = require('express-session');
-const bcrypt = require('bcryptjs');
+
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const session = require("express-session");
+const path = require('path');
+const bcrypt = require("bcryptjs");
+
 // require('dotenv').config({ path: .${ process.env.NODE_ENV }.env });
 require('dotenv').config();
 
@@ -41,6 +44,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //session middleware
 app.use(session(sessionsConf));
+
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+app.use(express.static(path.join(process.env.PWD, 'public')));
+
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);

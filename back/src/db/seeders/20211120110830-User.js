@@ -25,7 +25,7 @@ const createUsers = async () => {
       phoneNumber: `${i}${i}${i}${i}`,
       email: `user${i}@mail.ru`,
       password: await bcrypt.hash('123', 5),
-      city: `City${i}`,
+      city: `Москва`,
       street: `Street${i}`,
       building: `Building${i}`,
       oms: Number(`${i}${i}${i}${i}`),

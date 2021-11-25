@@ -5,8 +5,7 @@ const userReducer = (state = null, action) => {
     case SET_USER:
       return action.payload;
     case EDIT_USER:
-      console.log('>>>>>', action.payload);
-      return 'hello'
+      return action.payload;
     case DELETE_USER:
       return null;
     default:
