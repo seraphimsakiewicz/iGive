@@ -27,4 +27,5 @@ hospitalRouter.route('/events/:id/donation').post(addDonationFromEvent);
 hospitalRouter.route('/storage').get(getStorageData);
 hospitalRouter.route('/logout').get(logoutHospital);
 
+
 module.exports = hospitalRouter;
