@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-
+const { BloodStorage } = require('../models');
 ('use strict');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -32,6 +32,16 @@ const createHospitals = async () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
+    // await BloodStorage.bulkCreate([
+    //   { bloodTypeId: 1, hospitalId: i },
+    //   { bloodTypeId: 2, hospitalId: i },
+    //   { bloodTypeId: 3, hospitalId: i },
+    //   { bloodTypeId: 4, hospitalId: i },
+    //   { bloodTypeId: 5, hospitalId: i },
+    //   { bloodTypeId: 6, hospitalId: i },
+    //   { bloodTypeId: 7, hospitalId: i },
+    //   { bloodTypeId: 8, hospitalId: i },
+    // ]);
   }
   return hospitalsArr;
 };
