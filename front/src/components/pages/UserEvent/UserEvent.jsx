@@ -19,9 +19,11 @@ function UserEvent() {
       " " +
       currEvent.Hospital.street +
       " " +
-      currEvent.Hospital.building; 
+      currEvent.Hospital.building +
+      " " +
+      currEvent.Hospital.city;
     dispatch(getCoordinates(address));
-  }, [dispatch,currEvent]);
+  }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
   return (
     <div className={styles.eventUser}>
