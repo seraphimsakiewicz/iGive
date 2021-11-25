@@ -4,8 +4,6 @@ const { User, Hospital } = require('../db/models');
 async function loginUser(req, res) {
   try {
     const { email, password } = req.body;
-    console.log(email);
-    console.log(password);
     const currUser = await User.findOne({ where: { email } });
     const checkPass = await bcrypt.compare(password, currUser.password);
     if (currUser && checkPass) {
@@ -18,13 +16,11 @@ async function loginUser(req, res) {
         bloodTypeId: currUser.bloodTypeId,
         role: 'user',
       };
-      console.log('>>><<<<', req.session.user);
       res.json(req.session.user);
     } else {
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }
