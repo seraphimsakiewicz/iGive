@@ -110,14 +110,14 @@ const UserRegister = () => {
           <option value='-1' selected>
             Please choose
           </option>
-          <option value='1'>A-</option>
-          <option value='2'>B- </option>
-          <option value='3'>AB- </option>
-          <option value='4'>O- </option>
-          <option value='5'>A+ </option>
-          <option value='6'>B+ </option>
-          <option value='7'>AB+ </option>
-          <option value='8'>O+ </option>
+          <option value='1'>O(I) Rh+</option>
+          <option value='2'>O(I) Rh-</option>
+          <option value='3'>A(II) Rh+</option>
+          <option value='4'>A(II) Rh-</option>
+          <option value='5'>B(III) Rh+</option>
+          <option value='6'>B(III) Rh-</option>
+          <option value='7'>AB(IV) Rh+</option>
+          <option value='8'>AB(IV) Rh-</option>
         </select>
       </div>
 
