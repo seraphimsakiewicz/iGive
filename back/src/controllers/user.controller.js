@@ -60,10 +60,14 @@ async function showDetailEvent(req, res) {
 
 async function getUserAllArchiveEvents(req, res) {
   try {
-    const { id } = req.params;
+    const { id } = req.session.user;
     const userAllArchiveEvents = await Event.findAll({
       where: { active: false },
-      include: { model: User, where: { id } },
+      include: {
+        model: User,
+        attributes: { exclude: ['password'] },
+        where: { id },
+      },
     });
     res.json(userAllArchiveEvents);
   } catch (error) {
@@ -86,8 +90,8 @@ async function subscribeUser(req, res) {
 async function unsubscribeUser(req, res) {
   try {
     const eventId = req.params.id;
-    const { id } = req.session.user;
-    await UserEvent.destroy({ where: { userId: id, eventId } });
+    const userId = req.session.user.id;
+    await UserEvent.destroy({ where: { userId, eventId } });
     res.sendStatus(200);
   } catch (error) {
     res.sendStatus(500);
@@ -128,8 +132,7 @@ async function getHospitalAddress(req, res) {
   try {
     const { id } = req.params;
     const hospitalAddress = await Event.findByPk(id, {
-      include: Hospital,
-      where: { exclude: ['password'] },
+      include: { model: Hospital, attributes: { exclude: ['password'] } },
     });
     res.json(hospitalAddress);
   } catch (error) {
@@ -141,11 +144,13 @@ async function getAllUserSubcribingEvent(req, res) {
   try {
     const { id } = req.session.user;
     const allSubscribeEvent = await Event.findAll({
-      include: { model: User, where: { id }, attributes: ['id'] },
+      include: [
+        { model: User, where: { id }, attributes: ['id'] },
+        { model: Hospital, attributes: ['title'] },
+      ],
     });
     res.json(allSubscribeEvent);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 }

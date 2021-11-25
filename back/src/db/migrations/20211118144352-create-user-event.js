@@ -33,7 +33,6 @@ module.exports = {
           onUpdate: 'CASCADE',
         },
         donated: {
-          allowNull: false,
           type: Sequelize.BOOLEAN,
           defaultValue: false,
         },
