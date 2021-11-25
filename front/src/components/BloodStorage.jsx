@@ -27,6 +27,7 @@ const BloodStorage = (props) => {
     <div style={containerStyles}>
       <div style={fillerStyles}>
         <span style={labelStyles}>{`${completed}%`}</span>
+        
       </div>
     </div>
   );

@@ -73,9 +73,9 @@ function PrivateHospital() {
               <BloodStorage
                 bgcolor={"red"}
                 completed={
-                  bloodStorage.bloodTotalQuantity > 100
+                  bloodStorage.bloodTotalQuantity > 5
                     ? "100"
-                    : bloodStorage.bloodTotalQuantity
+                    : (bloodStorage.bloodTotalQuantity / 5) * 100
                 }
               />
             ))}
