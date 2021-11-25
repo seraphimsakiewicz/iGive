@@ -14,16 +14,18 @@ function UserEvent() {
   const currEvent = event.find((el) => el.id === +id);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     const address =
       currEvent.Hospital.title +
       " " +
       currEvent.Hospital.street +
       " " +
-      currEvent.Hospital.building;
+      currEvent.Hospital.building +
+      " " +
+      currEvent.Hospital.city;
+
     dispatch(getCoordinates(address));
-  }, [dispatch,currEvent]);
+  }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
 
   return (

@@ -22,6 +22,7 @@ import EditHospital from "./components/pages/EditHospital/EditHospital";
 import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
 import EditUserPhoto from "./components/pages/EditUser/EditUserPhoto";
+import EditHospitalPhoto from "./components/pages/EditHospital/EditHospitalPhoto";
 
 // import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
 
@@ -51,6 +52,15 @@ function App() {
               element={
                 <HospitalRoute>
                   <EditHospital />
+                </HospitalRoute>
+              }
+            />
+
+            <Route
+              path="/hospital/edit/photo"
+              element={
+                <HospitalRoute>
+                  <EditHospitalPhoto />
                 </HospitalRoute>
               }
             />

@@ -2,7 +2,7 @@ const BloodStorage = (props) => {
   const { bgcolor, completed } = props;
 
   const containerStyles = {
-    height: 20,
+    height: 40,
     width: "100%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
@@ -27,6 +27,7 @@ const BloodStorage = (props) => {
     <div style={containerStyles}>
       <div style={fillerStyles}>
         <span style={labelStyles}>{`${completed}%`}</span>
+        
       </div>
     </div>
   );
