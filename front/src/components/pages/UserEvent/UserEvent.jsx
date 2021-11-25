@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-import { subscribeUser, unSubscribeUser } from "../../../redux/ac/userAC";
+import { getCoordinates } from "../../../redux/ac/geocodeAC";
+import { subscribeUser } from "../../../redux/ac/userAC";
+import Map from "../../Google/Map";
 
 function UserEvent() {
   const { id } = useParams();
@@ -12,6 +14,17 @@ function UserEvent() {
   const dispatch = useDispatch();
 
 
+  useEffect(() => {
+    const address =
+      currEvent.Hospital.title +
+      " " +
+      currEvent.Hospital.street +
+      " " +
+      currEvent.Hospital.building; 
+    dispatch(getCoordinates(address));
+  }, [dispatch,currEvent]);
+  const coordinates = useSelector((state) => state?.coordinates);
+  console.log(currEvent)
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -38,15 +51,8 @@ function UserEvent() {
             >
               Подписаться
             </button>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={() => dispatch(unSubscribeUser(id))}
-            >
-              Отписаться
-            </button>
           </div>
-          Описание:
+          <Map eventData={event} coordinates={coordinates} zoom={12} />
         </div>
       </div>
     </div>

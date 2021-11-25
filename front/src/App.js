@@ -23,7 +23,6 @@ import Loader from "./components/Loader/Loader";
 import ConfirmedForm from "./components/pages/ConfirmedForm/ConfirmedForm";
 import EditUserPhoto from "./components/pages/EditUser/EditUserPhoto";
 
-import MapPage from "./components/Google/MapPage";
 // import ApiTestComp from "./components/pages/ApiTestComp/ApiTestComp";
 
 function App() {
@@ -51,7 +50,7 @@ function App() {
           
 
 
-            <Route path="/map" element={<MapPage />} />
+            {/* <Route path="/map" element={<MapPage />} /> */}
 
             {/* <Route path="/test" element={<ApiTestComp />} /> */}
 
