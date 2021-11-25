@@ -15,9 +15,16 @@ async function getSessionHospital(req, res) {
       where: { id },
       raw: true,
       attributes: { exclude: ["password"] },
-      include: { model: BloodStorage },
+      // include: { model: BloodStorage, where: { hospitalId: id } },
     });
-    res.json({ ...currSessionHospital, role: "hospital" });
+    const bloodStorages = await BloodStorage.findAll({
+      where: { hospitalId: id },
+    });
+    res.json({
+      ...currSessionHospital,
+      role: "hospital",
+      bloodStorages,
+    });
   } catch (error) {
     res.sendStatus(500);
   }

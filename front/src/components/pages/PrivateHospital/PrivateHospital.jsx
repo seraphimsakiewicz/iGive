@@ -69,14 +69,24 @@ function PrivateHospital() {
             <Link to={`/hospital/edit`}>
               <button className="btn btn-warning">Редактировать профиль</button>
             </Link>
+            {hospital?.bloodStorages?.map((bloodStorage) => (
+              <BloodStorage
+                bgcolor={"red"}
+                completed={
+                  bloodStorage.bloodTotalQuantity > 100
+                    ? "100"
+                    : bloodStorage.bloodTotalQuantity
+                }
+              />
+            ))}
+            {/* <BloodStorage bgcolor={"red"} completed={hospital.bloodStorages.bloodTotalQuantity} />
             <BloodStorage bgcolor={"red"} completed={50} />
             <BloodStorage bgcolor={"red"} completed={50} />
             <BloodStorage bgcolor={"red"} completed={50} />
             <BloodStorage bgcolor={"red"} completed={50} />
             <BloodStorage bgcolor={"red"} completed={50} />
             <BloodStorage bgcolor={"red"} completed={50} />
-            <BloodStorage bgcolor={"red"} completed={50} />
-            <BloodStorage bgcolor={"red"} completed={50} />
+            <BloodStorage bgcolor={"red"} completed={50} /> */}
           </div>
         </div>
       </div>
