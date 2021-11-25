@@ -89,9 +89,3 @@ export const subscribeUser = (eventId) => async (dispatch, getState) => {
   dispatch({ type: SET_USER, payload: user });
 
 };
-
-
-export const unSubscribeUser = (eventId) => async (dispatch, getState) => {
-  const user = getState().user;
-  const userId = user.id;
-}

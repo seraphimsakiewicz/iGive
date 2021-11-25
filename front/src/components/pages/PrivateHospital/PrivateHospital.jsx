@@ -19,7 +19,7 @@ function PrivateHospital() {
           <div className={styles.userCard}>
             <img
               className={styles.privateImg}
-              src="https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg"
+              src="http://localhost:3000/default_photo/no-avatar.png"
               alt="profilePic"
             />
             <button className={styles.privateImgBtn}>Сменить фото</button>

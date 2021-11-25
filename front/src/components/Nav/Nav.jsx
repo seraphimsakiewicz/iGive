@@ -54,9 +54,6 @@ const Nav = () => {
               iGive
             </Link>
           )}
-          <Link className={styles.logo} to="/map">
-            Map
-          </Link>
         </div>
       </div>
     </header>
