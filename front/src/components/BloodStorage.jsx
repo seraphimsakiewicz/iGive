@@ -24,7 +24,12 @@ const BloodStorage = (props) => {
     color: "white",
     fontWeight: "bold",
   };
-  console.log(bloodTypeId)
+  var pStyle = {
+    marginLeft: '35px',
+    color: 'black',
+    fontSize: '15px',
+    width: '100px'
+  };
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
@@ -32,22 +37,22 @@ const BloodStorage = (props) => {
         <span style={labelStyles}>{`${liters}/5L`}</span>
         <p >
           {bloodTypeId === 1
-            ? "O(I) Rh+"
+            ? <p style={pStyle}>O(I) Rh+</p>
             : bloodTypeId === 2
-              ? "O(I) Rh-"
+              ? <p style={pStyle}>O(I) Rh-</p>
               : bloodTypeId === 3
-                ? "A(II) Rh+"
+                ? <p style={pStyle}>A(II) Rh+</p>
                 : bloodTypeId === 4
-                  ? "A(II) Rh-"
+                  ? <p style={pStyle}>A(II) Rh-</p>
                   : bloodTypeId === 5
-                    ? "B(III) Rh+"
+                    ? <p style={pStyle}>B(III) Rh+</p>
                     : bloodTypeId === 6
-                      ? "B(III) Rh-"
+                      ? <p style={pStyle}>B(III) Rh-</p>
                       : bloodTypeId === 7
-                        ? "AB(IV) Rh+"
+                        ? <p style={pStyle}>AB(IV) Rh+</p>
                         : bloodTypeId === 8
-                          ? "AB(IV) Rh-"
-                          : "Тип крови не найдено"}
+                          ? <p style={pStyle}>AB(IV) Rh-</p>
+                          :  <p style={pStyle}>Тип крови не найдено</p>}
         </p>
       </div>
     </div>
