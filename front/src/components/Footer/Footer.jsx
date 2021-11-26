@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './styleFooter.module.css';
-import { Link } from 'react-router-dom'
+import React from "react";
+import styles from "./styleFooter.module.css";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Footer() {
@@ -12,35 +12,39 @@ function Footer() {
       <div className="container">
         <div className={styles.footerWrapper}>
           <div className="footer-one">
-            {
-              user || hospital ?
-                <>
-                  {
-                    user ?
-                      <>
-                        <Link Link className={styles.footerLogo} to={`/${user.role}`}>
-                          iGive
-                        </Link>
-                      </>
-                      :
-                      ''
-                  }
-                  {
-                    hospital ?
-                      <>
-                        <Link className={styles.footerLogo} to={`/${hospital.role}`}>
-                          iGive
-                        </Link>
-                      </>
-                      :
-                      ''
-                  }
-                </>
-                :
-                <Link className={styles.footerLogo} to="/">
-                  iGive
-                </Link>
-            }
+            {user || hospital ? (
+              <>
+                {user ? (
+                  <>
+                    <Link
+                      Link
+                      className={styles.footerLogo}
+                      to={`/${user.role}`}
+                    >
+                      iGive
+                    </Link>
+                  </>
+                ) : (
+                  ""
+                )}
+                {hospital ? (
+                  <>
+                    <Link
+                      className={styles.footerLogo}
+                      to={`/${hospital.role}`}
+                    >
+                      iGive
+                    </Link>
+                  </>
+                ) : (
+                  ""
+                )}
+              </>
+            ) : (
+              <Link className={styles.footerLogo} to="/">
+                iGive
+              </Link>
+            )}
             <ul className={styles.footerList}>
               <li className="footer-list__item">
                 <p className={styles.footerListLink}>Download Now</p>
@@ -74,16 +78,27 @@ function Footer() {
             </p>
           </div>
           <div className={styles.footerTwo}>
-            <span className={styles.footerSpan}>
-              Get the App
-            </span>
-            <img className={styles.footerIcon} src="http://localhost:3000/google-play.svg" alt="icon: App Store" />
-            <img className={styles.footerIcon} src="http://localhost:3000/app-store.svg" alt="icon: Google-play" />
+            <span className={styles.footerSpan}>Get the App</span>
+            <a href="https://play.google.com/">
+              {" "}
+              <img
+                className={styles.footerIcon}
+                src="http://localhost:3000/google-play.svg"
+                alt="icon: Google Play"
+              />
+            </a>
+            <a href="https://www.apple.com/app-store/">
+              <img
+                className={styles.footerIcon}
+                src="http://localhost:3000/app-store.svg"
+                alt="icon: App Store"
+              />
+            </a>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

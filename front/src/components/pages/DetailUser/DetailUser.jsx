@@ -46,17 +46,15 @@ function DetailUser() {
                         <p className={styles.eventInfoItem}>
                           Название больницы:
                         </p>
-                        <p className={styles.eventInfoItem}>
-                          Кол-во крови в литрах:
-                        </p>
-                        <p className={styles.eventInfoItem}>Дата публикации:</p>
+                        <p className={styles.eventInfoItem}>Кол-во крови</p>
+                        <p className={styles.eventInfoItem}>Дата проведения:</p>
                         <p className={styles.eventInfoItem}>Приоритет:</p>
                       </div>
                       {event?.length > 0 &&
                         event?.map((el) => (
                           <div key={el.id} className={styles.eventBlock}>
                             <p>{el.Hospital?.title}</p>
-                            <p>{el.bloodQuantity}</p>
+                            <p>{el.bloodQuantity}L</p>
                             <p>{el.eventDate}</p>
                             <p>{el.priority}</p>
                             <Link to={`/user/event/${el.id}`}>
@@ -72,17 +70,15 @@ function DetailUser() {
                         <p className={styles.eventInfoItem}>
                           Название больницы:
                         </p>
-                        <p className={styles.eventInfoItem}>
-                          Кол-во крови в литрах:
-                        </p>
-                        <p className={styles.eventInfoItem}>Дата публикации:</p>
+                        <p className={styles.eventInfoItem}>Кол-во крови</p>
+                        <p className={styles.eventInfoItem}>Дата проведения:</p>
                         <p className={styles.eventInfoItem}>Приоритет:</p>
                       </div>
                       {event?.length > 0 &&
                         myEvents?.map((el) => (
                           <div key={el.id} className={styles.eventBlock}>
-                            {/* <p>{el.Hospital?.title}</p> */}
-                            <p>{el.bloodQuantity}</p>
+                            <p>{el.Hospital?.title}</p>
+                            <p>{el.bloodQuantity}L</p>
                             <p>{el.eventDate}</p>
                             <p>{el.priority}</p>
                             <button
