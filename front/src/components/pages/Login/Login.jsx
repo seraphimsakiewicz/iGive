@@ -41,7 +41,7 @@ const Login = () => {
         <h1 className={styles.loginTitle}>Sign In</h1>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Email
+            Эл. почта:
           </label>
           <input
             type="email"
@@ -55,7 +55,7 @@ const Login = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
+            Пароль
           </label>
           <input
             type="password"
@@ -69,11 +69,11 @@ const Login = () => {
 
         <div className={styles.footerSignIn}>
           <Link to={`/${role}/signup`}>
-            <p className={styles.footerSignInText}>Create account</p>
+            <p className={styles.footerSignInText}>Создать аккаунт</p>
           </Link>
 
           <button type="submit" className="btn btn-reg">
-            Login
+            Войти
           </button>
         </div>
       </form>
