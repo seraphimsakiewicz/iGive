@@ -44,6 +44,7 @@ async function loginHospital(req, res) {
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }

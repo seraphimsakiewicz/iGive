@@ -35,6 +35,7 @@ async function getSessionHospital(req, res) {
     });
     const bloodStorages = await BloodStorage.findAll({
       where: { hospitalId: id },
+      order: [['id', 'ASC']],
     });
     res.json({
       ...currSessionHospital,
@@ -114,7 +115,7 @@ async function showHospitalAllEvents(req, res) {
 async function addNewEvent(req, res) {
 
   try {
-    const { id, city } = req.session.hospital;
+    const { id } = req.session.hospital;
     const { bloodTypeId, bloodQuantity, eventDate, priority } = req.body;
 
     await Event.create({
@@ -234,7 +235,7 @@ async function changeProfileImage(req, res) {
     const file = req.files.file;
     file.mv(
       `${process.env.PWD}/public/uploads/${file.name}`,
-      async (err) => {}
+      async (err) => { }
     );
     await Hospital.update({ image: file.name }, { where: { id } });
     let result = await Hospital.findOne({ where: { id } });

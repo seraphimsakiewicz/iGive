@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { allEventHospitalFromServer } from "../../../redux/ac/eventAC";
 import { allhospitalMyDonorFromServer } from "../../../redux/ac/hospitalMyDonorAC";
 import styles from "./style.module.css";
+import BloodStorage from "../../BloodStorage";
 import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 function Hospital() {
   const { event } = useSelector((state) => state);
+  const { hospital } = useSelector((state) => state);
   const archivedEvents = event.filter((el) => el.active === false);
   // const myDonors = archivedEvents.map(el => ({user:el.User.name}))
   console.log(archivedEvents);
@@ -92,6 +94,9 @@ function Hospital() {
           <Tab >
             Мои доноры
           </Tab>
+          <Tab >
+            Банк крови
+          </Tab>
         </TabList>
         <TabPanel>
           <div className={styles.hospitalArchivedEvents}>
@@ -139,6 +144,22 @@ function Hospital() {
               archivedEvents?.map(el => el.Users?.map((el, index) => <li className="list-group-item my-2" key={el.id}>&nbsp;{el.name}&nbsp;{el.lastName}</li>))
             }
           </ul>
+        </TabPanel>
+        <TabPanel>
+          {hospital?.bloodStorages?.map((bloodStorage, i) => (
+            <BloodStorage
+              key={bloodStorage.id}
+              bloodTypeId={bloodStorage.bloodTypeId}
+              // key={bloo}
+              bgcolor={"red"}
+              completedPercentage={
+                bloodStorage.bloodTotalQuantity > 5
+                  ? "100"
+                  : Math.floor((bloodStorage.bloodTotalQuantity / 5) * 100)
+              }
+              liters={bloodStorage.bloodTotalQuantity}
+            />
+          ))}
         </TabPanel>
       </Tabs>
 

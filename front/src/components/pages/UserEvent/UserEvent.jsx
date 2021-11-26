@@ -20,13 +20,13 @@ function UserEvent() {
 
   useEffect(() => {
     const address =
-      currEvent.Hospital.title +
+      currEvent?.Hospital?.title +
       " " +
-      currEvent.Hospital.street +
+      currEvent?.Hospital?.street +
       " " +
-      currEvent.Hospital.building +
+      currEvent?.Hospital?.building +
       " " +
-      currEvent.Hospital.city;
+      currEvent?.Hospital?.city;
     dispatch(allMyEventsFromServer());
     dispatch(getCoordinates(address));
   }, [dispatch, currEvent]);
