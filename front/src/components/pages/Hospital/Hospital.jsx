@@ -1,17 +1,15 @@
-
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { allEventHospitalFromServer } from '../../../redux/ac/eventAC';
-import { allhospitalMyDonorFromServer } from '../../../redux/ac/hospitalMyDonorAC';
-import styles from './style.module.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { allEventHospitalFromServer } from "../../../redux/ac/eventAC";
+import { allhospitalMyDonorFromServer } from "../../../redux/ac/hospitalMyDonorAC";
+import styles from "./style.module.css";
+import "react-tabs/style/react-tabs.css";
 
 function Hospital() {
   const { event } = useSelector((state) => state);
   const { hospitalMyDonor } = useSelector((state) => state);
-  const archivedEvents = event.filter(el => el.active === false);
+  const archivedEvents = event.filter((el) => el.active === false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +21,7 @@ function Hospital() {
   ).length;
 
   useEffect(() => {
-    dispatch(allhospitalMyDonorFromServer())
+    dispatch(allhospitalMyDonorFromServer());
   }, [dispatch]);
 
   return (
@@ -59,57 +57,31 @@ function Hospital() {
         )}
 
         <div className={styles.eventLink}>
-          <Link to={'/hospital/event'}>
-            <button type='button' className='btn btn-success'>
+          <Link to={"/hospital/event"}>
+            <button type="button" className="btn btn-success">
               Создать event
             </button>
           </Link>
         </div>
       </div>
-      <Tabs>
-        <TabList>
-          <Tab>Наши доноры</Tab>
-          <Tab>Сколько осталось крови</Tab>
-          <Tab>Архивные события</Tab>
-        </TabList>
-        <TabPanel>
-          <div className="hospitalMyUser">
-            <ul className="list-group">
-              {
-                hospitalMyDonor ? hospitalMyDonor?.map((el, index) => (
-                  <li className="list-group-item my-3">{index + 1}.&nbsp;{el.name}&nbsp;{el.lastName}</li>
-                ))
-                  : 'Доноров нет'
-              }
-            </ul>
+
+      <h3>Архивные события</h3>
+      <div className={styles.hospitalArchivedEvents}>
+        <div className={styles.hospitalArchivedEventsList}>
+          <p>Тип крови:</p>
+          <p>Кол-во крови:</p>
+          <p>Дата публикации:</p>
+          <p>Приоритет:</p>
+        </div>
+        {archivedEvents?.map((el) => (
+          <div className={styles.eventBlock}>
+            <p>{el.bloodTypeId}</p>
+            <p>{el.bloodQuantity}</p>
+            <p>{el.eventDate}</p>
+            <p>{el.priority}</p>
           </div>
-        </TabPanel>
-        <TabPanel>
-          <div className="hospitalTotalBlood">
-            Вся кровь
-          </div>
-        </TabPanel>
-        <TabPanel>
-          <div className={styles.hospitalArchivedEvents}>
-            <div className={styles.hospitalArchivedEventsList}>
-              <p>Тип крови:</p>
-              <p>Кол-во крови:</p>
-              <p>Дата публикации:</p>
-              <p>Приоритет:</p>
-            </div>
-            {archivedEvents?.map((el) =>
-            (
-              <div className={styles.eventBlock}>
-                <p>{el.bloodTypeId}</p>
-                <p>{el.bloodQuantity}</p>
-                <p>{el.eventDate}</p>
-                <p>{el.priority}</p>
-              </div>
-            )
-            )}
-          </div>
-        </TabPanel>
-      </Tabs>
+        ))}
+      </div>
     </div>
   );
 }

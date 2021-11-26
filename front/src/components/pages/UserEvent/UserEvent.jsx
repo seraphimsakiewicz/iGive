@@ -6,12 +6,16 @@ import { useDispatch } from "react-redux";
 import { getCoordinates } from "../../../redux/ac/geocodeAC";
 import { subscribeUser } from "../../../redux/ac/userAC";
 import Map from "../../Google/Map";
+import {
+  allMyEventsFromServer,
+  deleteMyEventFromServer,
+} from "../../../redux/ac/myEventsAC";
 
 function UserEvent() {
-  const [btnDisabled, setBtnDisabled] = useState(false);
   const { id } = useParams();
   const { event } = useSelector((state) => state);
   const currEvent = event.find((el) => el.id === +id);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,21 +27,21 @@ function UserEvent() {
       currEvent.Hospital.building +
       " " +
       currEvent.Hospital.city;
-
+    dispatch(allMyEventsFromServer());
     dispatch(getCoordinates(address));
-  }, [dispatch, currEvent]);
+  }, [dispatch, currEvent, subscribedEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
-
+  const myEvents = useSelector((state) => state?.myEvents);
+  const subscribedEvent = myEvents.find((event) => event.id === +id);
   return (
     <div className={styles.eventUser}>
       <div className="container">
         <div className={styles.eventUserWrapper}>
-          <h3 className={styles.eventTitle}>Места для сдачи крови</h3>
+          <h3 className={styles.eventTitle}>Место для сдачи крови</h3>
           <div className={styles.eventInfo}>
             <p className={styles.eventInfoItem}>Название:</p>
             <p className={styles.eventInfoItem}>Адрес:</p>
             <p className={styles.eventInfoItem}>Номер телефона:</p>
-            <p className={styles.eventInfoItem}>Приоритет:</p>
           </div>
           <div className={styles.eventUserCard}>
             <p>{currEvent.Hospital?.title}</p>
@@ -46,15 +50,23 @@ function UserEvent() {
               {currEvent.Hospital?.building}
             </p>
             <p>{currEvent.Hospital?.phoneNumber}</p>
-            <p>{currEvent.Hospital?.webSite}</p>
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={() => dispatch(subscribeUser(id))}
-              // disabled={true}
-            >
-              Подписаться
-            </button>
+            {subscribedEvent ? (
+              <button
+                type="button"
+                onClick={() => dispatch(deleteMyEventFromServer(currEvent.id))}
+                className="btn btn-danger"
+              >
+                Отписаться
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={() => dispatch(subscribeUser(id))}
+              >
+                Подписаться
+              </button>
+            )}
           </div>
           <Map eventData={currEvent} coordinates={coordinates} zoom={12} />
         </div>
