@@ -37,7 +37,7 @@ const HospitalRegister = () => {
     <form className='reg-container' onSubmit={submitRegister}>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Email address:
+          Эл. почта:
         </label>
         <input
           type='email'
@@ -51,7 +51,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputPassword1' className='form-label'>
-          Password:
+          Пароль:
         </label>
         <input
           type='password'
@@ -64,7 +64,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          INN:
+          ИНН:
         </label>
         <input
           type='text'
@@ -77,7 +77,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputPassword1' className='form-label'>
-          Head of department:
+          Главный админ:
         </label>
         <input
           type='text'
@@ -90,7 +90,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Phone number:
+          Телефон:
         </label>
         <input
           type='text'
@@ -103,7 +103,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          City:
+          Город:
         </label>
         <input
           type='text'
@@ -115,7 +115,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Building:
+          Здание:
         </label>
         <input
           type='text'
@@ -127,7 +127,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Street:
+          Улица:
         </label>
         <input
           type='text'
@@ -139,7 +139,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Web page:
+          Веб Сайт:
         </label>
         <input
           type='text'
@@ -151,7 +151,7 @@ const HospitalRegister = () => {
       </div>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Hospital Name
+          Названия Больницы
         </label>
         <input
           type='text'

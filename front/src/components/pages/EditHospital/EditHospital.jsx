@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { editHospitalProfileFromServer } from '../../../redux/ac/hospitalAC';
 
 function EditHospital() {
   const { hospital } = useSelector(state => state);
   const [inputHeadOfDep, setInputHeadOfDep] = useState(hospital?.headOfDep);
-  const [inputDescription, setInputDescription] = useState('');
+  const [inputDescription, setInputDescription] = useState(hospital?.about);
 
   const dispatch = useDispatch();
+  const navigate= useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(editHospitalProfileFromServer(inputHeadOfDep, inputDescription));
+    navigate('/private/hospital')
   }
   return (
     <form onSubmit={submitHandler} className="d-flex align-items-center justify-content-center flex-column py-5">

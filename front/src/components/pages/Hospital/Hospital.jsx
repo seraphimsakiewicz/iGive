@@ -33,7 +33,7 @@ function Hospital() {
           <div className={styles.eventInfo}>
             <p>Тип крови:</p>
             <p>Кол-во крови:</p>
-            <p>Дата публикации:</p>
+            <p>Дата проведения:</p>
             <p>Приоритет:</p>
           </div>
         ) : (
@@ -43,8 +43,26 @@ function Hospital() {
         {event?.map((el) =>
           el.active ? (
             <div className={styles.eventBlock}>
-              <p>{el.bloodTypeId}</p>
-              <p>{el.bloodQuantity}</p>
+              <p>
+                {el?.bloodTypeId === 1
+                  ? "O(I) Rh+"
+                  : el?.bloodTypeId === 2
+                    ? "O(I) Rh-"
+                    : el?.bloodTypeId === 3
+                      ? "A(II) Rh+"
+                      : el?.bloodTypeId === 4
+                        ? "A(II) Rh-"
+                        : el?.bloodTypeId === 5
+                          ? "B(III) Rh+"
+                          : el?.bloodTypeId === 6
+                            ? "B(III) Rh-"
+                            : el?.bloodTypeId === 7
+                              ? "AB(IV) Rh+"
+                              : el?.bloodTypeId === 8
+                                ? "AB(IV) Rh-"
+                                : "Тип крови не найдено"}
+              </p>
+              <p>{el.bloodQuantity}L</p>
               <p>{el.eventDate}</p>
               <p>{el.priority}</p>
               <Link to={`/hospital/event/${el.id}`}>
@@ -61,7 +79,7 @@ function Hospital() {
         <div className={styles.eventLink}>
           <Link to={"/hospital/event"}>
             <button type="button" className="btn btn-success">
-              Создать event
+              Создать события
             </button>
           </Link>
         </div>
@@ -88,7 +106,26 @@ function Hospital() {
             }
             {archivedEvents?.map((el) => (
               <div className={styles.eventBlock}>
-                <p>{el.bloodTypeId}</p>
+                {/* <p>{el.bloodTypeId}</p> */}
+                <p>
+                  {el?.bloodTypeId === 1
+                    ? "O(I) Rh+"
+                    : el?.bloodTypeId === 2
+                      ? "O(I) Rh-"
+                      : el?.bloodTypeId === 3
+                        ? "A(II) Rh+"
+                        : el?.bloodTypeId === 4
+                          ? "A(II) Rh-"
+                          : el?.bloodTypeId === 5
+                            ? "B(III) Rh+"
+                            : el?.bloodTypeId === 6
+                              ? "B(III) Rh-"
+                              : el?.bloodTypeId === 7
+                                ? "AB(IV) Rh+"
+                                : el?.bloodTypeId === 8
+                                  ? "AB(IV) Rh-"
+                                  : "Тип крови не найдено"}
+                </p>
                 <p>{el.bloodQuantity}</p>
                 <p>{el.eventDate}</p>
                 <p>{el.priority}</p>
