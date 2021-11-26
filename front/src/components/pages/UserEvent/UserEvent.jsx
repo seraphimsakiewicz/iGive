@@ -29,10 +29,10 @@ function UserEvent() {
       currEvent.Hospital.city;
     dispatch(allMyEventsFromServer());
     dispatch(getCoordinates(address));
-  }, [dispatch, currEvent, subscribedEvent]);
+  }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
   const myEvents = useSelector((state) => state?.myEvents);
-  const subscribedEvent = myEvents.find((event) => event.id === +id);
+  const subscribedEvent = myEvents?.find((event) => event?.id === +id);
   return (
     <div className={styles.eventUser}>
       <div className="container">
@@ -53,7 +53,9 @@ function UserEvent() {
             {subscribedEvent ? (
               <button
                 type="button"
-                onClick={() => dispatch(deleteMyEventFromServer(currEvent.id))}
+                onClick={() => 
+                  dispatch(deleteMyEventFromServer(currEvent.id)
+                  )}
                 className="btn btn-danger"
               >
                 Отписаться

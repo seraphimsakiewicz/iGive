@@ -21,7 +21,9 @@ function PrivateUser() {
             <img
               className={styles.privateImg}
               src={
-                user.image ? `http://localhost:3001/uploads/${user.image}` : "http://localhost:3000/default_photo/no-avatar.png"
+                user.image
+                  ? `http://localhost:3001/uploads/${user.image}`
+                  : "http://localhost:3000/default_photo/no-avatar.png"
               }
               alt="profilePicture"
             />
@@ -55,7 +57,25 @@ function PrivateUser() {
             </div>
             <div className={styles.userTextBlockList}>
               <p className={styles.userTextBlockItem}>Группа крови:</p>
-              <p>{user?.bloodTypeId}</p>
+              <p>
+                {user?.bloodTypeId === 1
+                  ? "O(I) Rh+"
+                  : user?.bloodTypeId === 2
+                  ? "O(I) Rh-"
+                  : user?.bloodTypeId === 3
+                  ? "A(II) Rh+"
+                  : user?.bloodTypeId === 4
+                  ? "A(II) Rh-"
+                  : user?.bloodTypeId === 5
+                  ? "B(III) Rh+"
+                  : user?.bloodTypeId === 6
+                  ? "B(III) Rh-"
+                  : user?.bloodTypeId === 7
+                  ? "AB(IV) Rh+"
+                  : user?.bloodTypeId === 8
+                  ? "AB(IV) Rh-"
+                  : "Тип крови не найдено"}
+              </p>
             </div>
             <div className={styles.userTextBlockList}>
               <p className={styles.userTextBlockItem}>

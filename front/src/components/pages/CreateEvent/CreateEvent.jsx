@@ -34,7 +34,7 @@ function CreateEvent() {
       <h2 className='mb-4'>Сбор крови</h2>
       <div className='mb-3'>
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Blood Type
+          Тип Крови
         </label>
         <select
           name='bloodTypeId'
@@ -72,7 +72,7 @@ function CreateEvent() {
           aria-describedby='emailHelp'
         />
         <label htmlFor='exampleInputEmail1' className='form-label'>
-          Priority
+          Приоритет
         </label>
         <select
           name='priority'
