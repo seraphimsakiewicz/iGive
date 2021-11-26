@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewEventFromServer } from '../../../redux/ac/eventAC';
-
+import styles from './styleCreateEvent.module.css'
 function CreateEvent() {
   const [inputBloodType, setInputBloodType] = useState('');
   const [inputAmountBlood, setInputAmountBlood] = useState('');
@@ -37,6 +37,7 @@ function CreateEvent() {
           Тип Крови
         </label>
         <select
+          className={styles.select}
           name='bloodTypeId'
           onChange={(e) => setInputBloodType(e.target.value)}
           value={inputBloodType}
@@ -74,7 +75,7 @@ function CreateEvent() {
         <label htmlFor='exampleInputEmail1' className='form-label'>
           Приоритет
         </label>
-        <select
+        <select className={styles.select}
           name='priority'
           onChange={(e) => setInputPriority(e.target.value)}
           value={inputPriority}

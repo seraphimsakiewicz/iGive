@@ -1,4 +1,4 @@
-const { User, Event, Hospital, UserEvent, BloodType } = require('../db/models');
+const { User, Event, Hospital, UserEvent } = require('../db/models');
 
 async function getSessionUser(req, res) {
   try {
@@ -34,13 +34,18 @@ async function addUserData(req, res) {
   }
 }
 
+
+
 async function showUserAllEvents(req, res) {
+  console.log('>>>>>', req.session.user)
+  ///////
   try {
     const { bloodTypeId, city } = req.session.user;
     const allEventsForUser = await Event.findAll({
       where: { bloodTypeId },
       include: { model: Hospital, where: { city } },
     });
+
     res.json(allEventsForUser);
   } catch (error) {
     console.log(error);

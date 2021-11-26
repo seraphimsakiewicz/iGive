@@ -20,8 +20,12 @@ function EditHospital() {
     <form onSubmit={submitHandler} className="d-flex align-items-center justify-content-center flex-column py-5">
       <h2 className="mb-4">Редактировать страницу</h2>
       <div className="mb-3">
-        <input type="text" value={inputHeadOfDep} onChange={(e) => setInputHeadOfDep(e.target.value)} placeholder="Enter our head of department" className="form-control my-2" id="exampleInputEmail1" aria-describedby="emailHelp" />
-        <input type="text" value={inputDescription} onChange={(e) => setInputDescription(e.target.value)} placeholder="Enter our description" className="form-control my-2" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <label for="exampleInputEmail1" class="form-label">Head of department</label>
+        <input type="text" value={inputHeadOfDep} onChange={(e) => setInputHeadOfDep(e.target.value)} placeholder="Enter our head of department" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Description hospital</label>
+        <input type="text" value={inputDescription} onChange={(e) => setInputDescription(e.target.value)} placeholder="Enter our description" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
       </div>
       <button type="submit" className="btn btn-success mt-1">Отправить</button>
     </form>

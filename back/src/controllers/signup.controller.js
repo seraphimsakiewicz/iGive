@@ -76,6 +76,7 @@ async function signUpHospital(req, res) {
       id: newHospital.id,
       email: newHospital.email,
       inn: newHospital.inn,
+      city: newHospital.city,
       headOfDep: newHospital.headOfDep,
       role: 'hospital',
     };

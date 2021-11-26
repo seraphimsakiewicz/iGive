@@ -3,7 +3,6 @@ import styles from "./stylePrivateHospital.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { oneHospitalFromServer } from "../../../redux/ac/hospitalAC";
 import { Link } from "react-router-dom";
-import BloodStorage from "../../BloodStorage";
 
 function PrivateHospital() {
   const { hospital } = useSelector((state) => state);
@@ -69,18 +68,7 @@ function PrivateHospital() {
             <Link to={`/hospital/edit`}>
               <button className="btn btn-warning">Редактировать профиль</button>
             </Link>
-            {hospital?.bloodStorages?.map((bloodStorage, i) => (
-              <BloodStorage
-                key={i}
-                bgcolor={"red"}
-                completedPercentage={
-                  bloodStorage.bloodTotalQuantity > 3
-                    ? "100"
-                    : Math.floor((bloodStorage.bloodTotalQuantity / 3) * 100)
-                }
-                liters={bloodStorage.bloodTotalQuantity}
-              />
-            ))}
+       
           </div>
         </div>
       </div>

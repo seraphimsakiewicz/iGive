@@ -35,6 +35,7 @@ async function loginHospital(req, res) {
         id: currHospital.id,
         email: currHospital.email,
         inn: currHospital.inn,
+        city: currHospital.city,
         headOfDep: currHospital.headOfDep,
         role: 'hospital',
       };
@@ -43,6 +44,7 @@ async function loginHospital(req, res) {
       res.json({ message: 'INVALID EMAIL OR PASSWORD' });
     }
   } catch (error) {
+    console.log(error);
     res.sendStatus(500);
   }
 }
