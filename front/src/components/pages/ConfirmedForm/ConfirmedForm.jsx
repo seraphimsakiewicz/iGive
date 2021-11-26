@@ -23,7 +23,7 @@ export default function ConfirmedForm() {
   return (
     <div className="container">
       {confirmedList && <ConfirmedList confirmedList={confirmedList} />}
-      <button type="button" onClick={toggleModal}>
+      <button type="button" className="btn btn-danger my-2" onClick={toggleModal}>
         End Collection
       </button>
       {modal && <ConfirmModal toggleModal={toggleModal} />}

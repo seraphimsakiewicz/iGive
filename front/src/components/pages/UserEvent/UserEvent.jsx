@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
@@ -29,7 +29,7 @@ function UserEvent() {
       currEvent.Hospital.city;
     dispatch(allMyEventsFromServer());
     dispatch(getCoordinates(address));
-  }, [dispatch, currEvent, subscribedEvent]);
+  }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
   const myEvents = useSelector((state) => state?.myEvents);
   const subscribedEvent = myEvents.find((event) => event.id === +id);

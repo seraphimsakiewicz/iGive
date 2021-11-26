@@ -66,6 +66,8 @@ function DetailUser() {
                         ))}
                     </TabPanel>
                     <TabPanel>
+                      {
+                        myEvents.length > 0 ? 
                       <div className={styles.eventInfo}>
                         <p className={styles.eventInfoItem}>
                           Название больницы:
@@ -74,6 +76,8 @@ function DetailUser() {
                         <p className={styles.eventInfoItem}>Дата проведения:</p>
                         <p className={styles.eventInfoItem}>Приоритет:</p>
                       </div>
+                      : <p className={styles.notEventTitle}>Нет выбранных событий</p>
+                      }
                       {event?.length > 0 &&
                         myEvents?.map((el) => (
                           <div key={el.id} className={styles.eventBlock}>

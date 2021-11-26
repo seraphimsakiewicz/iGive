@@ -6,9 +6,12 @@
   padding: 2em;
   min-width: 20em;
   max-width: 70%;
-  color: #f00;
-  background-color: #fff;
+  color: rgb(180, 142, 142);
+  background-color: #028E9B;
   border-radius: 1em;
   transform: translate(-50%, -50%);
   outline: transparent;
+}
+.title{
+  color: white;
 }

@@ -24,7 +24,7 @@ export default function ConfirmedList({ confirmedList }) {
             )
         )}
         {confirmedList?.length > 0 ? (
-          <button type="button" onClick={handleCollect}>
+          <button type="button" className="btn btn-success my-2" onClick={handleCollect}>
             Collect
           </button>
         ) : (

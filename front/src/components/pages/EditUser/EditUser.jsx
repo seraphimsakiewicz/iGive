@@ -38,5 +38,4 @@ function EditUser() {
     </form>
   )
 }
-
 export default EditUser

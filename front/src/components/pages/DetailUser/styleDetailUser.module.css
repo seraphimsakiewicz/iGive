@@ -21,6 +21,7 @@
   align-items: center;
   justify-content: space-between;
   width: 650px;
+  
 }
 .eventLink {
   display: flex;
@@ -38,4 +39,8 @@
 }
 .eventLeftBlock {
   max-width: 900px;
+}
+.notEventTitle{
+  margin-bottom: 20px;
+  font-size: 18px;
 }

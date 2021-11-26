@@ -15,9 +15,9 @@ export default function ConfirmModal({ toggleModal }) {
 
   return (
     <div className={styles.Modal}>
-      <h1>Are you sure?</h1>
-      <button onClick={toggleModal}>No</button>
-      <button onClick={handleEnd}>Yes,event is done.</button>
+      <h1 className={styles.title}>Вы уверены?</h1>
+      <button className="btn btn-danger mx-2" onClick={toggleModal}>Отменить</button>
+      <button className="btn btn-success mx-2" onClick={handleEnd}>Да, я уверен!</button>
     </div>
   );
 }
