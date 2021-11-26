@@ -30,7 +30,7 @@ const BloodStorage = (props) => {
       <div style={fillerStyles}>
         <span style={labelStyles}>{`${completedPercentage}%`}</span>
         <span style={labelStyles}>{`${liters}/5L`}</span>
-        <p>
+        <p >
           {bloodTypeId === 1
             ? "O(I) Rh+"
             : bloodTypeId === 2

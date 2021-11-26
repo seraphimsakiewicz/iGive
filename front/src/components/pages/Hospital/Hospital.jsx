@@ -12,25 +12,20 @@ function Hospital() {
   const { event } = useSelector((state) => state);
   const { hospital } = useSelector((state) => state);
   const archivedEvents = event.filter((el) => el.active === false);
-  // const myDonors = archivedEvents.map(el => ({user:el.User.name}))
-  console.log(archivedEvents);
-  // console.log(myDonors);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(allEventHospitalFromServer());
   }, [dispatch]);
 
-  // const activeEventsLength = event?.filter(
-  //   (event) => event.active === true
-  // ).length;
-  useEffect(() => {
-    dispatch(oneHospitalFromServer());
-  }, [dispatch]);
+
   useEffect(() => {
     dispatch(allhospitalMyDonorFromServer());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(oneHospitalFromServer());
+  }, [dispatch]);
   return (
     <div className="container">
       <div className={styles.event}>
@@ -47,7 +42,7 @@ function Hospital() {
 
         {event?.map((el) =>
           el.active ? (
-            <div className={styles.eventBlock}>
+            <div key={el.id} className={styles.eventBlock}>
               <p>
                 {el?.bloodTypeId === 1
                   ? "O(I) Rh+"
@@ -108,8 +103,7 @@ function Hospital() {
               </div>
             )}
             {archivedEvents?.map((el) => (
-              <div className={styles.eventBlock}>
-                {/* <p>{el.bloodTypeId}</p> */}
+              <div key={el.id} className={styles.eventBlock}>
                 <p>
                   {el?.bloodTypeId === 1
                     ? "O(I) Rh+"
@@ -152,7 +146,6 @@ function Hospital() {
             <BloodStorage
               key={bloodStorage.id}
               bloodTypeId={bloodStorage.bloodTypeId}
-              // key={bloo}
               bgcolor={"red"}
               completedPercentage={
                 bloodStorage.bloodTotalQuantity > 5
