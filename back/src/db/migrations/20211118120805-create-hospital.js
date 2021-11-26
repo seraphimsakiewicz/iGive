@@ -10,6 +10,9 @@ module.exports = {
         restartIdentity: true,
         truncate: true,
       },
+      image: {
+        type: Sequelize.STRING,
+      },
       email: {
         allowNull: false,
         unique: true,
