@@ -138,7 +138,6 @@ async function addNewEvent(req, res) {
 }
 
 async function addDonationFromEvent(req, res) {
-  console.log(req.body);
   try {
     const { id } = req.params;
     const hospitalId = req.session.hospital.id;
