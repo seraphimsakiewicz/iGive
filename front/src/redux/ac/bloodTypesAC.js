@@ -6,7 +6,7 @@ export const allBloodTypes = (array) => ({
 });
 
 export const allBloodTypesFromServer = () => async (dispatch) => {
-  const response = await fetch('http://localhost:3001/');
+  const response = await fetch('/');
   const dataFromServer = await response.json();
   dispatch(allBloodTypes(dataFromServer));
 };
