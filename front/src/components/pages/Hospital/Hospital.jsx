@@ -7,6 +7,7 @@ import styles from "./style.module.css";
 import BloodStorage from "../../BloodStorage";
 import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { oneHospitalFromServer } from "../../../redux/ac/hospitalAC";
 function Hospital() {
   const { event } = useSelector((state) => state);
   const { hospital } = useSelector((state) => state);
@@ -23,7 +24,9 @@ function Hospital() {
   // const activeEventsLength = event?.filter(
   //   (event) => event.active === true
   // ).length;
-
+  useEffect(() => {
+    dispatch(oneHospitalFromServer());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(allhospitalMyDonorFromServer());
   }, [dispatch]);
@@ -49,20 +52,20 @@ function Hospital() {
                 {el?.bloodTypeId === 1
                   ? "O(I) Rh+"
                   : el?.bloodTypeId === 2
-                    ? "O(I) Rh-"
-                    : el?.bloodTypeId === 3
-                      ? "A(II) Rh+"
-                      : el?.bloodTypeId === 4
-                        ? "A(II) Rh-"
-                        : el?.bloodTypeId === 5
-                          ? "B(III) Rh+"
-                          : el?.bloodTypeId === 6
-                            ? "B(III) Rh-"
-                            : el?.bloodTypeId === 7
-                              ? "AB(IV) Rh+"
-                              : el?.bloodTypeId === 8
-                                ? "AB(IV) Rh-"
-                                : "Тип крови не найдено"}
+                  ? "O(I) Rh-"
+                  : el?.bloodTypeId === 3
+                  ? "A(II) Rh+"
+                  : el?.bloodTypeId === 4
+                  ? "A(II) Rh-"
+                  : el?.bloodTypeId === 5
+                  ? "B(III) Rh+"
+                  : el?.bloodTypeId === 6
+                  ? "B(III) Rh-"
+                  : el?.bloodTypeId === 7
+                  ? "AB(IV) Rh+"
+                  : el?.bloodTypeId === 8
+                  ? "AB(IV) Rh-"
+                  : "Тип крови не найдено"}
               </p>
               <p>{el.bloodQuantity}L</p>
               <p>{el.eventDate}</p>
@@ -88,27 +91,22 @@ function Hospital() {
       </div>
       <Tabs>
         <TabList>
-          <Tab >
-            Архивные события
-          </Tab>
-          <Tab >
-            Мои доноры
-          </Tab>
-          <Tab >
-            Банк крови
-          </Tab>
+          <Tab>Архивные события</Tab>
+          <Tab>Мои доноры</Tab>
+          <Tab>Банк крови</Tab>
         </TabList>
         <TabPanel>
           <div className={styles.hospitalArchivedEvents}>
-            {
-              archivedEvents.length === 0 ? 'Нет архивных событий' :
-                <div className={styles.hospitalArchivedEventsList}>
-                  <p>Тип крови:</p>
-                  <p>Кол-во крови:</p>
-                  <p>Дата публикации:</p>
-                  <p>Приоритет:</p>
-                </div>
-            }
+            {archivedEvents.length === 0 ? (
+              "Нет архивных событий"
+            ) : (
+              <div className={styles.hospitalArchivedEventsList}>
+                <p>Тип крови:</p>
+                <p>Кол-во крови:</p>
+                <p>Дата публикации:</p>
+                <p>Приоритет:</p>
+              </div>
+            )}
             {archivedEvents?.map((el) => (
               <div className={styles.eventBlock}>
                 {/* <p>{el.bloodTypeId}</p> */}
@@ -116,20 +114,20 @@ function Hospital() {
                   {el?.bloodTypeId === 1
                     ? "O(I) Rh+"
                     : el?.bloodTypeId === 2
-                      ? "O(I) Rh-"
-                      : el?.bloodTypeId === 3
-                        ? "A(II) Rh+"
-                        : el?.bloodTypeId === 4
-                          ? "A(II) Rh-"
-                          : el?.bloodTypeId === 5
-                            ? "B(III) Rh+"
-                            : el?.bloodTypeId === 6
-                              ? "B(III) Rh-"
-                              : el?.bloodTypeId === 7
-                                ? "AB(IV) Rh+"
-                                : el?.bloodTypeId === 8
-                                  ? "AB(IV) Rh-"
-                                  : "Тип крови не найдено"}
+                    ? "O(I) Rh-"
+                    : el?.bloodTypeId === 3
+                    ? "A(II) Rh+"
+                    : el?.bloodTypeId === 4
+                    ? "A(II) Rh-"
+                    : el?.bloodTypeId === 5
+                    ? "B(III) Rh+"
+                    : el?.bloodTypeId === 6
+                    ? "B(III) Rh-"
+                    : el?.bloodTypeId === 7
+                    ? "AB(IV) Rh+"
+                    : el?.bloodTypeId === 8
+                    ? "AB(IV) Rh-"
+                    : "Тип крови не найдено"}
                 </p>
                 <p>{el.bloodQuantity}</p>
                 <p>{el.eventDate}</p>
@@ -140,9 +138,13 @@ function Hospital() {
         </TabPanel>
         <TabPanel>
           <ul className="list-group">
-            {
-              archivedEvents?.map(el => el.Users?.map((el, index) => <li className="list-group-item my-2" key={el.id}>&nbsp;{el.name}&nbsp;{el.lastName}</li>))
-            }
+            {archivedEvents?.map((el) =>
+              el.Users?.map((el, index) => (
+                <li className="list-group-item my-2" key={el.id}>
+                  &nbsp;{el.name}&nbsp;{el.lastName}
+                </li>
+              ))
+            )}
           </ul>
         </TabPanel>
         <TabPanel>
@@ -162,7 +164,6 @@ function Hospital() {
           ))}
         </TabPanel>
       </Tabs>
-
     </div>
   );
 }
