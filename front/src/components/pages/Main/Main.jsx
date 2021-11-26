@@ -27,7 +27,7 @@ function Main() {
                 </Link>
                 <Link aria-current="page" to={`/login/hospital`}>
                   <div className={styles.hospitalBlock}>
-                    <p className={styles.hospitalTitle}>Болницы</p>
+                    <p className={styles.hospitalTitle}>Больницы</p>
                   </div>
                 </Link>
               </div>
