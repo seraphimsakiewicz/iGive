@@ -7,12 +7,18 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        restartIdentity: true,
+        truncate: true,
       },
       name: {
         allowNull: false,
         type: Sequelize.STRING,
       },
       lastName: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      birthday: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -25,6 +31,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       password: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -52,6 +62,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       totalDonation: {
+        defaultValue: 0,
         type: Sequelize.INTEGER,
       },
       bloodTypeId: {

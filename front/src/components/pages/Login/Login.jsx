@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-// import { signIn } from "../../redux/ac/userAC";
+import { Link, useParams } from "react-router-dom";
+import { hospitalIn } from "../../../redux/ac/hospitalAC";
+import { userIn } from "../../../redux/ac/userAC";
+import styles from "./styleLogin.module.css";
 
 const Login = () => {
   const initialValues = {
     email: "",
-    pass: "",
+    password: "",
   };
 
   const [values, setValues] = useState(initialValues);
+  const { role } = useParams();
 
   let navigate = useNavigate();
 
@@ -19,20 +23,25 @@ const Login = () => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
-
+  
   async function submitLogin(e) {
     e.preventDefault();
-    // dispatch(signIn(values, navigate));
+    if (role === "user") {
+      dispatch(userIn(values, navigate));
 
+    } else {
+      dispatch(hospitalIn(values, navigate));
+    }
     setValues(initialValues);
   }
 
   return (
     <>
-      <form onSubmit={submitLogin}>
+      <form className={styles.loginContainer} onSubmit={submitLogin}>
+        <h1 className={styles.loginTitle}>Sign In</h1>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
-            Email
+            Эл. почта:
           </label>
           <input
             type="email"
@@ -41,26 +50,32 @@ const Login = () => {
             aria-describedby="emailHelp"
             value={values.email}
             onChange={handleInputChange}
-            name="userName"
+            name="email"
           />
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
+            Пароль
           </label>
           <input
             type="password"
             className="form-control"
             id="exampleInputPassword1"
-            value={values.pass}
+            value={values.password}
             onChange={handleInputChange}
-            name="pass"
+            name="password"
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <div className={styles.footerSignIn}>
+          <Link to={`/${role}/signup`}>
+            <p className={styles.footerSignInText}>Создать аккаунт</p>
+          </Link>
+
+          <button type="submit" className="btn btn-reg">
+            Войти
+          </button>
+        </div>
       </form>
     </>
   );

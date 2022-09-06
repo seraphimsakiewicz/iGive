@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { regHospital } from "../../../redux/ac/hospitalAC";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { regHospital } from '../../../redux/ac/hospitalAC';
 
 const HospitalRegister = () => {
   const initialValues = {
-    hospitalName: "",
-    firstName: "",
-    lastName: "",
-    INN: "",
-    site: "",
-    city: "",
-    building: "",
-    street: "",
-    telephone: "",
-    email: "",
-    pass: "",
+    email: '',
+    password: '',
+    inn: '',
+    headOfDep: '',
+    phoneNumber: '',
+    city: '',
+    street: '',
+    building: '',
+    webSite: '',
+    title: '',
   };
 
   let navigate = useNavigate();
@@ -32,154 +31,138 @@ const HospitalRegister = () => {
   function submitRegister(e) {
     e.preventDefault();
     dispatch(regHospital(values, navigate));
-
-    // setValues(initialValues);
   }
 
   return (
-    <form onSubmit={submitRegister}>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Hospital Name
+    <form className='reg-container' onSubmit={submitRegister}>
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Эл. почта:
         </label>
         <input
-          type="text"
-          className="form-control"
-          value={values.hospitalName}
-          onChange={handleInputChange}
-          name="hospitalName"
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          First Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.firstName}
-          onChange={handleInputChange}
-          name="firstName"
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Last Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          value={values.lastName}
-          onChange={handleInputChange}
-          name="lastName"
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Email Address
-        </label>
-        <input
-          type="email"
-          className="form-control"
+          type='email'
+          className='form-control'
           value={values.email}
           onChange={handleInputChange}
-          name="email"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
+          name='email'
+          id='exampleInputEmail1'
+          aria-describedby='emailHelp'
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Site:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputPassword1' className='form-label'>
+          Пароль:
         </label>
         <input
-          type="text"
-          className="form-control"
-          value={values.site}
+          type='password'
+          className='form-control'
+          id='exampleInputPassword1'
+          value={values.password}
           onChange={handleInputChange}
-          name="site"
+          name='password'
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Telephone:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          ИНН:
         </label>
         <input
-          type="text"
-          className="form-control"
-          value={values.telephone}
+          type='text'
+          className='form-control'
+          value={values.inn}
           onChange={handleInputChange}
-          pattern="[0-9]+"
-          name="telephone"
+          pattern='[0-9]+'
+          name='inn'
         />
       </div>
-
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          INN:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputPassword1' className='form-label'>
+          Главный админ:
         </label>
         <input
-          type="text"
-          className="form-control"
-          value={values.INN}
+          type='text'
+          className='form-control'
+          id='exampleInputPassword1'
+          value={values.headOfDep}
           onChange={handleInputChange}
-          pattern="[0-9]+"
-          name="INN"
+          name='headOfDep'
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          City:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Телефон:
         </label>
         <input
-          type="text"
-          className="form-control"
+          type='text'
+          className='form-control'
+          value={values.phoneNumber}
+          onChange={handleInputChange}
+          pattern='[0-9]+'
+          name='phoneNumber'
+        />
+      </div>
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Город:
+        </label>
+        <input
+          type='text'
+          className='form-control'
           value={values.city}
           onChange={handleInputChange}
-          name="city"
+          name='city'
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Building:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Здание:
         </label>
         <input
-          type="text"
-          className="form-control"
+          type='text'
+          className='form-control'
           value={values.building}
           onChange={handleInputChange}
-          name="building"
+          name='building'
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Street:
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Улица:
         </label>
         <input
-          type="text"
-          className="form-control"
+          type='text'
+          className='form-control'
           value={values.street}
           onChange={handleInputChange}
-          name="street"
+          name='street'
         />
       </div>
-
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Веб Сайт:
         </label>
         <input
-          type="password"
-          className="form-control"
-          id="exampleInputPassword1"
-          value={values.pass}
+          type='text'
+          className='form-control'
+          value={values.webSite}
           onChange={handleInputChange}
-          name="pass"
+          name='webSite'
         />
       </div>
-
-      <button type="submit" className="btn btn-primary">
-        Register
+      <div className='mb-3'>
+        <label htmlFor='exampleInputEmail1' className='form-label'>
+          Названия Больницы
+        </label>
+        <input
+          type='text'
+          className='form-control'
+          value={values.title}
+          onChange={handleInputChange}
+          name='title'
+        />
+      </div>
+      <button type='submit' className='btn btn-reg'>
+        Зарегистрироваться
       </button>
     </form>
   );

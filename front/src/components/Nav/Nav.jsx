@@ -1,57 +1,62 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import styles from "./style.module.css";
 const Nav = () => {
+  const { user } = useSelector((state) => state);
+  const { hospital } = useSelector((state) => state);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Main
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/donorReg"
-              >
-                Donor Register
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/hospitalReg"
-              >
-                Hospital Register
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/users">
-                Users
-              </Link>
-            </li>
-          </ul>
+    <header className={styles.header}>
+      <div className="container">
+        <div className={styles.headerWrapper}>
+          {user || hospital ? (
+            <>
+              {user ? (
+                <>
+                  <Link Link className={styles.logo} to={`/${user.role}`}>
+                    iGive
+                  </Link>
+                  <p className={styles.greetings}>Здравстуйте, {user.name}</p>
+                  <Link className={styles.logo} to={`/private/${user.role}`}>
+                    Личный кабинет
+                  </Link>
+                  <Link className={styles.logo} to={`/logout/${user.role}`}>
+                    Log out
+                  </Link>
+                </>
+              ) : (
+                ""
+              )}
+              {hospital ? (
+                <>
+                  <Link className={styles.logo} to={`/${hospital.role}`}>
+                    iGive
+                  </Link>
+                  <p className={styles.greetings}>
+                    Здравстуйте, {hospital.headOfDep}
+                  </p>
+                  <Link
+                    className={styles.logo}
+                    to={`/private/${hospital.role}`}
+                  >
+                    Личный кабинет
+                  </Link>
+                  <Link className={styles.logo} to={`/logout/${hospital.role}`}>
+                    Log out
+                  </Link>
+                </>
+              ) : (
+                ""
+              )}
+            </>
+          ) : (
+            <Link className={styles.logo} to="/">
+              iGive
+            </Link>
+          )}
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

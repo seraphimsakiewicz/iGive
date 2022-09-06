@@ -1,6 +1,13 @@
 const initState = {
-  donor: null,
+  listHospital: [],
+  event: [],
+  myEvents: [],
+  user: null,
   hospital: null,
+  confirmedList: [],
+  bloodTypes: [],
+  hospitalMyDonor: [],
+  coordinates: {},
 };
 
 const getInitState = () => {

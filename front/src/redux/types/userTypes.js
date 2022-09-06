@@ -1,5 +1,5 @@
-export const SET_HOSPITAL = "SET_HOSPITAL";
-export const DELETE_HOSPITAL = "DELETE_HOSPITAL";
+export const SET_USER = 'SET_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const EDIT_USER = 'EDIT_USER';
+export const CHANGE_USER_PHOTO = 'CHANGE_USER_PHOTO'
 
-export const SET_DONOR = "SET_DONOR";
-export const DELETE_DONOR = "DELETE_DONOR";
