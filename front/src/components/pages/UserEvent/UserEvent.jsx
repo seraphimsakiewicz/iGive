@@ -37,11 +37,11 @@ function UserEvent() {
     <div className={styles.eventUser}>
       <div className="container">
         <div className={styles.eventUserWrapper}>
-          <h3 className={styles.eventTitle}>Место для сдачи крови</h3>
+          <h3 className={styles.eventTitle}>Blood Bank Site</h3>
           <div className={styles.eventInfo}>
-            <p className={styles.eventInfoItem}>Название:</p>
-            <p className={styles.eventInfoItem}>Адрес:</p>
-            <p className={styles.eventInfoItem}>Номер телефона:</p>
+            <p className={styles.eventInfoItem}>Name:</p>
+            <p className={styles.eventInfoItem}>Address:</p>
+            <p className={styles.eventInfoItem}>Phone number:</p>
           </div>
           <div className={styles.eventUserCard}>
             <p>{currEvent.Hospital?.title}</p>
@@ -53,12 +53,12 @@ function UserEvent() {
             {subscribedEvent ? (
               <button
                 type="button"
-                onClick={() => 
+                onClick={() =>
                   dispatch(deleteMyEventFromServer(currEvent.id)
                   )}
                 className="btn btn-danger"
               >
-                Отписаться
+                Cancel Registration
               </button>
             ) : (
               <button
@@ -66,7 +66,7 @@ function UserEvent() {
                 className="btn btn-success"
                 onClick={() => dispatch(subscribeUser(id))}
               >
-                Подписаться
+                Register
               </button>
             )}
           </div>

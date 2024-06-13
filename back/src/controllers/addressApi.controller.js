@@ -9,16 +9,13 @@ async function getCitiesFromApi(req, res) {
     );
     const { result } = (await axios.get(url)).data;
     const arrOfCities = result.slice(1);
-    // console.log(arrOfCities);
     res.json(arrOfCities);
   } catch (error) {
-    // console.log(error);
     res.sendStatus(500);
   }
 }
 
 async function getStreetsFromApi(req, res) {
-  // console.log(req.body);
   try {
     const { street, cityId } = req.body;
     const url = encodeURI(
@@ -26,16 +23,13 @@ async function getStreetsFromApi(req, res) {
     );
     const { result } = (await axios.get(url)).data;
     const arrOfStreets = result.slice(1);
-    // console.log(arrOfStreets);
     res.json(arrOfStreets);
   } catch (error) {
-    // console.log(error);
     res.sendStatus(500);
   }
 }
 
 async function getBuildingsFromApi(req, res) {
-  // console.log(req.body);
   try {
     const { building, cityId, streetId } = req.body;
     const url = encodeURI(
@@ -43,10 +37,8 @@ async function getBuildingsFromApi(req, res) {
     );
     const { result } = (await axios.get(url)).data;
     const arrOfBuilding = result.slice(1);
-    // console.log(arrOfBuilding);
     res.json(arrOfBuilding);
   } catch (error) {
-    // console.log(error);
     res.sendStatus(500);
   }
 }
