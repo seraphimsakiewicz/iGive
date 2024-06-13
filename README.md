@@ -1,5 +1,7 @@
-# iGive
-Приложение для доноров крови, в котором вы регистрируетесь с указанием своей группы крови и получаете уведомления, когда требуется сдача крови.
+iGive
+An application for blood donors where you register with your blood type and receive notifications when blood donations are needed.
+
 Instructions for launching the application:
-1) npm i
-2) npm start
+
+Run npm i
+Run npm start
