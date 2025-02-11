@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./styleUserEvent.module.css";
 import { useDispatch } from "react-redux";
-import { getCoordinates } from "../../../redux/ac/geocodeAC";
+// import { getCoordinates } from "../../../redux/ac/geocodeAC";
 import { subscribeUser } from "../../../redux/ac/userAC";
-import Map from "../../Google/Map";
+// import Map from "../../Google/Map";
 import {
   allMyEventsFromServer,
   deleteMyEventFromServer,
@@ -27,8 +27,8 @@ function UserEvent() {
       currEvent?.Hospital?.building +
       " " +
       currEvent?.Hospital?.city;
-    dispatch(allMyEventsFromServer());
-    dispatch(getCoordinates(address));
+    // dispatch(allMyEventsFromServer());
+    // dispatch(getCoordinates(address));
   }, [dispatch, currEvent]);
   const coordinates = useSelector((state) => state?.coordinates);
   const myEvents = useSelector((state) => state?.myEvents);
@@ -70,7 +70,7 @@ function UserEvent() {
               </button>
             )}
           </div>
-          <Map eventData={currEvent} coordinates={coordinates} zoom={12} />
+          {/* <Map eventData={currEvent} coordinates={coordinates} zoom={12} /> */}
         </div>
       </div>
     </div>

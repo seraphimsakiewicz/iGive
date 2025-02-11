@@ -1,1 +1,1 @@
-// export const ALL_HOSPITAL = 'ALL_HOSPITAL';
+export const ALL_HOSPITAL = 'ALL_HOSPITAL';

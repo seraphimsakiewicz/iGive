@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { allEventUserFromServer } from "../../../redux/ac/eventAC";
 import Slider from "../../Slider/Slider";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
 import StaticInfo from "../StaticInfo/StaticInfo";
 import SideInfo from "../SideInfo/SideInfo";
 import {

@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from '@reduxjs/toolkit';
 import bloodTypesReducer from "./bloodTypesReducer";
 import confirmedReducer from "./confirmedReducer";
 import eventReducer from "./eventReducer";

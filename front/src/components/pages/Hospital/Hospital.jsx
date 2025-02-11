@@ -5,7 +5,6 @@ import { allEventHospitalFromServer } from "../../../redux/ac/eventAC";
 import { allhospitalMyDonorFromServer } from "../../../redux/ac/hospitalMyDonorAC";
 import styles from "./style.module.css";
 import BloodStorage from "../../BloodStorage";
-import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { oneHospitalFromServer } from "../../../redux/ac/hospitalAC";
 function Hospital() {
