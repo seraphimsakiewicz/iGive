@@ -4,9 +4,12 @@
   "description": "Blood donor application where you register with your blood type and get notifications whenever donations are needed.",
   "main": "index.js",
   "scripts": {
-    "back": "npm start --prefix back",
-    "front": "npm start --prefix front",
-    "start": "concurrently \"npm run back\" \"npm run front\""
+    "back": "pnpm start --prefix back",
+    "front": "pnpm start --prefix front",
+    "start": "concurrently \"pnpm run back\" \"pnpm run front\"",
+    "build": "pnpm run build",
+    "test": "pnpm run test",
+    "dev": "pnpm run dev"
   },
   "repository": {
     "type": "git",

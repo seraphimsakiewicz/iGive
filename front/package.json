@@ -25,10 +25,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "pnpm exec react-scripts start",
+    "build": "pnpm exec react-scripts build",
+    "test": "pnpm exec react-scripts test",
+    "eject": "pnpm exec react-scripts eject"
   },
   "proxy": "http://localhost:3001",
   "eslintConfig": {
@@ -51,5 +51,13 @@
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "ejs",
+      "es5-ext"
+    ]
   }
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "db": "pnpm exec sequelize-cli db:migrate:undo:all && pnpm exec sequelize-cli db:migrate && pnpm exec sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",
@@ -35,5 +35,10 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "sequelize-cli": "^6.3.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "es5-ext"
+    ]
   }
 }
