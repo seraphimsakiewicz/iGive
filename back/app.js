@@ -3,6 +3,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const session = require('express-session');
 const { RedisStore } = require('connect-redis');
+const { sequelize } = require('./src/db/models');
+
 
 const path = require('path');
 const bcrypt = require("bcryptjs");
@@ -78,6 +80,15 @@ app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use('/hospital', hospitalRouter);
 app.use('/addressApi', addressApi);
+
+// Test DB Connection
+sequelize.authenticate()
+  .then(() => {
+    console.log('Database connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server has launched on port ${PORT}`);
