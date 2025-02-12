@@ -1,36 +1,57 @@
-
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const session = require("express-session");
+const session = require('express-session');
+const { RedisStore } = require('connect-redis');
+
 const path = require('path');
 const bcrypt = require("bcryptjs");
 
 // require('dotenv').config({ path: .${ process.env.NODE_ENV }.env });
 require('dotenv').config();
 
-//redis
-const redis = require('redis');
-const RedisStore = require('connect-redis')(session);
-const redisClient = redis.createClient();
+// Redis setup
+const { createClient } = require('redis');
 
-console.log(redisClient);
+// Create Redis client
+const redisClient = createClient({
+  url: process.env.REDIS_URL || 'redis://localhost:6379',
+  socket: {
+    reconnectStrategy: retries => Math.min(retries * 50, 1000)
+  }
+});
 
+// Redis error handling
+redisClient.on('error', err => console.log('Redis Client Error', err));
+redisClient.on('connect', () => console.log('Connected to Redis'));
+redisClient.on('reconnecting', () => console.log('Redis client reconnecting'));
+redisClient.on('ready', () => console.log('Redis client ready'));
+
+// Connect to Redis
+redisClient.connect().catch(console.error);
+
+// Initialize RedisStore with the client
 const signupRouter = require('./src/routes/signup.router');
 const loginRouter = require('./src/routes/login.router');
 const userRouter = require('./src/routes/user.router');
 const hospitalRouter = require('./src/routes/hospital.router');
 const addressApi = require('./src/routes/addressApi.router');
 
-//session config
+// Session configuration
 const sessionsConf = {
-  store: new RedisStore({ host: 'localhost', port: 6379, client: redisClient }),
-  key: 'sid', // ключ куки (название куки)
-  secret: process.env.SECRET || 'secret', // для шифрования id сессии
-  resave: true, // сессия будет сохраняться заново только при изменениях
-  saveUninitialized: false, // сохранение (или не сохранение) не инициализированной сессии
-  httpOnly: true, // невозможно изменить куку с фронта
-  cookie: { expires: 24 * 60 * 60e3 },
+  store: new RedisStore({ 
+    client: redisClient,
+    prefix: 'igive:sess:' 
+  }),
+  name: 'sid',
+  secret: process.env.SECRET || 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { 
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
 };
 const app = express();
 const PORT = process.env.PORT || 3005;
