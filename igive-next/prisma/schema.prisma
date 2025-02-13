@@ -8,26 +8,30 @@ generator client {
 }
 
 model Donor {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  bloodType String?
-  role      String   @default("donor")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String    @unique
+  password    String
+  bloodType   String?
+  role        String    @default("donor")
+  donations   Donation[]
+  events      Event[]   @relation("DonorEvents")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Hospital {
-  id           Int      @id @default(autoincrement())
-  name         String
-  email        String   @unique
-  password     String
-  address      String
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  address       String
   licenseNumber String
-  role         String   @default("hospital")
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  role          String         @default("hospital")
+  bloodStorage  BloodStorage[]
+  events        Event[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model BloodStorage {
@@ -38,4 +42,28 @@ model BloodStorage {
   hospital    Hospital @relation(fields: [hospitalId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-} 
+}
+
+model Event {
+  id          Int       @id @default(autoincrement())
+  name        String
+  date        DateTime
+  hospitalId  Int
+  hospital    Hospital  @relation(fields: [hospitalId], references: [id])
+  donors      Donor[]   @relation("DonorEvents")
+  donations   Donation[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Donation {
+  id        Int      @id @default(autoincrement())
+  donorId   Int
+  donor     Donor    @relation(fields: [donorId], references: [id])
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  bloodType String
+  amount    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
