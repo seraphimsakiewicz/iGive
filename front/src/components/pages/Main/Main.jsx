@@ -18,16 +18,16 @@ function Main() {
         <main className={styles.main}>
           <div className="container">
             <div className={styles.mainWrapper}>
-              <p className={styles.mainTitle}>Добро пожаловать!!!</p>
+              <p className={styles.mainTitle}>Welcome!</p>
               <div className={styles.mainButtons}>
                 <Link aria-current="page" to={`/login/user`}>
                   <div className={styles.userBlock}>
-                    <p className={styles.userTitle}>Доноры</p>
+                    <p className={styles.userTitle}>Donors</p>
                   </div>
                 </Link>
                 <Link aria-current="page" to={`/login/hospital`}>
                   <div className={styles.hospitalBlock}>
-                    <p className={styles.hospitalTitle}>Больницы</p>
+                    <p className={styles.hospitalTitle}>Hospitals</p>
                   </div>
                 </Link>
               </div>

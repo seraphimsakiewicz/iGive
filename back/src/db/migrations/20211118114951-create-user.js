@@ -14,14 +14,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      lastName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      birthday: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       email: {
         allowNull: false,
         unique: true,
@@ -34,25 +26,37 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      phoneNumber: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
       city: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      street: {
+      bloodTypeId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'BloodTypes',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
+      // Optional fields that can be updated later
+      lastName: {
+        type: Sequelize.STRING,
+      },
+      birthday: {
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
+        type: Sequelize.STRING,
+      },
+      street: {
         type: Sequelize.STRING,
       },
       building: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       oms: {
-        allowNull: false,
-        unique: true,
         type: Sequelize.INTEGER,
       },
       image: {
@@ -64,16 +68,6 @@ module.exports = {
       totalDonation: {
         defaultValue: 0,
         type: Sequelize.INTEGER,
-      },
-      bloodTypeId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'BloodTypes',
-          id: 'key',
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
       },
       createdAt: {
         allowNull: false,

@@ -37,7 +37,7 @@ function Slider() {
             <img
               alt="img-slider"
               className="img-slider"
-              src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`}
+              src={`/Imgs/img${index + 1}.jpg`}
             />
           </div>
         );

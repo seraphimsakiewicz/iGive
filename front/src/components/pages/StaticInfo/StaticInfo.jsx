@@ -4,28 +4,15 @@ import styles from './styleStaticInfo.module.css';
 function StaticInfo() {
   return (
     <>
-      <h3>Статистика</h3>
+      <h3>Statistics</h3>
       <p className={styles.eventLeftText}>
-        По данным Всероссийского центра изучения общественного мнения
-        (ВЦИОМ), за 11 лет численность доноров крови в нашей стране
-        выросла с 36% (2008 г.) до 45% (2019 г.). Донорами уже становились
-        45% россиян: в том числе 12% — однажды, 14% — 2-3 раза, 19% —
-        более 3 раз, отмечается в сообщении центра.
+        According to the Russian Public Opinion Research Center (VCIOM), over 11 years the number of blood donors in our country increased from 36% (2008) to 45% (2019). 45% of Russians have become donors: including 12% once, 14% 2-3 times, and 19% more than 3 times.
       </p>
       <p className={styles.eventLeftText}>
-        Стать донором на территории нашей страны может гражданин России,
-        достигший совершеннолетия, и иностранец, проживающий в России не
-        менее года. При весе менее 50 кг донорство крови противопоказано.
-        Требования к донору, информация о том, как подготовиться к
-        донорству, и адреса пунктов сдачи крови перечислены на сайте
-        Службы крови Федерального медико-биологического агентства (ФМБА).
+        In Russia, any citizen over 18 years old and foreigners residing in Russia for at least a year can become donors. Blood donation is contraindicated for those weighing less than 50 kg. Requirements for donors, preparation information, and blood donation center addresses are listed on the Blood Service website of the Federal Medical-Biological Agency (FMBA).
       </p>
       <p className={styles.eventLeftText}>
-        В России ежегодно в переливании крови нуждаются около 1,5 млн
-        человек (более 4 тыс. ежедневно). За 2018 год общее количество
-        доноров крови и ее компонентов составило более 1,283 млн человек,
-        при этом данными донорами выполнено более 2,5 млн донаций. Около
-        97% процедур совершается на безвозмездной основе.
+        In Russia, about 1.5 million people (more than 4,000 daily) need blood transfusions annually. In 2018, the total number of blood donors and its components was over 1.283 million people, performing more than 2.5 million donations. About 97% of procedures are done on a voluntary basis.
       </p>
     </>
   )

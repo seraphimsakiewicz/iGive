@@ -78,7 +78,7 @@ function Footer() {
             </p>
           </div>
           <div className={styles.footerTwo}>
-            <span className={styles.footerSpan}>Загрузи Предложения</span>
+            <span className={styles.footerSpan}>Download Offers</span>
             <a href="https://play.google.com/">
               {" "}
               <img

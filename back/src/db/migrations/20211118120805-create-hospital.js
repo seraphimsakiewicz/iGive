@@ -10,7 +10,8 @@ module.exports = {
         restartIdentity: true,
         truncate: true,
       },
-      image: {
+      title: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       email: {
@@ -25,41 +26,35 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      inn: {
+      city: {
         allowNull: false,
-        unique: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       headOfDep: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      phoneNumber: {
-        allowNull: false,
+      // Optional fields that can be updated later
+      image: {
         type: Sequelize.STRING,
       },
-      city: {
-        allowNull: false,
+      inn: {
+        type: Sequelize.INTEGER,
+      },
+      phoneNumber: {
         type: Sequelize.STRING,
       },
       street: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       building: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       webSite: {
-        allowNull: false,
+        type: Sequelize.STRING,
         validate: {
           isUrl: true,
         },
-        type: Sequelize.STRING,
-      },
-      title: {
-        allowNull: false,
-        type: Sequelize.STRING,
       },
       about: {
         type: Sequelize.TEXT,

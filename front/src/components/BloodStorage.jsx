@@ -52,7 +52,7 @@ const BloodStorage = (props) => {
                         ? <p style={pStyle}>AB(IV) Rh+</p>
                         : bloodTypeId === 8
                           ? <p style={pStyle}>AB(IV) Rh-</p>
-                          :  <p style={pStyle}>Тип крови не найдено</p>}
+                          :  <p style={pStyle}>Blood type not found</p>}
         </p>
       </div>
     </div>

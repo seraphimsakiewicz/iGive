@@ -11,7 +11,7 @@ function SideInfo() {
           alt=""
         />
         <p className={styles.eventRigthBlockCardTitle}>
-          Коронавирус в России и мире: <br /> хроника событий
+          Coronavirus in Russia and Worldwide: <br /> Timeline of Events
         </p>
       </div>
       <div className={styles.eventRigthBlockCard}>
@@ -21,7 +21,7 @@ function SideInfo() {
           alt=""
         />
         <p className={styles.eventRigthBlockCardTitle}>
-          Что делать если в семье кто-то <br /> заболел?
+          What to do if a family member <br /> gets sick?
         </p>
       </div>
       <div className={styles.eventRigthBlockCard}>
@@ -31,7 +31,7 @@ function SideInfo() {
           alt=""
         />
         <p className={styles.eventRigthBlockCardTitle}>
-          Грипп – симптомы и профилактика
+          Flu - Symptoms and Prevention
         </p>
       </div>
     </div>

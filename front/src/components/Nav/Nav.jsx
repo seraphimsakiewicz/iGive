@@ -16,9 +16,9 @@ const Nav = () => {
                   <Link Link className={styles.logo} to={`/${user.role}`}>
                     iGive
                   </Link>
-                  <p className={styles.greetings}>Здравстуйте, {user.name}</p>
+                  <p className={styles.greetings}>Hello, {user.name}</p>
                   <Link className={styles.logo} to={`/private/${user.role}`}>
-                    Личный кабинет
+                    Personal Account
                   </Link>
                   <Link className={styles.logo} to={`/logout/${user.role}`}>
                     Log out
@@ -33,13 +33,13 @@ const Nav = () => {
                     iGive
                   </Link>
                   <p className={styles.greetings}>
-                    Здравстуйте, {hospital.headOfDep}
+                    Hello, {hospital.headOfDep}
                   </p>
                   <Link
                     className={styles.logo}
                     to={`/private/${hospital.role}`}
                   >
-                    Личный кабинет
+                    Personal Account
                   </Link>
                   <Link className={styles.logo} to={`/logout/${hospital.role}`}>
                     Log out
