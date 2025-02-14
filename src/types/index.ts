@@ -1,3 +1,4 @@
+// 1) Basic Donor & Hospital interfaces
 export interface Donor {
   id: number;
   name: string;
@@ -15,18 +16,33 @@ export interface Hospital {
   licenseNumber: string;
 }
 
-// Add NextAuth types
+// 2) Role type
+export type Role = 'donor' | 'hospital';
+
+// 3) Extend NextAuth’s built-in types
 import 'next-auth';
+import 'next-auth/jwt';
 
 declare module 'next-auth' {
   interface User {
     id: number;
-    role: 'donor' | 'hospital';
+    email: string | null | undefined;
+    name: string | null | undefined;
+    role: Role;
   }
 
+  // By default, session.user extends User from above
   interface Session {
-    user: User & {
-      role: 'donor' | 'hospital';
-    };
+    user: User;
   }
-} 
+}
+
+// 4) Extend JWT
+declare module 'next-auth/jwt' {
+  interface JWT {
+    id: number;
+    role: Role;
+    email: string | null | undefined;
+    name: string | null | undefined;
+  }
+}

@@ -1,70 +1,92 @@
-import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "@/lib/prisma";
-import bcrypt from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
 
-export const authOptions = {
+// Import the Role type from your shared types
+import { Role } from "@/types";
+
+const prisma = new PrismaClient();
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Missing email or password");
+          return null;
         }
 
-        // Check both Donor and Hospital tables
-        const user = await prisma.$queryRawFirst`
-          SELECT id, email, password, role FROM "User"
-          WHERE email = ${credentials.email} LIMIT 1;
-        `;
+        // Try to find a donor
+        const donor = await prisma.donor.findUnique({
+          where: { email: credentials.email },
+        });
 
-        if (!user) {
-          throw new Error("User not found");
+        if (donor) {
+          // (Optional) Check password if you've hashed it
+          return {
+            id: donor.id,
+            email: donor.email,
+            role: "donor" as Role,
+            name: donor.name,
+          };
         }
 
-        const isValid = await bcrypt.compare(credentials.password, user.password);
-        if (!isValid) {
-          throw new Error("Invalid credentials");
+        // Otherwise, try to find a hospital
+        const hospital = await prisma.hospital.findUnique({
+          where: { email: credentials.email },
+        });
+
+        if (hospital) {
+          // (Optional) Check password if you've hashed it
+          return {
+            id: hospital.id,
+            email: hospital.email,
+            role: "hospital" as Role,
+            name: hospital.name,
+          };
         }
 
-        return {
-          id: user.id,
-          email: user.email,
-          role: user.role,
-          userType: user.role === "donor" ? "Donor" : "Hospital",
-        };
+        // If neither user type is found
+        return null;
       },
     }),
   ],
   callbacks: {
     async session({ session, token }) {
+      // Ensure token.id is a number
       if (token) {
-        session.user = {
-          id: token.id,
-          email: token.email,
-          role: token.role,
-          userType: token.userType,
-        };
+        session.user.id = Number(token.id); // Convert to number
+        session.user.role = token.role;
+        session.user.email = token.email;
+        session.user.name = token.name;
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.email = user.email;
+        token.id =  Number(token.id); // Convert to number // Ensure user.id is a number
         token.role = user.role;
-        token.userType = user.userType;
+        token.email = user.email;
+        token.name = user.name;
       }
       return token;
     },
   },
-  session: { strategy: "database" },
+  // Use JWT so that each request can decode its own session data
+  session: {
+    strategy: "jwt",
+  },
   secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/login",
+  },
 };
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
